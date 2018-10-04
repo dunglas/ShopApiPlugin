@@ -10,11 +10,14 @@ use Symfony\Component\HttpFoundation\Request;
 final class ResendVerificationTokenRequest
 {
     /** @var string */
-    private $email;
+    public $email;
 
-    public function __construct(Request $request)
+    public static function fromRequest(Request $request): self
     {
-        $this->email = $request->request->get('email');
+        $self = new self();
+        $self->email = $request->request->get('email');
+
+        return $self;
     }
 
     public function getCommand(): SendVerificationToken

@@ -10,15 +10,18 @@ use Symfony\Component\HttpFoundation\Request;
 final class AddCouponRequest
 {
     /** @var string|null */
-    private $token;
+    public $token;
 
     /** @var string|null */
-    private $coupon;
+    public $coupon;
 
-    public function __construct(Request $request)
+    public static function fromRequest(Request $request): self
     {
-        $this->token = $request->attributes->get('token');
-        $this->coupon = $request->request->get('coupon');
+        $self = new self();
+        $self->token = $request->attributes->get('token');
+        $self->coupon = $request->request->get('coupon');
+
+        return $self;
     }
 
     public function getCommand(): AddCoupon

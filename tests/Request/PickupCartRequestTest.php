@@ -16,7 +16,7 @@ final class PickupCartRequestTest extends TestCase
      */
     public function it_creates_pickup_cart_command()
     {
-        $pickupCartRequest = new PickupCartRequest(new Request([], ['channel' => 'WEB_GB'], ['token' => 'ORDERTOKEN']));
+        $pickupCartRequest = PickupCartRequest::fromRequest(new Request([], ['channel' => 'WEB_GB'], ['token' => 'ORDERTOKEN']));
 
         $this->assertEquals($pickupCartRequest->getCommand(), new PickupCart('ORDERTOKEN', 'WEB_GB'));
     }

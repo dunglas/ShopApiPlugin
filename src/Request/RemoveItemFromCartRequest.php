@@ -10,15 +10,18 @@ use Symfony\Component\HttpFoundation\Request;
 final class RemoveItemFromCartRequest
 {
     /** @var string */
-    private $token;
+    public $token;
 
     /** @var mixed */
-    private $id;
+    public $id;
 
-    public function __construct(Request $request)
+    public static function fromRequest(Request $request): self
     {
-        $this->token = $request->attributes->get('token');
-        $this->id = $request->attributes->get('id');
+        $self = new self();
+        $self->token = $request->attributes->get('token');
+        $self->id = $request->attributes->get('id');
+
+        return $self;
     }
 
     public function getCommand(): RemoveItemFromCart

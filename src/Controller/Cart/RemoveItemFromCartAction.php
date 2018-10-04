@@ -48,7 +48,7 @@ final class RemoveItemFromCartAction
 
     public function __invoke(Request $request): Response
     {
-        $removeItemFromCartRequest = new RemoveItemFromCartRequest($request);
+        $removeItemFromCartRequest = RemoveItemFromCartRequest::fromRequest($request);
 
         $validationResults = $this->validator->validate($removeItemFromCartRequest);
 

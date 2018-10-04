@@ -50,7 +50,7 @@ final class SetDefaultAddressAction
 
     public function __invoke(Request $request): Response
     {
-        $setDefaultAddressRequest = new SetDefaultAddressRequest($request);
+        $setDefaultAddressRequest = SetDefaultAddressRequest::fromRequest($request);
 
         $validationResults = $this->validator->validate($setDefaultAddressRequest);
 

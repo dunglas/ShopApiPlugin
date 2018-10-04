@@ -50,7 +50,7 @@ final class RemoveAddressAction
 
     public function __invoke(Request $request): Response
     {
-        $removeAddressRequest = new RemoveAddressRequest($request);
+        $removeAddressRequest = RemoveAddressRequest::fromRequest($request);
 
         $validationResults = $this->validator->validate($removeAddressRequest);
 

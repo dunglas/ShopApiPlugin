@@ -10,11 +10,14 @@ use Symfony\Component\HttpFoundation\Request;
 final class DropCartRequest
 {
     /** @var string */
-    private $token;
+    public $token;
 
-    public function __construct(Request $request)
+    public static function fromRequest(Request $request): self
     {
-        $this->token = $request->attributes->get('token');
+        $self = new self();
+        $self->token = $request->attributes->get('token');
+
+        return $self;
     }
 
     public function getCommand(): DropCart

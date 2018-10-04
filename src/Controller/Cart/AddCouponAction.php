@@ -48,7 +48,7 @@ final class AddCouponAction
 
     public function __invoke(Request $request): Response
     {
-        $addCouponRequest = new AddCouponRequest($request);
+        $addCouponRequest = AddCouponRequest::fromRequest($request);
 
         $validationResults = $this->validator->validate($addCouponRequest);
 

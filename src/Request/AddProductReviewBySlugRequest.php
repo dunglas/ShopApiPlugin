@@ -10,32 +10,35 @@ use Symfony\Component\HttpFoundation\Request;
 final class AddProductReviewBySlugRequest
 {
     /** @var string */
-    private $slug;
+    public $slug;
 
     /** @var string */
-    private $channelCode;
+    public $channelCode;
 
     /** @var string */
-    private $title;
+    public $title;
 
     /** @var int */
-    private $rating;
+    public $rating;
 
     /** @var string */
-    private $comment;
+    public $comment;
 
     /** @var string */
-    private $email;
+    public $email;
 
-    public function __construct(Request $request)
+    public static function fromRequest(Request $request): self
     {
-        $this->slug = $request->attributes->get('slug');
+        $self = new self();
+        $self->slug = $request->attributes->get('slug');
 
-        $this->title = $request->request->get('title');
-        $this->channelCode = $request->request->get('channelCode');
-        $this->rating = $request->request->get('rating');
-        $this->comment = $request->request->get('comment');
-        $this->email = $request->request->get('email');
+        $self->title = $request->request->get('title');
+        $self->channelCode = $request->request->get('channelCode');
+        $self->rating = $request->request->get('rating');
+        $self->comment = $request->request->get('comment');
+        $self->email = $request->request->get('email');
+
+        return $self;
     }
 
     public function getCommand(): AddProductReviewBySlug

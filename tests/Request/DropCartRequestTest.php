@@ -16,7 +16,7 @@ final class DropCartRequestTest extends TestCase
      */
     public function it_creates_pickup_cart_command()
     {
-        $pickupCartRequest = new DropCartRequest(new Request([], [], ['token' => 'ORDERTOKEN']));
+        $pickupCartRequest = DropCartRequest::fromRequest(new Request([], [], ['token' => 'ORDERTOKEN']));
 
         $this->assertEquals($pickupCartRequest->getCommand(), new DropCart('ORDERTOKEN'));
     }

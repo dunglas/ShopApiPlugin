@@ -10,27 +10,30 @@ use Symfony\Component\HttpFoundation\Request;
 final class RegisterCustomerRequest
 {
     /** @var string */
-    private $email;
+    public $email;
 
     /** @var string */
-    private $plainPassword;
+    public $plainPassword;
 
     /** @var string */
-    private $firstName;
+    public $firstName;
 
     /** @var string */
-    private $lastName;
+    public $lastName;
 
     /** @var string */
-    private $channelCode;
+    public $channelCode;
 
-    public function __construct(Request $request)
+    public static function fromRequest(Request $request): self
     {
-        $this->email = $request->request->get('email');
-        $this->plainPassword = $request->request->get('plainPassword');
-        $this->firstName = $request->request->get('firstName');
-        $this->lastName = $request->request->get('lastName');
-        $this->channelCode = $request->request->get('channel');
+        $self = new self();
+        $self->email = $request->request->get('email');
+        $self->plainPassword = $request->request->get('plainPassword');
+        $self->firstName = $request->request->get('firstName');
+        $self->lastName = $request->request->get('lastName');
+        $self->channelCode = $request->request->get('channel');
+
+        return $self;
     }
 
     public function getCommand(): RegisterCustomer

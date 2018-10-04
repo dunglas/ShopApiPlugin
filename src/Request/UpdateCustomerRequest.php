@@ -11,35 +11,38 @@ use Symfony\Component\HttpFoundation\Request;
 final class UpdateCustomerRequest
 {
     /** @var string */
-    private $firstName;
+    public $firstName;
 
     /** @var string */
-    private $lastName;
+    public $lastName;
 
     /** @var string|null */
-    private $email;
+    public $email;
 
     /** @var DateTimeInterface|null */
-    private $birthday;
+    public $birthday;
 
     /** @var string */
-    private $gender;
+    public $gender;
 
     /** @var string|null */
-    private $phoneNumber;
+    public $phoneNumber;
 
     /** @var bool */
-    private $subscribedToNewsletter;
+    public $subscribedToNewsletter;
 
-    public function __construct(Request $request)
+    public static function fromRequest(Request $request): self
     {
-        $this->firstName = $request->request->get('firstName');
-        $this->lastName = $request->request->get('lastName');
-        $this->email = $request->request->get('email');
-        $this->birthday = $request->request->get('birthday');
-        $this->gender = $request->request->get('gender');
-        $this->phoneNumber = $request->request->get('phoneNumber');
-        $this->subscribedToNewsletter = $request->request->getBoolean('subscribedToNewsletter') ?? false;
+        $self = new self();
+        $self->firstName = $request->request->get('firstName');
+        $self->lastName = $request->request->get('lastName');
+        $self->email = $request->request->get('email');
+        $self->birthday = $request->request->get('birthday');
+        $self->gender = $request->request->get('gender');
+        $self->phoneNumber = $request->request->get('phoneNumber');
+        $self->subscribedToNewsletter = $request->request->getBoolean('subscribedToNewsletter') ?? false;
+
+        return $self;
     }
 
     public function getCommand(): UpdateCustomer

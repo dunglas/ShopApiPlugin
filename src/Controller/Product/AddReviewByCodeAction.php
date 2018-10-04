@@ -41,7 +41,7 @@ final class AddReviewByCodeAction
 
     public function __invoke(Request $request): Response
     {
-        $addReviewRequest = new AddProductReviewByCodeRequest($request);
+        $addReviewRequest = AddProductReviewByCodeRequest::fromRequest($request);
 
         $validationResults = $this->validator->validate($addReviewRequest);
 

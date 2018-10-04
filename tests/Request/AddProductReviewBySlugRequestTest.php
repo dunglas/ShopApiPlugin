@@ -16,7 +16,7 @@ final class AddProductReviewBySlugRequestTest extends TestCase
      */
     public function it_creates_review_with_author()
     {
-        $addReviewRequest = new AddProductReviewBySlugRequest(new Request([], [
+        $addReviewRequest = AddProductReviewBySlugRequest::fromRequest(new Request([], [
             'channelCode' => 'WEB_GB',
             'title' => 'Awesome beer',
             'rating' => 5,

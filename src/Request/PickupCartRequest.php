@@ -10,15 +10,18 @@ use Symfony\Component\HttpFoundation\Request;
 final class PickupCartRequest
 {
     /** @var string */
-    private $token;
+    public $token;
 
     /** @var string */
-    private $channel;
+    public $channel;
 
-    public function __construct(Request $request)
+    public static function fromRequest(Request $request): self
     {
-        $this->token = $request->attributes->get('token');
-        $this->channel = $request->request->get('channel');
+        $self = new self();
+        $self->token = $request->attributes->get('token');
+        $self->channel = $request->request->get('channel');
+
+        return $self;
     }
 
     public function getCommand(): PickupCart

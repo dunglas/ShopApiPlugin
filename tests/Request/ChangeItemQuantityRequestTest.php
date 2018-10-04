@@ -16,7 +16,7 @@ final class ChangeItemQuantityRequestTest extends TestCase
      */
     public function it_creates_pickup_cart_command()
     {
-        $changeItemQuantityRequest = new ChangeItemQuantityRequest(new Request([], ['quantity' => 5], [
+        $changeItemQuantityRequest = ChangeItemQuantityRequest::fromRequest(new Request([], ['quantity' => 5], [
             'token' => 'ORDERTOKEN',
             'id' => 1,
         ]));

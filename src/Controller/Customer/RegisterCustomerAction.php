@@ -41,7 +41,7 @@ final class RegisterCustomerAction
 
     public function __invoke(Request $request): Response
     {
-        $registerCustomerRequest = new RegisterCustomerRequest($request);
+        $registerCustomerRequest = RegisterCustomerRequest::fromRequest($request);
 
         $validationResults = $this->validator->validate($registerCustomerRequest);
 

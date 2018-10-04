@@ -10,11 +10,14 @@ use Symfony\Component\HttpFoundation\Request;
 final class VerifyAccountRequest
 {
     /** @var string */
-    private $token;
+    public $token;
 
-    public function __construct(Request $request)
+    public static function fromRequest(Request $request): self
     {
-        $this->token = $request->request->get('token');
+        $self = new self();
+        $self->token = $request->request->get('token');
+
+        return $self;
     }
 
     public function getCommand(): VerifyAccount

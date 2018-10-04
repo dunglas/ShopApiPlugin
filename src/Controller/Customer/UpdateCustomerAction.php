@@ -61,7 +61,7 @@ final class UpdateCustomerAction
         Assert::isInstanceOf($user, ShopUserInterface::class);
 
         $customer = $user->getCustomer();
-        $updateCustomerRequest = new UpdateCustomerRequest($request);
+        $updateCustomerRequest = UpdateCustomerRequest::fromRequest($request);
 
         $validationResults = $this->validator->validate($updateCustomerRequest, null, 'sylius_customer_profile_update');
 

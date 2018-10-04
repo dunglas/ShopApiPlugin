@@ -10,33 +10,37 @@ use Symfony\Component\HttpFoundation\Request;
 final class PutVariantBasedConfigurableItemToCartRequest
 {
     /** @var string */
-    private $token;
+    public $token;
 
     /** @var string */
-    private $productCode;
+    public $productCode;
 
     /** @var string */
-    private $variantCode;
+    public $variantCode;
 
     /** @var int */
-    private $quantity;
-
-    private function __construct($token, $productCode, $variantCode, $quantity)
-    {
-        $this->token = $token;
-        $this->productCode = $productCode;
-        $this->variantCode = $variantCode;
-        $this->quantity = $quantity;
-    }
+    public $quantity;
 
     public static function fromArray(array $item): self
     {
-        return new self($item['token'] ?? null, $item['productCode'] ?? null, $item['variantCode'] ?? null, $item['quantity'] ?? null);
+        $request = new self();
+        $request->token = $item['token'] ?? null;
+        $request->productCode = $item['productCode'] ?? null;
+        $request->variantCode = $item['variantCode'] ?? null;
+        $request->quantity = $item['quantity'] ?? null;
+
+        return $request;
     }
 
-    public static function fromRequest(Request $request): self
+    public static function fromRequest(Request $httpRequest): self
     {
-        return new self($request->attributes->get('token'), $request->request->get('productCode'), $request->request->get('variantCode'), $request->request->getInt('quantity', 1));
+        $request = new self();
+        $request->token = $httpRequest->attributes->get('token');
+        $request->productCode = $httpRequest->request->get('productCode');
+        $request->variantCode = $httpRequest->request->get('variantCode');
+        $request->quantity = $httpRequest->request->getInt('quantity', 1);
+
+        return $request;
     }
 
     public function getCommand(): PutVariantBasedConfigurableItemToCart
