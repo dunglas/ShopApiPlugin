@@ -8,7 +8,8 @@
 
         "sylius/sylius": "^1.1",
         "league/tactician-bundle": "^1.1",
-        "league/tactician-doctrine": "^1.1"
+        "league/tactician-doctrine": "^1.1",
+        "api-platform/core": "^2.3"
     },
     "require-dev": {
         "lakion/api-test-case": "^3.1",
