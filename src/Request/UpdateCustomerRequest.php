@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Sylius\ShopApiPlugin\Request;
 
 use DateTimeInterface;
+use Sylius\ShopApiPlugin\Command\CommandInterface;
 use Sylius\ShopApiPlugin\Command\UpdateCustomer;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -45,7 +46,7 @@ final class UpdateCustomerRequest implements CommandRequestInterface
         return $self;
     }
 
-    public function getCommand(): UpdateCustomer
+    public function getCommand(): CommandInterface
     {
         return new UpdateCustomer($this->firstName, $this->lastName, $this->email, $this->birthday, $this->gender, $this->phoneNumber, $this->subscribedToNewsletter);
     }

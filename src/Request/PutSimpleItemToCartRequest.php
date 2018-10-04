@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Sylius\ShopApiPlugin\Request;
 
+use Sylius\ShopApiPlugin\Command\CommandInterface;
 use Sylius\ShopApiPlugin\Command\PutSimpleItemToCart;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -38,7 +39,7 @@ final class PutSimpleItemToCartRequest implements CommandRequestInterface
         return $request;
     }
 
-    public function getCommand(): PutSimpleItemToCart
+    public function getCommand(): CommandInterface
     {
         return new PutSimpleItemToCart($this->token, $this->productCode, $this->quantity);
     }
