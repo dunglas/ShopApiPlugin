@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="sylius.shop_api_plugin.provider.customer_provider"
+                 class="Sylius\ShopApiPlugin\Provider\ShopUserAwareCustomerProvider">
+            <argument type="service" id="sylius.repository.customer"/>
+            <argument type="service" id="sylius.factory.customer"/>
+            <argument type="service" id="sylius.shop_api_plugin.provider.current_user_provider"/>
+        </service>
+
+        <service id="sylius.shop_api_plugin.provider.product_reviewer_provider"
+                 class="Sylius\ShopApiPlugin\Provider\ProductReviewerProvider">
+            <argument type="service" id="sylius.shop_api_plugin.provider.customer_provider"/>
+        </service>
+
+        <service id="sylius.shop_api_plugin.provider.current_user_provider"
+                 class="Sylius\ShopApiPlugin\Provider\LoggedInShopUserProvider">
+            <argument type="service" id="security.token_storage"/>
+        </service>
+
+        <service id="sylius.shop_api_plugin.provider.supported_locale_provider"
+                 class="Sylius\ShopApiPlugin\Provider\SupportedLocaleProvider"/>
+    </services>
+</container>

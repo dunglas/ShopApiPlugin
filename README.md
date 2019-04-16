@@ -8,32 +8,17 @@
 
 [![License](https://img.shields.io/packagist/l/sylius/shop-api-plugin.svg)](https://packagist.org/packages/sylius/shop-api-plugin) [![Version](https://img.shields.io/packagist/v/sylius/shop-api-plugin.svg)](https://packagist.org/packages/sylius/shop-api-plugin) [![Build Status](https://travis-ci.org/Sylius/ShopApiPlugin.svg?branch=master)](https://travis-ci.org/Sylius/ShopApiPlugin) [![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/Sylius/SyliusShopApiPlugin.svg)](https://scrutinizer-ci.com/g/Sylius/SyliusShopApiPlugin/)
 
-<p align="center">This repository provides a ShopApi implementation on the top of <a href="https://github.com/Sylius/Sylius">Sylius E-Commerce platform</a></p>
- 
-# Beware
+<p align="center"><a href="https://sylius.com/plugins/" target="_blank"><img src="https://sylius.com/assets/badge-official-sylius-plugin.png" width="200"></a></p>
 
-It is also just an addition to Sylius - Standard. Please, check [official documentation](http://docs.sylius.org/en/latest/) in order to understand the basic concepts.
+<p align="center">This repository contains a plugin that extends the <a href="https://github.com/Sylius/Sylius">Sylius eCommerce Framework</a> with an API in JSON that allows performing all standard shop operations from the customer perspective.</p>
 
-## Pre - requirements
- 
-In order to run this plugin you need to fulfill following requirements:
-1. Installed composer [Composer](https://getcomposer.org/).
-    ```bash
-    $ wget http://getcomposer.org/composer.phar
-    $ php composer.phar create-project sylius/sylius-standard project
-    ```
+## Documentation
 
-2. Installed Sylius
-    ```bash
-    $ cd project
-    $ php bin/console sylius:install
-    ```
+The latest documentation is available [here](https://app.swaggerhub.com/apis/Sylius/sylius-shop-api/1.0.0).
 
-Rest of the command are executed inside `project` folder.
+## Installation
 
-## Usage
-
-1. Run `composer require sylius/shop-api-plugin:@beta`.
+1. Run `composer require sylius/shop-api-plugin:^1.0@beta`.
 2. Extend config files:
     1. Add SyliusShopApi to AppKernel.
     ```php
@@ -43,7 +28,6 @@ Rest of the command are executed inside `project` folder.
         {
             return array_merge(parent::registerBundles(), [
                 new \Sylius\ShopApiPlugin\ShopApiPlugin(),
-                new \League\Tactician\Bundle\TacticianBundle(),
             ]);
         }
     ```
@@ -164,9 +148,9 @@ Rest of the command are executed inside `project` folder.
 
 ### Attributes
 
-If you would like to receive serialized attributes you need to define an array of theirs codes under `shop_api.included_attributes` key. E.g.
+If you would like to receive serialized attributes you need to define an array of theirs codes under `sylius_shop_api.included_attributes` key. E.g.
 ```yml
-shop_api:
+sylius_shop_api:
     included_attributes:
         - "MUG_MATERIAL_CODE"
 ```
@@ -184,8 +168,29 @@ From the test app.
 
 ## Testing
 
-The application can be tested with API Test Case. In order to run test suite execute the following command:
+The application can be tested with API Test Case. In order to run test suite execute the following commands:
 
 ```bash
-$ bin/phpunit
+$ cp tests/Application/.env.test.dist tests/Application/.env.test
+$ set -a && source tests/Application/.env.test && set +a
+$ (cd tests/Application && bin/console doctrine:database:create -e test)
+$ (cd tests/Application && bin/console doctrine:schema:create -e test)
+
+$ vendor/bin/phpunit
 ```
+
+The application can be also tested with PHPSpec:
+
+```bash
+$ vendor/bin/phpspec run
+```
+
+## Security issues
+
+If you think that you have found a security issue, please do not use the issue tracker and do not post it publicly. 
+Instead, all security issues must be sent to `security@sylius.com`.
+
+## Maintenance
+
+This library is officially maintained by [Sylius](https://sylius.com) together with the following contributors outside of the organization:
+ * [Maximilian Pesch](https://github.com/mamazu)

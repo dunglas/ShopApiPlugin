@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Sylius\ShopApiPlugin\ApiPlatform;
 
 use ApiPlatform\Core\DataPersister\DataPersisterInterface;
-use League\Tactician\CommandBus;
 use Sylius\ShopApiPlugin\Request\CommandRequestInterface;
+use Symfony\Component\Messenger\MessageBusInterface;
 
 final class DataPersister implements DataPersisterInterface
 {
     private $bus;
 
-    public function __construct(CommandBus $bus)
+    public function __construct(MessageBusInterface $bus)
     {
         $this->bus = $bus;
     }
@@ -43,6 +43,6 @@ final class DataPersister implements DataPersisterInterface
 
     private function handleCommand(CommandRequestInterface $data)
     {
-        $this->bus->handle($data->getCommand());
+        $this->bus->dispatch($data->getCommand());
     }
 }

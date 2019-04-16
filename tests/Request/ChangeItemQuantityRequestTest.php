@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Tests\Sylius\ShopApiPlugin\Request;
 
 use PHPUnit\Framework\TestCase;
-use Sylius\ShopApiPlugin\Command\ChangeItemQuantity;
-use Sylius\ShopApiPlugin\Request\ChangeItemQuantityRequest;
+use Sylius\ShopApiPlugin\Command\Cart\ChangeItemQuantity;
+use Sylius\ShopApiPlugin\Request\Cart\ChangeItemQuantityRequest;
 use Symfony\Component\HttpFoundation\Request;
 
 final class ChangeItemQuantityRequestTest extends TestCase
@@ -16,7 +16,7 @@ final class ChangeItemQuantityRequestTest extends TestCase
      */
     public function it_creates_pickup_cart_command()
     {
-        $changeItemQuantityRequest = ChangeItemQuantityRequest::fromRequest(new Request([], ['quantity' => 5], [
+        $changeItemQuantityRequest = new ChangeItemQuantityRequest(new Request([], ['quantity' => 5], [
             'token' => 'ORDERTOKEN',
             'id' => 1,
         ]));

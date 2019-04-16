@@ -6,16 +6,17 @@ namespace Sylius\ShopApiPlugin\Controller\Cart;
 
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandlerInterface;
-use League\Tactician\CommandBus;
-use Sylius\ShopApiPlugin\Request\PutOptionBasedConfigurableItemToCartRequest;
-use Sylius\ShopApiPlugin\Request\PutSimpleItemToCartRequest;
-use Sylius\ShopApiPlugin\Request\PutVariantBasedConfigurableItemToCartRequest;
+use Sylius\ShopApiPlugin\Normalizer\RequestCartTokenNormalizerInterface;
+use Sylius\ShopApiPlugin\Request\Cart\PutOptionBasedConfigurableItemToCartRequest;
+use Sylius\ShopApiPlugin\Request\Cart\PutSimpleItemToCartRequest;
+use Sylius\ShopApiPlugin\Request\Cart\PutVariantBasedConfigurableItemToCartRequest;
 use Sylius\ShopApiPlugin\View\ValidationErrorView;
-use Sylius\ShopApiPlugin\ViewRepository\CartViewRepositoryInterface;
+use Sylius\ShopApiPlugin\ViewRepository\Cart\CartViewRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Validator\ConstraintViolationInterface;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -25,7 +26,7 @@ final class PutItemsToCartAction
     /** @var ViewHandlerInterface */
     private $viewHandler;
 
-    /** @var CommandBus */
+    /** @var MessageBusInterface */
     private $bus;
 
     /** @var ValidatorInterface */
@@ -37,17 +38,22 @@ final class PutItemsToCartAction
     /** @var string */
     private $validationErrorViewClass;
 
+    /** @var RequestCartTokenNormalizerInterface */
+    private $requestCartTokenNormalizer;
+
     public function __construct(
         ViewHandlerInterface $viewHandler,
-        CommandBus $bus,
+        MessageBusInterface $bus,
         ValidatorInterface $validator,
         CartViewRepositoryInterface $cartQuery,
+        RequestCartTokenNormalizerInterface $requestCartTokenNormalizer,
         string $validationErrorViewClass
     ) {
         $this->viewHandler = $viewHandler;
         $this->bus = $bus;
         $this->validator = $validator;
         $this->cartQuery = $cartQuery;
+        $this->requestCartTokenNormalizer = $requestCartTokenNormalizer;
         $this->validationErrorViewClass = $validationErrorViewClass;
     }
 
@@ -57,9 +63,16 @@ final class PutItemsToCartAction
         $validationResults = [];
         $commandRequests = [];
         $commandsToExecute = [];
+
+        try {
+            $request = $this->requestCartTokenNormalizer->doNotAllowNullCartToken($request);
+        } catch (\InvalidArgumentException $exception) {
+            throw new BadRequestHttpException($exception->getMessage());
+        }
+
         $token = $request->attributes->get('token');
 
-        foreach ($request->request->all() as $item) {
+        foreach ($request->request->get('items') as $item) {
             $item['token'] = $token;
             $commandRequests[] = $this->provideCommandRequest($item);
         }
@@ -96,7 +109,7 @@ final class PutItemsToCartAction
         }
 
         foreach ($commandsToExecute as $commandToExecute) {
-            $this->bus->handle($commandToExecute);
+            $this->bus->dispatch($commandToExecute);
         }
 
         try {
@@ -111,15 +124,18 @@ final class PutItemsToCartAction
     /** @return PutOptionBasedConfigurableItemToCartRequest|PutSimpleItemToCartRequest|PutVariantBasedConfigurableItemToCartRequest */
     private function provideCommandRequest(array $item)
     {
-        if (!isset($item['variantCode']) && !isset($item['options'])) {
+        $hasVariantCode = isset($item['variantCode']);
+        $hasOptions = isset($item['options']);
+
+        if (!$hasVariantCode && !$hasOptions) {
             return PutSimpleItemToCartRequest::fromArray($item);
         }
 
-        if (isset($item['variantCode']) && !isset($item['options'])) {
+        if ($hasVariantCode && !$hasOptions) {
             return PutVariantBasedConfigurableItemToCartRequest::fromArray($item);
         }
 
-        if (!isset($item['variantCode']) && isset($item['options'])) {
+        if (!$hasVariantCode && $hasOptions) {
             return PutOptionBasedConfigurableItemToCartRequest::fromArray($item);
         }
 
