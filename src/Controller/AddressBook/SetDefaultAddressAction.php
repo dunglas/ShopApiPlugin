@@ -6,14 +6,13 @@ namespace Sylius\ShopApiPlugin\Controller\AddressBook;
 
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandlerInterface;
-use League\Tactician\CommandBus;
 use Sylius\Component\Core\Model\ShopUserInterface;
-use Sylius\ShopApiPlugin\Command\SetDefaultAddress;
 use Sylius\ShopApiPlugin\Factory\ValidationErrorViewFactoryInterface;
-use Sylius\ShopApiPlugin\Provider\LoggedInUserProviderInterface;
-use Sylius\ShopApiPlugin\Request\SetDefaultAddressRequest;
+use Sylius\ShopApiPlugin\Provider\LoggedInShopUserProviderInterface;
+use Sylius\ShopApiPlugin\Request\AddressBook\SetDefaultAddressRequest;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Security\Core\Exception\TokenNotFoundException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -22,7 +21,7 @@ final class SetDefaultAddressAction
     /** @var ViewHandlerInterface */
     private $viewHandler;
 
-    /** @var CommandBus */
+    /** @var MessageBusInterface */
     private $bus;
 
     /** @var ValidatorInterface */
@@ -31,15 +30,15 @@ final class SetDefaultAddressAction
     /** @var ValidationErrorViewFactoryInterface */
     private $validationErrorViewFactory;
 
-    /** @var LoggedInUserProviderInterface */
+    /** @var LoggedInShopUserProviderInterface */
     private $loggedInUserProvider;
 
     public function __construct(
         ViewHandlerInterface $viewHandler,
-        CommandBus $bus,
+        MessageBusInterface $bus,
         ValidatorInterface $validator,
         ValidationErrorViewFactoryInterface $validationErrorViewFactory,
-        LoggedInUserProviderInterface $loggedInUserProvider
+        LoggedInShopUserProviderInterface $loggedInUserProvider
     ) {
         $this->viewHandler = $viewHandler;
         $this->bus = $bus;
@@ -50,7 +49,14 @@ final class SetDefaultAddressAction
 
     public function __invoke(Request $request): Response
     {
-        $setDefaultAddressRequest = SetDefaultAddressRequest::fromRequest($request);
+        try {
+            /** @var ShopUserInterface $user */
+            $user = $this->loggedInUserProvider->provide();
+        } catch (TokenNotFoundException $exception) {
+            return $this->viewHandler->handle(View::create(null, Response::HTTP_UNAUTHORIZED));
+        }
+
+        $setDefaultAddressRequest = new SetDefaultAddressRequest($request, $user->getEmail());
 
         $validationResults = $this->validator->validate($setDefaultAddressRequest);
 
@@ -60,15 +66,8 @@ final class SetDefaultAddressAction
             );
         }
 
-        try {
-            /** @var ShopUserInterface $user */
-            $user = $this->loggedInUserProvider->provide();
-        } catch (TokenNotFoundException $exception) {
-            return $this->viewHandler->handle(View::create(null, Response::HTTP_UNAUTHORIZED));
-        }
-
         if ($user->getCustomer() !== null) {
-            $this->bus->handle(new SetDefaultAddress($request->attributes->get('id'), $user->getEmail()));
+            $this->bus->dispatch($setDefaultAddressRequest->getCommand());
 
             return $this->viewHandler->handle(View::create(null, Response::HTTP_NO_CONTENT));
         }

@@ -6,13 +6,13 @@ namespace Sylius\ShopApiPlugin\Controller\Cart;
 
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandlerInterface;
-use League\Tactician\CommandBus;
 use Sylius\ShopApiPlugin\Factory\ValidationErrorViewFactoryInterface;
-use Sylius\ShopApiPlugin\Request\AddCouponRequest;
-use Sylius\ShopApiPlugin\ViewRepository\CartViewRepositoryInterface;
+use Sylius\ShopApiPlugin\Request\Cart\AddCouponRequest;
+use Sylius\ShopApiPlugin\ViewRepository\Cart\CartViewRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class AddCouponAction
@@ -20,7 +20,7 @@ final class AddCouponAction
     /** @var ViewHandlerInterface */
     private $viewHandler;
 
-    /** @var CommandBus */
+    /** @var MessageBusInterface */
     private $bus;
 
     /** @var ValidatorInterface */
@@ -34,7 +34,7 @@ final class AddCouponAction
 
     public function __construct(
         ViewHandlerInterface $viewHandler,
-        CommandBus $bus,
+        MessageBusInterface $bus,
         ValidatorInterface $validator,
         ValidationErrorViewFactoryInterface $validationErrorViewFactory,
         CartViewRepositoryInterface $cartQuery
@@ -48,14 +48,14 @@ final class AddCouponAction
 
     public function __invoke(Request $request): Response
     {
-        $addCouponRequest = AddCouponRequest::fromRequest($request);
+        $addCouponRequest = new AddCouponRequest($request);
 
         $validationResults = $this->validator->validate($addCouponRequest);
 
         if (0 === count($validationResults)) {
             $addCouponCommand = $addCouponRequest->getCommand();
 
-            $this->bus->handle($addCouponCommand);
+            $this->bus->dispatch($addCouponCommand);
 
             try {
                 return $this->viewHandler->handle(
