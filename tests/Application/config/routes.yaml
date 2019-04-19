@@ -3,6 +3,11 @@ sylius:
 
 # Put your own routes here
 
+api_platform:
+    resource: .
+    type: api_platform
+    prefix: /shop-api
+
 sylius_shop_api:
     resource: "@ShopApiPlugin/Resources/config/routing.yml"
 

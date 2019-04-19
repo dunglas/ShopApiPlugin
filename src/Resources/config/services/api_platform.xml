@@ -4,6 +4,11 @@
     <services>
         <service id="Sylius\ShopApiPlugin\ApiPlatform\DataPersister">
             <argument type="service" id="sylius_shop_api_plugin.command_bus" />
+            <tag name="api_platform.data_persister" />
+        </service>
+
+        <service id="Sylius\ShopApiPlugin\EventListener\RequestChannelCodeInjectionListener">
+            <tag name="kernel.event_listener" event="kernel.request" priority="1" /><!-- POST_DESERIALIZE -->
         </service>
     </services>
 </container>
