@@ -1,5 +1,6 @@
 {
   "type": "@string@",
   "title": "@string@",
-  "detail": "Channel with code SPACE_KLINGON has not been found."
+  "detail": "Channel with code SPACE_KLINGON has not been found.",
+  "trace": "@array@.optional()"
 }

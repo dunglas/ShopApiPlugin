@@ -3,9 +3,9 @@
 
 sylius_mailer:
     emails:
-        api_verification_token:
+        shop_api_verification_token:
             subject: sylius.emails.user.verification_token.subject
-            template: "ShopApiPlugin:Email:verification.html.twig"
-        api_reset_password_token:
-            subject: sylius.emails.user.reset_password_token.subject
-            template: "ShopApiPlugin:Email:passwordReset.html.twig"
+            template: '@ShopApiPlugin/verification_email.html.twig'
+        shop_api_reset_password_token:
+            subject: sylius.emails.user.password_reset.subject
+            template: '@ShopApiPlugin/password_reset_email.html.twig'

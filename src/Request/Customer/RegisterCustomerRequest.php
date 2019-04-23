@@ -6,10 +6,9 @@ namespace Sylius\ShopApiPlugin\Request\Customer;
 
 use Sylius\ShopApiPlugin\Command\CommandInterface;
 use Sylius\ShopApiPlugin\Command\Customer\RegisterCustomer;
-use Sylius\ShopApiPlugin\Request\ChannelCodeAwareRequestInterface;
 use Sylius\ShopApiPlugin\Request\CommandRequestInterface;
 
-class RegisterCustomerRequest implements CommandRequestInterface, ChannelCodeAwareRequestInterface
+class RegisterCustomerRequest implements CommandRequestInterface
 {
     protected $email;
     protected $plainPassword;
@@ -17,13 +16,13 @@ class RegisterCustomerRequest implements CommandRequestInterface, ChannelCodeAwa
     protected $lastName;
     protected $channelCode;
 
-    public function __construct(string $email = '', string $plainPassword = '', string $firstName = '', string $lastName = '')
+    public function __construct(string $email = '', string $plainPassword = '', string $firstName = '', string $lastName = '', string $channelCode = '')
     {
         $this->email = $email;
         $this->plainPassword = $plainPassword;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
-        $this->channelCode = '';
+        $this->channelCode = $channelCode;
     }
 
     /**
@@ -59,19 +58,5 @@ class RegisterCustomerRequest implements CommandRequestInterface, ChannelCodeAwa
     public function getChannelCode(): string
     {
         return $this->channelCode;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return RegisterCustomerRequest
-     */
-    public function withChannelCode(string $channelCode): ChannelCodeAwareRequestInterface
-    {
-        $self = clone $this;
-
-        $self->channelCode = $channelCode;
-
-        return $self;
     }
 }

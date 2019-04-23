@@ -1,10 +1,15 @@
 {
-    "code": 400,
-    "message": "Validation failed",
-    "errors": {
-        "email": [
-            "sylius.shop_api.email.not_valid",
-            "sylius.shop_api.email.not_found"
-        ]
+  "type": "@string@",
+  "title": "@string@",
+  "detail": "email: This email is invalid.\nemail: Customer with this email does not exist.",
+  "violations": [
+    {
+      "propertyPath": "email",
+      "message": "This email is invalid."
+    },
+    {
+      "propertyPath": "email",
+      "message": "Customer with this email does not exist."
     }
+  ]
 }

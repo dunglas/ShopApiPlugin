@@ -10,11 +10,11 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 final class DataPersister implements DataPersisterInterface
 {
-    private $bus;
+    private $commandBus;
 
-    public function __construct(MessageBusInterface $bus)
+    public function __construct(MessageBusInterface $commandBus)
     {
-        $this->bus = $bus;
+        $this->commandBus = $commandBus;
     }
 
     /**
@@ -43,6 +43,6 @@ final class DataPersister implements DataPersisterInterface
 
     private function handleCommand(CommandRequestInterface $data)
     {
-        $this->bus->dispatch($data->getCommand());
+        $this->commandBus->dispatch($data->getCommand());
     }
 }

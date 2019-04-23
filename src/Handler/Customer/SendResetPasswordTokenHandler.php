@@ -4,25 +4,27 @@ declare(strict_types=1);
 
 namespace Sylius\ShopApiPlugin\Handler\Customer;
 
+use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Core\Model\ShopUserInterface;
-use Sylius\Component\Mailer\Sender\SenderInterface;
 use Sylius\Component\User\Repository\UserRepositoryInterface;
 use Sylius\ShopApiPlugin\Command\Customer\SendResetPasswordToken;
-use Sylius\ShopApiPlugin\Mailer\Emails;
+use Sylius\ShopApiPlugin\Email\PasswordResetEmail;
+use Symfony\Component\Messenger\Envelope;
+use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Messenger\Stamp\SerializerStamp;
 use Webmozart\Assert\Assert;
 
 final class SendResetPasswordTokenHandler
 {
-    /** @var UserRepositoryInterface */
     private $userRepository;
+    private $channelRepository;
+    private $emailBus;
 
-    /** @var SenderInterface */
-    private $sender;
-
-    public function __construct(UserRepositoryInterface $userRepository, SenderInterface $sender)
+    public function __construct(UserRepositoryInterface $userRepository, ChannelRepositoryInterface $channelRepository, MessageBusInterface $emailBus)
     {
         $this->userRepository = $userRepository;
-        $this->sender = $sender;
+        $this->channelRepository = $channelRepository;
+        $this->emailBus = $emailBus;
     }
 
     public function __invoke(SendResetPasswordToken $resendResetPasswordToken): void
@@ -35,10 +37,18 @@ final class SendResetPasswordTokenHandler
         Assert::notNull($user, sprintf('User with %s email has not been found.', $email));
         Assert::notNull($user->getPasswordResetToken(), sprintf('User with %s email has not verification token defined.', $email));
 
-        $this->sender->send(
-            Emails::EMAIL_RESET_PASSWORD_TOKEN,
-            [$email],
-            ['user' => $user, 'channelCode' => $resendResetPasswordToken->channelCode()]
+        $channel = $this->channelRepository->findOneByCode($resendResetPasswordToken->channelCode());
+
+        $message = new PasswordResetEmail($email, $user->getPasswordResetToken(), $user, $channel);
+
+        $this->emailBus->dispatch(
+            (new Envelope($message))
+                ->with(new SerializerStamp([
+                    'groups' => [
+                        'sylius_shop_api_email',
+                        'sylius_shop_api_email_password_reset',
+                    ],
+                ]))
         );
     }
 }

@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace Sylius\ShopApiPlugin\Request\Customer;
 
-use Sylius\ShopApiPlugin\Command\CommandInterface;
-use Sylius\ShopApiPlugin\Command\Customer\SendVerificationToken;
-use Sylius\ShopApiPlugin\Request\CommandRequestInterface;
-
-class ResendVerificationTokenRequest implements CommandRequestInterface
+class RequestPasswordResettingRequest
 {
     protected $email;
     protected $channelCode;
@@ -17,16 +13,6 @@ class ResendVerificationTokenRequest implements CommandRequestInterface
     {
         $this->email = $email;
         $this->channelCode = $channelCode;
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return SendVerificationToken
-     */
-    public function getCommand(): CommandInterface
-    {
-        return new SendVerificationToken($this->email, $this->channelCode);
     }
 
     public function getEmail(): string
