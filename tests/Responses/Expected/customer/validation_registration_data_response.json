@@ -1,9 +1,11 @@
 {
-    "code": 400,
-    "message": "Validation failed",
-    "errors": {
-        "email": [
-            "Please enter your email."
-        ]
+  "type": "@string@",
+  "title": "@string@",
+  "detail": "email: Please enter your email.",
+  "violations": [
+    {
+      "propertyPath": "email",
+      "message": "Please enter your email."
     }
+  ]
 }

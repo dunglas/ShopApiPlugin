@@ -1,9 +1,3 @@
-sylius_shop_api_register:
-    path: /register
-    methods: [POST]
-    defaults:
-        _controller: sylius.shop_api_plugin.controller.customer.register_customer_action
-
 sylius_shop_api_resend_verification_token:
     path: /resend-verification-link
     methods: [POST]

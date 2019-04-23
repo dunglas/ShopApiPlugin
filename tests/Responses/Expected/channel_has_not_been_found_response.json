@@ -1,4 +1,5 @@
 {
-    "code": 404,
-    "message": "Channel with code SPACE_KLINGON has not been found."
+  "type": "@string@",
+  "title": "@string@",
+  "detail": "Channel with code SPACE_KLINGON has not been found."
 }

@@ -38,9 +38,6 @@
             </constraint>
         </property>
         <property name="channelCode">
-            <constraint name="NotNull">
-                <option name="message">sylius.shop_api.channel.not_null</option>
-            </constraint>
             <constraint name="Sylius\ShopApiPlugin\Validator\Constraints\ChannelExists" />
         </property>
     </class>
