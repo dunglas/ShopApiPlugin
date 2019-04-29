@@ -1,14 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" ?>
 
-<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
     <services>
-        <service id="Sylius\ShopApiPlugin\ApiPlatform\DataPersister">
+        <defaults public="false" />
+
+        <service id="sylius.shop_api_plugin.api_platform.data_persister"
+            class="Sylius\ShopApiPlugin\ApiPlatform\DataPersister"
+        >
             <argument type="service" id="sylius_shop_api_plugin.command_bus" />
             <tag name="api_platform.data_persister" />
         </service>
 
-        <service id="Sylius\ShopApiPlugin\EventListener\RequestChannelCodeInjectionListener">
-            <tag name="kernel.event_listener" event="kernel.request" priority="1" /><!-- POST_DESERIALIZE -->
+        <service id="sylius.shop_api_plugin.api_platform.serializer_context_builder"
+            class="Sylius\ShopApiPlugin\ApiPlatform\SerializerContextBuilder"
+            decorates="api_platform.serializer.context_builder"
+        >
+            <argument type="service" id="sylius.shop_api_plugin.api_platform.serializer_context_builder.inner" />
+            <argument type="service" id="api_platform.metadata.resource.metadata_factory" />
+            <argument type="service" id="sylius.resource_controller.parameters_parser" />
         </service>
     </services>
+
 </container>

@@ -23,8 +23,48 @@
         <import resource="services/providers.xml" />
         <import resource="services/api_platform.xml" />
     </imports>
+    <parameters>
+        <parameter key="sylius_shop_api_plugin.command_bus.middleware" type="collection">
+            <parameter type="collection">
+                <parameter key="id">logging</parameter>
+            </parameter>
+            <parameter type="collection">
+                <parameter key="id">doctrine_transaction</parameter>
+            </parameter>
+            <parameter type="collection">
+                <parameter key="id">send_message</parameter>
+            </parameter>
+            <parameter type="collection">
+                <parameter key="id">handle_message</parameter>
+            </parameter>
+        </parameter>
+
+        <parameter key="sylius_shop_api_plugin.email_bus.middleware" type="collection">
+            <parameter type="collection">
+                <parameter key="id">logging</parameter>
+            </parameter>
+            <parameter type="collection">
+                <parameter key="id">send_message</parameter>
+            </parameter>
+            <parameter type="collection">
+                <parameter key="id">handle_message</parameter>
+            </parameter>
+        </parameter>
+    </parameters>
     <services>
         <defaults public="true" />
+
+        <service id="sylius_shop_api_plugin.command_bus"
+                 class="Symfony\Component\Messenger\MessageBus">
+            <argument type="collection" />
+            <tag name="messenger.bus" />
+        </service>
+
+        <service id="sylius_shop_api_plugin.email_bus"
+                 class="Symfony\Component\Messenger\MessageBus">
+            <argument type="collection" />
+            <tag name="messenger.bus" />
+        </service>
 
         <service id="sylius.shop_api_plugin.checker.promotion_coupon_eligibility_checker"
                  class="Sylius\ShopApiPlugin\Checker\PromotionCouponEligibilityChecker">

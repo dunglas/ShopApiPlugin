@@ -38,7 +38,7 @@ EOT;
         $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], self::CONTENT_TYPE_HEADER, $resendForEmail);
 
         $response = $this->client->getResponse();
-        $this->assertResponseCode($response, Response::HTTP_CREATED);
+        $this->assertResponseCode($response, Response::HTTP_NO_CONTENT);
 
         /** @var EmailCheckerInterface $emailChecker */
         $emailChecker = $this->get('sylius.behat.email_checker');
@@ -53,7 +53,9 @@ EOT;
     {
         $this->loadFixturesFromFiles(['channel.yml']);
 
-        $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], self::CONTENT_TYPE_HEADER);
+        $resendForEmail = '{}';
+
+        $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], self::CONTENT_TYPE_HEADER, $resendForEmail);
 
         $response = $this->client->getResponse();
         $this->assertResponse($response, 'customer/validation_email_not_defined_response', Response::HTTP_BAD_REQUEST);
@@ -62,7 +64,7 @@ EOT;
     /**
      * @test
      */
-    public function it_does_not_allow_to_resend_verification_email_if_email_is_not_malformed(): void
+    public function it_does_not_allow_to_resend_verification_email_if_email_is_malformed(): void
     {
         $this->loadFixturesFromFiles(['channel.yml']);
 

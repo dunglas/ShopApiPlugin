@@ -23,7 +23,7 @@ final class CustomerRequestPasswordResettingApiTest extends JsonApiTestCase
 
         $data = '{"email": "oliver@queen.com"}';
 
-        $this->client->request('PUT', '/shop-api/WEB_GB/request-password-reset', [], [], self::CONTENT_TYPE_HEADER, $data);
+        $this->client->request('POST', '/shop-api/WEB_GB/request-password-reset', [], [], self::CONTENT_TYPE_HEADER, $data);
 
         $response = $this->client->getResponse();
         $this->assertResponseCode($response, Response::HTTP_NO_CONTENT);
@@ -43,7 +43,7 @@ final class CustomerRequestPasswordResettingApiTest extends JsonApiTestCase
 
         $data = '{"email": "oliver@queen.com"}';
 
-        $this->client->request('PUT', '/shop-api/SPACE_KLINGON/request-password-reset', [], [], self::CONTENT_TYPE_HEADER, $data);
+        $this->client->request('POST', '/shop-api/SPACE_KLINGON/request-password-reset', [], [], self::CONTENT_TYPE_HEADER, $data);
 
         $response = $this->client->getResponse();
         $this->assertResponse($response, 'channel_has_not_been_found_response', Response::HTTP_NOT_FOUND);

@@ -6,6 +6,7 @@ sylius:
             not_blank: Please enter your email.
             invalid: This email is invalid.
             unique: This email is already used.
+            not_found: Customer with this email does not exist.
         password:
             not_blank: Please enter your password.
         first_name:

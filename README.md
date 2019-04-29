@@ -97,7 +97,7 @@ The latest documentation is available [here](https://app.swaggerhub.com/apis/Syl
                 stateless:  true
                 anonymous:  true
     ```
-    
+
     6. (optional) if you have installed `nelmio/NelmioCorsBundle` for Support of Cross-Origin Ajax Request,
         1. Add the NelmioCorsBundle to the AppKernel
     
@@ -144,6 +144,26 @@ The latest documentation is available [here](https://app.swaggerhub.com/apis/Syl
                     max_age: 3600
         ```
 
+    7. (optional) if you have a headless shop
+
+        The default email templates in this plugin assume that the Sylius webshop is used. In a headless shop, the client webapp would have its own routing system. As such, you must override the email templates to generate links appropriate for your client webapp.
+
+        1.  Verification email
+
+            Used by the `/register` and `/resend-verification-link` endpoints.
+
+            **Code**: `shop_api_verification_token`
+
+            **The default template**: `@ShopApiPlugin/verification_email.html.twig`
+
+        2.  Password reset email
+
+            Used by the `/request-password-reset` endpoint.
+
+            **Code**: `shop_api_reset_password_token`
+
+            **The default template**: `@ShopApiPlugin/password_reset_email.html.twig`
+
 ## Additional features
 
 ### Attributes
@@ -159,10 +179,10 @@ sylius_shop_api:
 
 By default no authorization is provided together with this bundle. But it is tested to work along with [LexikJWTAuthenticationBundle](https://github.com/lexik/LexikJWTAuthenticationBundle)
 In order to check example configuration check 
- - [security.yml](https://github.com/Sylius/SyliusShopApiPlugin/blob/master/tests/Application/app/config/security.yml)
- - [jwt parameters](https://github.com/Sylius/SyliusShopApiPlugin/blob/master/tests/Application/app/config/config.yml#L4-L7) and [jwt config](https://github.com/Sylius/SyliusShopApiPlugin/blob/master/tests/Application/app/config/config.yml#L55-L59) in config.yml
- - [example rsa keys](https://github.com/Sylius/SyliusShopApiPlugin/tree/master/tests/Application/app/config/jwt)
- - [login request](https://github.com/Sylius/SyliusShopApiPlugin/blob/master/tests/Controller/CustomerShopApiTest.php#L52-L68)
+ - [security.yml](https://github.com/Sylius/ShopApiPlugin/blob/master/tests/Application/config/packages/security.yaml)
+ - [jwt parameters](https://github.com/Sylius/ShopApiPlugin/blob/master/tests/Application/config/packages/lexik_jwt_authentication.yaml)
+ - [example rsa keys](https://github.com/Sylius/ShopApiPlugin/tree/master/tests/Application/config/jwt)
+ - [login request](https://github.com/Sylius/ShopApiPlugin/blob/master/tests/Controller/Customer/CustomerLoginApiTest.php)
  
 From the test app.
 

@@ -4,33 +4,25 @@ declare(strict_types=1);
 
 namespace Sylius\ShopApiPlugin\Controller\Customer;
 
-use FOS\RestBundle\View\View;
-use FOS\RestBundle\View\ViewHandlerInterface;
 use Sylius\ShopApiPlugin\Command\Customer\GenerateResetPasswordToken;
 use Sylius\ShopApiPlugin\Command\Customer\SendResetPasswordToken;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Sylius\ShopApiPlugin\Request\Customer\RequestPasswordResettingRequest;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 final class RequestPasswordResettingAction
 {
-    /** @var ViewHandlerInterface */
-    private $viewHandler;
+    private $commandBus;
 
-    /** @var MessageBusInterface */
-    private $bus;
-
-    public function __construct(ViewHandlerInterface $viewHandler, MessageBusInterface $bus)
+    public function __construct(MessageBusInterface $commandBus)
     {
-        $this->viewHandler = $viewHandler;
-        $this->bus = $bus;
+        $this->commandBus = $commandBus;
     }
 
-    public function __invoke(Request $request): Response
+    public function __invoke(RequestPasswordResettingRequest $data): RequestPasswordResettingRequest
     {
-        $this->bus->dispatch(new GenerateResetPasswordToken($request->request->get('email')));
-        $this->bus->dispatch(new SendResetPasswordToken($request->request->get('email'), $request->attributes->get('channelCode')));
+        $this->commandBus->dispatch(new GenerateResetPasswordToken($data->getEmail()));
+        $this->commandBus->dispatch(new SendResetPasswordToken($data->getEmail(), $data->getChannelCode()));
 
-        return $this->viewHandler->handle(View::create(null, Response::HTTP_NO_CONTENT));
+        return $data;
     }
 }

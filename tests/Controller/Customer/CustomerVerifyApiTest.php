@@ -21,7 +21,7 @@ final class CustomerVerifyApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFiles(['channel.yml']);
 
-        $data =
+        $registerData =
 <<<EOT
         {
             "firstName": "Vin",
@@ -31,15 +31,20 @@ final class CustomerVerifyApiTest extends JsonApiTestCase
         }
 EOT;
 
-        $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], self::CONTENT_TYPE_HEADER, $data);
+        $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], self::CONTENT_TYPE_HEADER, $registerData);
 
         /** @var UserRepositoryInterface $userRepository */
         $userRepository = $this->get('sylius.repository.shop_user');
         $user = $userRepository->findOneByEmail('vinny@fandf.com');
 
-        $parameters = ['token' => $user->getEmailVerificationToken()];
+        $verifyData =
+<<<EOT
+        {
+            "token": "{$user->getEmailVerificationToken()}"
+        }
+EOT;
 
-        $this->client->request('GET', '/shop-api/WEB_GB/verify-account', $parameters, [], ['ACCEPT' => 'application/json']);
+        $this->client->request('POST', '/shop-api/WEB_GB/verify-account', [], [], self::CONTENT_TYPE_HEADER, $verifyData);
 
         $response = $this->client->getResponse();
         $this->assertResponseCode($response, Response::HTTP_NO_CONTENT);
@@ -52,7 +57,7 @@ EOT;
     {
         $this->loadFixturesFromFiles(['channel.yml']);
 
-        $data =
+        $registerData =
 <<<EOT
         {
             "firstName": "Vin",
@@ -62,15 +67,20 @@ EOT;
         }
 EOT;
 
-        $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], self::CONTENT_TYPE_HEADER, $data);
+        $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], self::CONTENT_TYPE_HEADER, $registerData);
 
         /** @var UserRepositoryInterface $userRepository */
         $userRepository = $this->get('sylius.repository.shop_user');
         $user = $userRepository->findOneByEmail('vinny@fandf.com');
 
-        $parameters = ['token' => $user->getEmailVerificationToken()];
+        $verifyData =
+<<<EOT
+        {
+            "token": "{$user->getEmailVerificationToken()}"
+        }
+EOT;
 
-        $this->client->request('GET', '/shop-api/SPACE_KLINGON/verify-account', $parameters, [], self::CONTENT_TYPE_HEADER);
+        $this->client->request('POST', '/shop-api/SPACE_KLINGON/verify-account', [], [], self::CONTENT_TYPE_HEADER, $verifyData);
 
         $response = $this->client->getResponse();
         $this->assertResponse($response, 'channel_has_not_been_found_response', Response::HTTP_NOT_FOUND);
