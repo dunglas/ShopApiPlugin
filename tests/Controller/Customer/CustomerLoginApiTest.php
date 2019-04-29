@@ -18,17 +18,20 @@ final class CustomerLoginApiTest extends JsonApiTestCase
      */
     public function it_allows_to_log_customer_in(): void
     {
-        $this->loadFixturesFromFiles(['customer.yml']);
+        $this->loadFixturesFromFiles(['channel.yml', 'customer.yml']);
 
-        $data =
-<<<EOT
+        $loginData =
+<<<JSON
         {
-            "_username": "oliver@queen.com",
-            "_password": "123password"
+            "email": "oliver@queen.com",
+            "password": "123password"
         }
-EOT;
+JSON;
 
-        $this->client->request('POST', '/shop-api/login_check', [], [], self::CONTENT_TYPE_HEADER, $data);
+        $this->client->request('POST', '/shop-api/login', [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json',
+        ], $loginData);
 
         $response = $this->client->getResponse();
         $this->assertResponse($response, 'customer/customer_log_in_response', Response::HTTP_OK);
@@ -39,32 +42,35 @@ EOT;
      */
     public function it_requires_to_verify_email_address_for_newly_created_customers(): void
     {
-        $data =
-<<<EOT
+        $this->loadFixturesFromFiles(['channel.yml']);
+
+        $registerData =
+<<<JSON
         {
             "firstName": "Vin",
             "lastName": "Diesel",
             "email": "vinny@fandf.com",
-            "user": {
-                "plainPassword" : {
-                    "first": "password_123",
-                    "second": "password_123"
-                }
-            }
+            "plainPassword": "password_123"
         }
-EOT;
+JSON;
 
-        $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], self::CONTENT_TYPE_HEADER, $data);
+        $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json',
+        ], $registerData);
 
-        $data =
-<<<EOT
+        $loginData =
+<<<JSON
         {
-            "_username": "vinny@fandf.com",
-            "_password": "somepass"
+            "email": "vinny@fandf.com",
+            "password": "somepass"
         }
-EOT;
+JSON;
 
-        $this->client->request('POST', '/shop-api/login_check', [], [], self::CONTENT_TYPE_HEADER, $data);
+        $this->client->request('POST', '/shop-api/login', [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json',
+        ], $loginData);
 
         $response = $this->client->getResponse();
         $this->assertResponse($response, 'customer/bad_credentials_response', Response::HTTP_UNAUTHORIZED);

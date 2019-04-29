@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+
+<resources xmlns="https://api-platform.com/schema/metadata"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd">
+
+    <resource class="Sylius\Component\Customer\Model\CustomerInterface">
+
+        <attribute name="normalization_context">
+            <attribute name="groups">
+                <attribute>sylius_shop_api_customer_read</attribute>
+            </attribute>
+        </attribute>
+
+        <attribute name="denormalization_context">
+            <attribute name="groups">
+                <attribute>sylius_shop_api_customer_write</attribute>
+            </attribute>
+        </attribute>
+
+        <collectionOperations>
+        </collectionOperations>
+
+        <itemOperations>
+            <!-- This is only for IRI generation -->
+            <!-- Actually sending a request should result in HTTP 404 because of sylius.shop_api_plugin.api_platform.data_provider.customer.item -->
+            <itemOperation name="get" />
+
+            <itemOperation name="get_logged_in_customer_profile">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/{channelCode}/{id}</attribute>
+                <attribute name="requirements">
+                    <attribute name="id">me</attribute>
+                </attribute>
+                <attribute name="access_control">is_granted('ROLE_USER')</attribute>
+            </itemOperation>
+
+            <itemOperation name="put_logged_in_customer_profile">
+                <attribute name="method">PUT</attribute>
+                <attribute name="path">/{channelCode}/{id}</attribute>
+                <attribute name="requirements">
+                    <attribute name="id">me</attribute>
+                </attribute>
+                <attribute name="validation_groups">
+                    <attribute>sylius</attribute>
+                    <attribute>sylius_customer_profile</attribute>
+                </attribute>
+                <attribute name="access_control">is_granted('ROLE_USER')</attribute>
+            </itemOperation>
+        </itemOperations>
+
+        <property name="id" identifier="true" />
+
+    </resource>
+
+</resources>

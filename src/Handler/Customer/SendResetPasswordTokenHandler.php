@@ -27,9 +27,9 @@ final class SendResetPasswordTokenHandler
         $this->emailBus = $emailBus;
     }
 
-    public function __invoke(SendResetPasswordToken $resendResetPasswordToken): void
+    public function __invoke(SendResetPasswordToken $sendResetPasswordToken): void
     {
-        $email = $resendResetPasswordToken->email();
+        $email = $sendResetPasswordToken->email();
 
         /** @var ShopUserInterface $user */
         $user = $this->userRepository->findOneByEmail($email);
@@ -37,7 +37,7 @@ final class SendResetPasswordTokenHandler
         Assert::notNull($user, sprintf('User with %s email has not been found.', $email));
         Assert::notNull($user->getPasswordResetToken(), sprintf('User with %s email has not verification token defined.', $email));
 
-        $channel = $this->channelRepository->findOneByCode($resendResetPasswordToken->channelCode());
+        $channel = $this->channelRepository->findOneByCode($sendResetPasswordToken->channelCode());
 
         $message = new PasswordResetEmail($email, $user->getPasswordResetToken(), $user, $channel);
 

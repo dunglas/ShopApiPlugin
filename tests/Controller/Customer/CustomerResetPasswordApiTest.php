@@ -22,9 +22,17 @@ final class CustomerResetPasswordApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFiles(['channel.yml', 'customer.yml']);
 
-        $requestResetData = '{"email": "oliver@queen.com"}';
+        $requestResetData =
+<<<JSON
+            {
+                "email": "oliver@queen.com"
+            }
+JSON;
 
-        $this->client->request('POST', '/shop-api/WEB_GB/request-password-reset', [], [], self::CONTENT_TYPE_HEADER, $requestResetData);
+        $this->client->request('POST', '/shop-api/WEB_GB/request-password-reset', [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json',
+        ], $requestResetData);
 
         /** @var UserRepositoryInterface $userRepository */
         $userRepository = $this->get('sylius.repository.shop_user');
@@ -32,9 +40,17 @@ final class CustomerResetPasswordApiTest extends JsonApiTestCase
         /** @var ShopUserInterface $user */
         $user = $userRepository->findOneByEmail('oliver@queen.com');
 
-        $resetPasswordData = '{"plainPassword": "somepass"}';
+        $resetPasswordData =
+<<<JSON
+            {
+                "plainPassword": "somepass"
+            }
+JSON;
 
-        $this->client->request('POST', '/shop-api/WEB_GB/password-reset/' . $user->getPasswordResetToken(), [], [], self::CONTENT_TYPE_HEADER, $resetPasswordData);
+        $this->client->request('POST', '/shop-api/WEB_GB/password-reset/' . $user->getPasswordResetToken(), [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json',
+        ], $resetPasswordData);
 
         $response = $this->client->getResponse();
         $this->assertResponseCode($response, Response::HTTP_NO_CONTENT);
@@ -47,18 +63,34 @@ final class CustomerResetPasswordApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFiles(['channel.yml', 'customer.yml']);
 
-        $requestResetData = '{"email": "oliver@queen.com"}';
+        $requestResetData =
+<<<JSON
+            {
+                "email": "oliver@queen.com"
+            }
+JSON;
 
-        $this->client->request('POST', '/shop-api/WEB_GB/request-password-reset', [], [], self::CONTENT_TYPE_HEADER, $requestResetData);
+        $this->client->request('POST', '/shop-api/WEB_GB/request-password-reset', [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json',
+        ], $requestResetData);
 
         /** @var UserRepositoryInterface $userRepository */
         $userRepository = $this->get('sylius.repository.shop_user');
         /** @var ShopUserInterface $user */
         $user = $userRepository->findOneByEmail('oliver@queen.com');
 
-        $resetPasswordData = '{"plainPassword": "somepass"}';
+        $resetPasswordData =
+<<<JSON
+            {
+                "plainPassword": "somepass"
+            }
+JSON;
 
-        $this->client->request('POST', '/shop-api/SPACE_KLINGON/password-reset/' . $user->getPasswordResetToken(), [], [], self::CONTENT_TYPE_HEADER, $resetPasswordData);
+        $this->client->request('POST', '/shop-api/SPACE_KLINGON/password-reset/' . $user->getPasswordResetToken(), [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json',
+        ], $resetPasswordData);
 
         $response = $this->client->getResponse();
         $this->assertResponse($response, 'channel_has_not_been_found_response', Response::HTTP_NOT_FOUND);

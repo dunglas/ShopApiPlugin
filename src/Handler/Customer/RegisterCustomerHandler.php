@@ -45,30 +45,30 @@ final class RegisterCustomerHandler
         $this->eventDispatcher = $eventDispatcher;
     }
 
-    public function __invoke(RegisterCustomer $command): void
+    public function __invoke(RegisterCustomer $registerCustomer): void
     {
-        $this->assertEmailIsNotTaken($command->email());
-        $this->assertChannelExists($command->channelCode());
+        $this->assertEmailIsNotTaken($registerCustomer->email());
+        $this->assertChannelExists($registerCustomer->channelCode());
 
         /** @var CustomerInterface $customer */
         $customer = $this->customerFactory->createNew();
-        $customer->setFirstName($command->firstName());
-        $customer->setLastName($command->lastName());
-        $customer->setEmail($command->email());
+        $customer->setFirstName($registerCustomer->firstName());
+        $customer->setLastName($registerCustomer->lastName());
+        $customer->setEmail($registerCustomer->email());
 
         /** @var ShopUserInterface $user */
         $user = $this->userFactory->createNew();
-        $user->setPlainPassword($command->plainPassword());
-        $user->setUsername($command->email());
+        $user->setPlainPassword($registerCustomer->plainPassword());
+        $user->setUsername($registerCustomer->email());
         $user->setCustomer($customer);
 
         $this->userRepository->add($user);
 
         $this->eventDispatcher->dispatch('sylius.customer.post_api_registered', new CustomerRegistered(
-            $command->email(),
-            $command->firstName(),
-            $command->lastName(),
-            $command->channelCode()
+            $registerCustomer->email(),
+            $registerCustomer->firstName(),
+            $registerCustomer->lastName(),
+            $registerCustomer->channelCode()
         ));
     }
 

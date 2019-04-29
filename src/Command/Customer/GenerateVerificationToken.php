@@ -8,7 +8,6 @@ use Sylius\ShopApiPlugin\Command\CommandInterface;
 
 class GenerateVerificationToken implements CommandInterface
 {
-    /** @var string */
     protected $email;
 
     public function __construct(string $email)

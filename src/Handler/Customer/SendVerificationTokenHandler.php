@@ -27,9 +27,9 @@ final class SendVerificationTokenHandler
         $this->emailBus = $emailBus;
     }
 
-    public function __invoke(SendVerificationToken $resendVerificationToken): void
+    public function __invoke(SendVerificationToken $sendVerificationToken): void
     {
-        $email = $resendVerificationToken->email();
+        $email = $sendVerificationToken->email();
 
         /** @var ShopUserInterface $user */
         $user = $this->userRepository->findOneByEmail($email);
@@ -37,7 +37,7 @@ final class SendVerificationTokenHandler
         Assert::notNull($user, sprintf('User with %s email has not been found.', $email));
         Assert::notNull($user->getEmailVerificationToken(), sprintf('User with %s email has not verification token defined.', $email));
 
-        $channel = $this->channelRepository->findOneByCode($resendVerificationToken->channelCode());
+        $channel = $this->channelRepository->findOneByCode($sendVerificationToken->channelCode());
 
         $message = new VerificationEmail($email, $user->getEmailVerificationToken(), $user, $channel);
 
