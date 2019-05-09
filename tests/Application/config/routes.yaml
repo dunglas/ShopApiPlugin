@@ -11,6 +11,6 @@ api_platform:
 sylius_shop_api:
     resource: "@ShopApiPlugin/Resources/config/routing.yml"
 
-sylius_shop_api_login_check:
+sylius_shop_api_login:
     methods: [POST]
-    path: /shop-api/login_check
+    path: /shop-api/login

@@ -21,21 +21,32 @@ final class CustomerResendVerificationTokenApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFiles(['channel.yml']);
 
-        $data =
-<<<EOT
+        $registerData =
+<<<JSON
         {
             "firstName": "Vin",
             "lastName": "Diesel",
             "email": "vinny@fandf.com",
             "plainPassword": "somepass"
         }
-EOT;
+JSON;
 
-        $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], self::CONTENT_TYPE_HEADER, $data);
+        $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json',
+        ], $registerData);
 
-        $resendForEmail = '{"email": "vinny@fandf.com"}';
+        $resendData =
+<<<JSON
+        {
+            "email": "vinny@fandf.com"
+        }
+JSON;
 
-        $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], self::CONTENT_TYPE_HEADER, $resendForEmail);
+        $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json',
+        ], $resendData);
 
         $response = $this->client->getResponse();
         $this->assertResponseCode($response, Response::HTTP_NO_CONTENT);
@@ -53,9 +64,16 @@ EOT;
     {
         $this->loadFixturesFromFiles(['channel.yml']);
 
-        $resendForEmail = '{}';
+        $resendData =
+<<<JSON
+        {
+        }
+JSON;
 
-        $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], self::CONTENT_TYPE_HEADER, $resendForEmail);
+        $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json',
+        ], $resendData);
 
         $response = $this->client->getResponse();
         $this->assertResponse($response, 'customer/validation_email_not_defined_response', Response::HTTP_BAD_REQUEST);
@@ -68,9 +86,17 @@ EOT;
     {
         $this->loadFixturesFromFiles(['channel.yml']);
 
-        $resendForEmail = '{"email": "vinnyfandf.com"}';
+        $resendData =
+<<<JSON
+        {
+            "email": "vinnyfandf.com"
+        }
+JSON;
 
-        $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], self::CONTENT_TYPE_HEADER, $resendForEmail);
+        $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json',
+        ], $resendData);
 
         $response = $this->client->getResponse();
         $this->assertResponse($response, 'customer/validation_email_not_valid_response', Response::HTTP_BAD_REQUEST);
@@ -83,9 +109,17 @@ EOT;
     {
         $this->loadFixturesFromFiles(['channel.yml']);
 
-        $resendForEmail = '{"email": "vinny@fandf.com"}';
+        $resendData =
+<<<JSON
+        {
+            "email": "vinny@fandf.com"
+        }
+JSON;
 
-        $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], self::CONTENT_TYPE_HEADER, $resendForEmail);
+        $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json',
+        ], $resendData);
 
         $response = $this->client->getResponse();
         $this->assertResponse($response, 'customer/validation_email_not_found_response', Response::HTTP_BAD_REQUEST);
@@ -98,9 +132,17 @@ EOT;
     {
         $this->loadFixturesFromFiles(['channel.yml']);
 
-        $resendForEmail = '{"email": "vinny@fandf.com"}';
+        $resendData =
+<<<JSON
+        {
+            "email": "vinny@fandf.com"
+        }
+JSON;
 
-        $this->client->request('POST', '/shop-api/SPACE_KLINGON/resend-verification-link', [], [], self::CONTENT_TYPE_HEADER, $resendForEmail);
+        $this->client->request('POST', '/shop-api/SPACE_KLINGON/resend-verification-link', [], [], [
+            'CONTENT_TYPE' => 'application/json',
+            'ACCEPT' => 'application/json',
+        ], $resendData);
 
         $response = $this->client->getResponse();
         $this->assertResponse($response, 'channel_has_not_been_found_response', Response::HTTP_NOT_FOUND);

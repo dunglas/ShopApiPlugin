@@ -1,18 +1,23 @@
 {
-  "code": 400,
-  "message": "Validation failed",
-  "errors": {
-    "firstName": [
-      "Please enter your first name."
-    ],
-    "lastName": [
-      "Please enter your last name."
-    ],
-    "gender": [
-      "Please choose your gender."
-    ],
-    "email": [
-      "Please enter your email."
-    ]
-  }
+  "type": "@string@",
+  "title": "@string@",
+  "detail": "firstName: Please enter your first name.\nlastName: Please enter your last name.\ngender: Please choose your gender.\nemail: Please enter your email.",
+  "violations": [
+    {
+      "propertyPath": "firstName",
+      "message": "Please enter your first name."
+    },
+    {
+      "propertyPath": "lastName",
+      "message": "Please enter your last name."
+    },
+    {
+      "propertyPath": "gender",
+      "message": "Please choose your gender."
+    },
+    {
+      "propertyPath": "email",
+      "message": "Please enter your email."
+    }
+  ]
 }

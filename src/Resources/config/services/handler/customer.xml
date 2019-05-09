@@ -17,12 +17,6 @@
             <tag name="messenger.message_handler" />
         </service>
 
-        <service id="sylius.shop_api_plugin.handler.update_customer"
-                     class="Sylius\ShopApiPlugin\Handler\Customer\UpdateCustomerHandler">
-            <argument type="service" id="sylius.repository.customer"/>
-            <tag name="messenger.message_handler" />
-        </service>
-
         <service id="sylius.shop_api_plugin.handler.send_verification_token_handler"
                  class="Sylius\ShopApiPlugin\Handler\Customer\SendVerificationTokenHandler">
             <argument type="service" id="sylius.repository.shop_user"/>

@@ -8,19 +8,10 @@ use Sylius\ShopApiPlugin\Command\CommandInterface;
 
 class RegisterCustomer implements CommandInterface
 {
-    /** @var string */
     protected $email;
-
-    /** @var string */
     protected $plainPassword;
-
-    /** @var string */
     protected $firstName;
-
-    /** @var string */
     protected $lastName;
-
-    /** @var string */
     protected $channelCode;
 
     public function __construct(string $email, string $plainPassword, string $firstName, string $lastName, string $channelCode)

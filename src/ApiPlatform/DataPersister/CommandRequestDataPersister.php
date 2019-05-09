@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Sylius\ShopApiPlugin\ApiPlatform;
+namespace Sylius\ShopApiPlugin\ApiPlatform\DataPersister;
 
 use ApiPlatform\Core\DataPersister\DataPersisterInterface;
 use Sylius\ShopApiPlugin\Request\CommandRequestInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-final class DataPersister implements DataPersisterInterface
+final class CommandRequestDataPersister implements DataPersisterInterface
 {
     private $commandBus;
 

@@ -7,8 +7,15 @@
     <services>
         <defaults public="false" />
 
-        <service id="sylius.shop_api_plugin.api_platform.data_persister"
-            class="Sylius\ShopApiPlugin\ApiPlatform\DataPersister"
+        <service id="sylius.shop_api_plugin.api_platform.data_provider.customer.item"
+            class="Sylius\ShopApiPlugin\ApiPlatform\DataProvider\CustomerItemDataProvider"
+        >
+            <argument type="service" id="security.token_storage" />
+            <tag name="api_platform.item_data_provider" />
+        </service>
+
+        <service id="sylius.shop_api_plugin.api_platform.data_persister.command_request"
+            class="Sylius\ShopApiPlugin\ApiPlatform\DataPersister\CommandRequestDataPersister"
         >
             <argument type="service" id="sylius_shop_api_plugin.command_bus" />
             <tag name="api_platform.data_persister" />

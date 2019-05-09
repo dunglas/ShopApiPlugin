@@ -8,10 +8,7 @@ use Sylius\ShopApiPlugin\Command\CommandInterface;
 
 class SendResetPasswordToken implements CommandInterface
 {
-    /** @var string */
     protected $email;
-
-    /** @var string */
     protected $channelCode;
 
     public function __construct(string $email, string $channelCode)

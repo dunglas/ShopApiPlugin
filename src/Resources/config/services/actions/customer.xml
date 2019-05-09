@@ -13,24 +13,6 @@
             <argument type="service" id="sylius_shop_api_plugin.command_bus" />
             <tag name="controller.service_arguments" />
         </service>
-
-        <service id="sylius.shop_api_plugin.controller.customer.logged_in_customer_details_action"
-                 class="Sylius\ShopApiPlugin\Controller\Customer\LoggedInCustomerDetailsAction"
-        >
-            <argument type="service" id="fos_rest.view_handler" />
-            <argument type="service" id="security.token_storage" />
-        </service>
-
-        <service id="sylius.shop_api_plugin.controller.customer.update_customer_action"
-                 class="Sylius\ShopApiPlugin\Controller\Customer\UpdateCustomerAction"
-        >
-            <argument type="service" id="fos_rest.view_handler" />
-            <argument type="service" id="validator" />
-            <argument type="service" id="sylius_shop_api_plugin.command_bus" />
-            <argument type="service" id="sylius.shop_api_plugin.factory.validation_error_view_factory" />
-            <argument type="service" id="sylius.shop_api_plugin.factory.customer_view_factory" />
-            <argument type="service" id="security.token_storage" />
-        </service>
     </services>
 
 </container>
