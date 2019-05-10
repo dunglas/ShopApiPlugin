@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\ShopApiPlugin\ApiPlatform\DataProvider;
+namespace Sylius\ShopApiPlugin\DataProvider;
 
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
 use ApiPlatform\Core\DataProvider\RestrictedDataProviderInterface;
@@ -32,7 +32,8 @@ final class CustomerItemDataProvider implements ItemDataProviderInterface, Restr
      */
     public function getItem(string $resourceClass, $id, string $operationName = null, array $context = []): ?object
     {
-        if ('me' !== $id) {
+        // hack: id gets converted to 0 if its type is int
+        if ('me' !== $id && 0 !== $id) {
             return null;
         }
 

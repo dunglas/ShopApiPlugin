@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<resources xmlns="https://api-platform.com/schema/metadata"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd">
+
+    <resource class="Sylius\Component\Core\Model\ProductInterface">
+
+        <attribute name="normalization_context">
+            <attribute name="groups">
+                <attribute>sylius_shop_api_product_read</attribute>
+                <attribute>sylius_shop_api_product_list</attribute>
+            </attribute>
+        </attribute>
+
+        <attribute name="pagination_client_items_per_page">true</attribute>
+
+        <collectionOperations>
+            <collectionOperation name="get_latest">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/{channelCode}/product-latest/</attribute>
+                <attribute name="pagination_items_per_page">4</attribute>
+                <attribute name="sylius_shop_api">true</attribute>
+            </collectionOperation>
+        </collectionOperations>
+
+        <itemOperations>
+            <!-- This is only for IRI generation -->
+            <!-- Actually sending a request should result in HTTP 404 because of sylius.shop_api_plugin.data_provider.product.item -->
+            <itemOperation name="get" />
+        </itemOperations>
+
+        <property name="id" identifier="true" />
+
+    </resource>
+
+</resources>

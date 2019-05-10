@@ -23,7 +23,7 @@
 
         <itemOperations>
             <!-- This is only for IRI generation -->
-            <!-- Actually sending a request should result in HTTP 404 because of sylius.shop_api_plugin.api_platform.data_provider.customer.item -->
+            <!-- Actually sending a request should result in HTTP 404 because of sylius.shop_api_plugin.data_provider.customer.item -->
             <itemOperation name="get" />
 
             <itemOperation name="get_logged_in_customer_profile">
@@ -33,6 +33,7 @@
                     <attribute name="id">me</attribute>
                 </attribute>
                 <attribute name="access_control">is_granted('ROLE_USER')</attribute>
+                <attribute name="sylius_shop_api">true</attribute>
             </itemOperation>
 
             <itemOperation name="put_logged_in_customer_profile">
@@ -46,6 +47,7 @@
                     <attribute>sylius_customer_profile</attribute>
                 </attribute>
                 <attribute name="access_control">is_granted('ROLE_USER')</attribute>
+                <attribute name="sylius_shop_api">true</attribute>
             </itemOperation>
         </itemOperations>
 

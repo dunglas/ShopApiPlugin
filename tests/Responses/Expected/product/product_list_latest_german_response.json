@@ -1,8 +1,8 @@
 [
   {
     "code": "LOGAN_HAT_CODE",
-    "name": "Logan Hat",
-    "slug": "logan-hat",
+    "name": "Logan Hut",
+    "slug": "logan-hut",
     "channels": [
       {
         "code": "WEB_GB",
@@ -11,7 +11,7 @@
         }
       }
     ],
-    "description": "Some description Lorem ipsum dolor sit amet.",
+    "description": "Einige Beschreibung Lorem ipsum dolor sit amet.",
     "shortDescription": null,
     "metaKeywords": null,
     "metaDescription": null,
@@ -30,7 +30,7 @@
     "variants": [
       {
         "code": "SMALL_RED_LOGAN_HAT_CODE",
-        "name": "Small Red Logan Hat",
+        "name": "Klein Rot Logan Hut",
         "optionValues": [
           {
             "code": "HAT_SIZE_S",
@@ -42,9 +42,9 @@
           {
             "code": "HAT_COLOR_RED",
             "option": {
-              "name": "Color"
+              "name": "Farbe"
             },
-            "value": "Red"
+            "value": "Rot"
           }
         ],
         "channelPricings": [
@@ -68,9 +68,9 @@
           {
             "code": "HAT_COLOR_RED",
             "option": {
-              "name": "Color"
+              "name": "Farbe"
             },
-            "value": "Red"
+            "value": "Rot"
           }
         ],
         "channelPricings": [
@@ -82,7 +82,7 @@
       },
       {
         "code": "SMALL_BLUE_LOGAN_HAT_CODE",
-        "name": "Small Blue Logan Hat",
+        "name": "Klein Blau Logan Hut",
         "optionValues": [
           {
             "code": "HAT_SIZE_S",
@@ -94,9 +94,9 @@
           {
             "code": "HAT_COLOR_BLUE",
             "option": {
-              "name": "Color"
+              "name": "Farbe"
             },
-            "value": "Blue"
+            "value": "Blau"
           }
         ],
         "channelPricings": [
@@ -108,7 +108,7 @@
       },
       {
         "code": "LARGE_BLUE_LOGAN_HAT_CODE",
-        "name": "Large Blue Logan Hat",
+        "name": "Großes Blau Logan Hut",
         "optionValues": [
           {
             "code": "HAT_SIZE_L",
@@ -120,9 +120,9 @@
           {
             "code": "HAT_COLOR_BLUE",
             "option": {
-              "name": "Color"
+              "name": "Farbe"
             },
-            "value": "Blue"
+            "value": "Blau"
           }
         ],
         "channelPricings": [
@@ -142,8 +142,8 @@
         "associatedProducts": [
           {
             "code": "LOGAN_MUG_CODE",
-            "name": "Logan Mug",
-            "slug": "logan-mug",
+            "name": "Logan Becher",
+            "slug": "logan-becher",
             "channels": [
               {
                 "code": "WEB_GB",
@@ -152,7 +152,7 @@
                 }
               }
             ],
-            "description": "Some description Lorem ipsum dolor sit amet.",
+            "description": null,
             "shortDescription": null,
             "metaKeywords": null,
             "metaDescription": null,
@@ -171,7 +171,7 @@
             "variants": [
               {
                 "code": "LOGAN_MUG_CODE",
-                "name": "Logan Mug",
+                "name": "Logan Becher",
                 "optionValues": [],
                 "channelPricings": [
                   {
@@ -189,8 +189,8 @@
             "attributes": [
               {
                 "code": "MUG_MATERIAL_CODE",
-                "name": "Mug material",
-                "value": "Wood"
+                "name": "Becher Material",
+                "value": "Holz"
               }
             ],
             "associations": [],
@@ -287,8 +287,8 @@
   },
   {
     "code": "LOGAN_MUG_CODE",
-    "name": "Logan Mug",
-    "slug": "logan-mug",
+    "name": "Logan Becher",
+    "slug": "logan-becher",
     "channels": [
       {
         "code": "WEB_GB",
@@ -297,7 +297,7 @@
         }
       }
     ],
-    "description": "Some description Lorem ipsum dolor sit amet.",
+    "description": null,
     "shortDescription": null,
     "metaKeywords": null,
     "metaDescription": null,
@@ -316,7 +316,7 @@
     "variants": [
       {
         "code": "LOGAN_MUG_CODE",
-        "name": "Logan Mug",
+        "name": "Logan Becher",
         "optionValues": [],
         "channelPricings": [
           {
@@ -334,8 +334,8 @@
     "attributes": [
       {
         "code": "MUG_MATERIAL_CODE",
-        "name": "Mug material",
-        "value": "Wood"
+        "name": "Becher Material",
+        "value": "Holz"
       }
     ],
     "associations": [],
@@ -343,109 +343,6 @@
       {
         "type": "thumbnail",
         "path": "/uo/mug.jpg"
-      }
-    ]
-  },
-  {
-    "code": "LOGAN_SHOES_CODE",
-    "name": "Logan Shoes",
-    "slug": "logan-shoes",
-    "channels": [
-      {
-        "code": "WEB_GB",
-        "baseCurrency": {
-          "code": "GBP"
-        }
-      }
-    ],
-    "description": "Some description Lorem ipsum dolor sit amet.",
-    "shortDescription": null,
-    "metaKeywords": null,
-    "metaDescription": null,
-    "averageRating": 0,
-    "mainTaxon": null,
-    "taxons": [],
-    "variants": [],
-    "attributes": [],
-    "associations": [],
-    "images": []
-  },
-  {
-    "code": "LOGAN_T_SHIRT_CODE",
-    "name": "Logan T-Shirt",
-    "slug": "logan-t-shirt",
-    "channels": [
-      {
-        "code": "WEB_GB",
-        "baseCurrency": {
-          "code": "GBP"
-        }
-      }
-    ],
-    "description": "Some description Lorem ipsum dolor sit amet.",
-    "shortDescription": null,
-    "metaKeywords": null,
-    "metaDescription": null,
-    "averageRating": 0,
-    "mainTaxon": {
-      "code": "T_SHIRTS"
-    },
-    "taxons": [
-      {
-        "code": "WOMEN_T_SHIRTS"
-      },
-      {
-        "code": "BRAND"
-      }
-    ],
-    "variants": [
-      {
-        "code": "SMALL_LOGAN_T_SHIRT_CODE",
-        "name": "Small Logan T-Shirt",
-        "optionValues": [],
-        "channelPricings": [
-          {
-            "price": 1999
-          }
-        ],
-        "images": [
-          {
-            "type": "thumbnail",
-            "path": "/uo/small-tshirt.jpg"
-          }
-        ]
-      },
-      {
-        "code": "LARGE_LOGAN_T_SHIRT_CODE",
-        "name": "Large Logan T-Shirt",
-        "optionValues": [],
-        "channelPricings": [
-          {
-            "price": 2999
-          }
-        ],
-        "images": [
-          {
-            "type": "thumbnail",
-            "path": "/uo/large-tshirt.jpg"
-          }
-        ]
-      }
-    ],
-    "attributes": [],
-    "associations": [],
-    "images": [
-      {
-        "type": "thumbnail",
-        "path": "/uo/tshirt.jpg"
-      },
-      {
-        "type": "thumbnail",
-        "path": "/uo/small-tshirt.jpg"
-      },
-      {
-        "type": "thumbnail",
-        "path": "/uo/large-tshirt.jpg"
       }
     ]
   }

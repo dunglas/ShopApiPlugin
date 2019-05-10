@@ -4,18 +4,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd">
 
-    <class name="Sylius\Component\Core\Model\ChannelInterface">
+    <class name="Sylius\Component\Product\Model\ProductOptionInterface">
 
-        <attribute name="baseCurrency">
+        <attribute name="name">
             <group>sylius_shop_api_product_list</group>
-        </attribute>
-
-        <attribute name="code">
-            <group>sylius_shop_api_product_read</group>
-        </attribute>
-
-        <attribute name="hostname">
-            <group>sylius_shop_api_email</group>
         </attribute>
 
     </class>

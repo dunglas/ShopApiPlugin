@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\ShopApiPlugin\ApiPlatform\DataPersister;
+namespace Sylius\ShopApiPlugin\DataPersister;
 
 use ApiPlatform\Core\DataPersister\DataPersisterInterface;
 use Sylius\ShopApiPlugin\Request\CommandRequestInterface;

@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults public="false" />
+
+        <service id="sylius.shop_api_plugin.serializer.callback.product.attributes"
+            class="Sylius\ShopApiPlugin\Serializer\Callback\Product\ProductAttributesCallback"
+        >
+            <argument>%sylius.shop_api.included_attributes%</argument>
+        </service>
+
+        <service id="sylius.shop_api_plugin.serializer.callback.product.channels"
+            class="Sylius\ShopApiPlugin\Serializer\Callback\Product\ProductChannelsCallback"
+        >
+        </service>
+
+        <service id="sylius.shop_api_plugin.serializer.callback.product.channel_pricings"
+            class="Sylius\ShopApiPlugin\Serializer\Callback\Product\ProductChannelPricingsCallback"
+        >
+        </service>
+    </services>
+
+</container>
