@@ -18,10 +18,6 @@ sylius_shop_api_checkout:
     resource: "@ShopApiPlugin/Resources/config/routing/checkout.yml"
     prefix: /shop-api/{channelCode}/checkout
 
-sylius_shop_api_product_list:
-    resource: "@ShopApiPlugin/Resources/config/routing/productList.yml"
-    prefix: /shop-api/{channelCode}
-
 sylius_shop_api_address_book:
     resource: "@ShopApiPlugin/Resources/config/routing/address_book.yml"
     prefix: /shop-api/{channelCode}

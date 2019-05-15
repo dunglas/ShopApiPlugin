@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <imports>
+        <import resource="serializer_context_builders/**/*" />
+    </imports>
+
+    <services>
+        <defaults public="false" />
+
+        <service id="sylius.shop_api_plugin.serializer_context_builder.parameters"
+            class="Sylius\ShopApiPlugin\SerializerContextBuilder\ParametersContextBuilder"
+            decorates="api_platform.serializer.context_builder"
+            decoration-priority="64"
+        >
+            <argument type="service" id="sylius.shop_api_plugin.serializer_context_builder.parameters.inner" />
+            <argument type="service" id="api_platform.metadata.resource.metadata_factory" />
+            <argument type="service" id="sylius.resource_controller.parameters_parser" />
+        </service>
+
+        <service id="sylius.shop_api_plugin.serializer_context_builder.channel"
+            class="Sylius\ShopApiPlugin\SerializerContextBuilder\ChannelContextBuilder"
+            decorates="api_platform.serializer.context_builder"
+            decoration-priority="64"
+        >
+            <argument type="service" id="sylius.shop_api_plugin.serializer_context_builder.channel.inner" />
+            <argument type="service" id="sylius.context.channel" />
+        </service>
+
+        <service id="sylius.shop_api_plugin.serializer_context_builder.locale"
+            class="Sylius\ShopApiPlugin\SerializerContextBuilder\LocaleContextBuilder"
+            decorates="api_platform.serializer.context_builder"
+            decoration-priority="64"
+        >
+            <argument type="service" id="sylius.shop_api_plugin.serializer_context_builder.locale.inner" />
+            <argument type="service" id="sylius.context.locale" />
+            <argument type="service" id="sylius.translation_locale_provider" />
+        </service>
+    </services>
+
+</container>

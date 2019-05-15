@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd">
+
+    <class name="Sylius\Component\Core\Model\ProductInterface">
+
+        <attribute name="associations">
+            <group>sylius_shop_api_product_list</group>
+        </attribute>
+
+        <!-- Filtered using a callback passed in sylius.shop_api_plugin.serializer_context_builder.product -->
+        <attribute name="attributes">
+            <group>sylius_shop_api_product_read</group>
+        </attribute>
+
+        <attribute name="averageRating">
+            <group>sylius_shop_api_product_read</group>
+        </attribute>
+
+        <!-- Filtered using a callback passed in sylius.shop_api_plugin.serializer_context_builder.product -->
+        <attribute name="channels">
+            <group>sylius_shop_api_product_read</group>
+        </attribute>
+
+        <attribute name="code">
+            <group>sylius_shop_api_product_read</group>
+        </attribute>
+
+        <attribute name="description">
+            <group>sylius_shop_api_product_read</group>
+        </attribute>
+
+        <attribute name="images">
+            <group>sylius_shop_api_product_read</group>
+        </attribute>
+
+        <attribute name="mainTaxon">
+            <group>sylius_shop_api_product_read</group>
+        </attribute>
+
+        <attribute name="metaDescription">
+            <group>sylius_shop_api_product_read</group>
+        </attribute>
+
+        <attribute name="metaKeywords">
+            <group>sylius_shop_api_product_read</group>
+        </attribute>
+
+        <attribute name="name">
+            <group>sylius_shop_api_product_read</group>
+        </attribute>
+
+        <attribute name="shortDescription">
+            <group>sylius_shop_api_product_read</group>
+        </attribute>
+
+        <attribute name="slug">
+            <group>sylius_shop_api_product_read</group>
+        </attribute>
+
+        <attribute name="taxons">
+            <group>sylius_shop_api_product_read</group>
+        </attribute>
+
+        <attribute name="variants">
+            <group>sylius_shop_api_product_list</group>
+        </attribute>
+
+    </class>
+
+</serializer>

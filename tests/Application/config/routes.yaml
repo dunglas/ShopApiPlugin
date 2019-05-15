@@ -1,8 +1,6 @@
 sylius:
     resource: "../../../vendor/sylius/sylius/app/config/routing.yml"
 
-# Put your own routes here
-
 api_platform:
     resource: .
     type: api_platform

@@ -11,6 +11,7 @@
                 <attribute name="method">POST</attribute>
                 <attribute name="path">/{channelCode}/verify-account</attribute>
                 <attribute name="output">false</attribute>
+                <attribute name="sylius_shop_api">true</attribute>
             </collectionOperation>
         </collectionOperations>
 

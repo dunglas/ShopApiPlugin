@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults public="false" />
+
+        <service id="sylius.shop_api_plugin.serializer_context_builder.product"
+            class="Sylius\ShopApiPlugin\SerializerContextBuilder\ProductContextBuilder"
+            decorates="api_platform.serializer.context_builder"
+        >
+            <argument type="service" id="sylius.shop_api_plugin.serializer_context_builder.product.inner" />
+            <argument type="service" id="sylius.shop_api_plugin.serializer.callback.product.attributes" />
+            <argument type="service" id="sylius.shop_api_plugin.serializer.callback.product.channels" />
+            <argument type="service" id="sylius.shop_api_plugin.serializer.callback.product.channel_pricings" />
+        </service>
+    </services>
+
+</container>
