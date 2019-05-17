@@ -1,81 +1,81 @@
 [
-    {
-        "code": "CATEGORY",
-        "name": "Categories",
-        "slug": "categories",
+  {
+    "code": "CATEGORY",
+    "name": "Categories",
+    "slug": "categories",
+    "description": "Some description Lorem ipsum dolor sit amet.",
+    "position": 0,
+    "children": [
+      {
+        "code": "MUG",
+        "name": "Mugs",
+        "slug": "categories/mugs",
         "description": "Some description Lorem ipsum dolor sit amet.",
         "position": 0,
-        "children": [
-            {
-                "code": "MUG",
-                "name": "Mugs",
-                "slug": "categories\/mugs",
-                "description": "Some description Lorem ipsum dolor sit amet.",
-                "position": 0,
-                "children": [],
-                "images": []
-            },
-            {
-                "code": "HAT",
-                "name": "Hats",
-                "slug": "categories\/hats",
-                "description": "Some description Lorem ipsum dolor sit amet.",
-                "position": 1,
-                "children": [],
-                "images": []
-            },
-            {
-                "code": "T_SHIRTS",
-                "name": "T-Shirts",
-                "slug": "categories\/t-shirts",
-                "description": "Some description Lorem ipsum dolor sit amet.",
-                "position": 2,
-                "children": [
-                    {
-                        "code": "MEN_T_SHIRTS",
-                        "name": "Men T-Shirts",
-                        "slug": "categories\/t-shirts\/men-t-shirts",
-                        "description": "Some description Lorem ipsum dolor sit amet.",
-                        "position": 0,
-                        "children": [],
-                        "images": []
-                    },
-                    {
-                        "code": "WOMEN_T_SHIRTS",
-                        "name": "Women T-Shirts",
-                        "slug": "categories\/t-shirts\/women-t-shirts",
-                        "description": "Some description Lorem ipsum dolor sit amet.",
-                        "position": 1,
-                        "children": [],
-                        "images": []
-                    }
-                ],
-                "images": [
-                    {
-                        "code": "thumbnail",
-                        "path": "\/uo\/t-shirt.jpg"
-                    }
-                ]
-            }
-        ],
+        "children": [],
         "images": []
-    },
-    {
-        "code": "BRAND",
-        "name": "Brands",
-        "slug": "brands",
+      },
+      {
+        "code": "HAT",
+        "name": "Hats",
+        "slug": "categories/hats",
         "description": "Some description Lorem ipsum dolor sit amet.",
         "position": 1,
         "children": [],
         "images": []
-    },
-    {
-        "code": "de?lol=xd#boom",
-        "name": "Yet another taxon",
-        "slug": "yet_another_taxons",
+      },
+      {
+        "code": "T_SHIRTS",
+        "name": "T-Shirts",
+        "slug": "categories/t-shirts",
         "description": "Some description Lorem ipsum dolor sit amet.",
         "position": 2,
-        "children": [],
-        "images": []
-    }
+        "children": [
+          {
+            "code": "MEN_T_SHIRTS",
+            "name": "Men T-Shirts",
+            "slug": "categories/t-shirts/men-t-shirts",
+            "description": "Some description Lorem ipsum dolor sit amet.",
+            "position": 0,
+            "children": [],
+            "images": []
+          },
+          {
+            "code": "WOMEN_T_SHIRTS",
+            "name": "Women T-Shirts",
+            "slug": "categories/t-shirts/women-t-shirts",
+            "description": "Some description Lorem ipsum dolor sit amet.",
+            "position": 1,
+            "children": [],
+            "images": []
+          }
+        ],
+        "images": [
+          {
+            "type": "thumbnail",
+            "path": "/uo/t-shirt.jpg"
+          }
+        ]
+      }
+    ],
+    "images": []
+  },
+  {
+    "code": "BRAND",
+    "name": "Brands",
+    "slug": "brands",
+    "description": "Some description Lorem ipsum dolor sit amet.",
+    "position": 1,
+    "children": [],
+    "images": []
+  },
+  {
+    "code": "de?lol=xd#boom",
+    "name": "Yet another taxon",
+    "slug": "yet_another_taxons",
+    "description": "Some description Lorem ipsum dolor sit amet.",
+    "position": 2,
+    "children": [],
+    "images": []
+  }
 ]

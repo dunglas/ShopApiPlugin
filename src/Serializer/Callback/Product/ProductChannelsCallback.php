@@ -26,13 +26,8 @@ final class ProductChannelsCallback
 
         Assert::isInstanceOf($channel, ChannelInterface::class);
 
-        /** @var Collection $channels */
-        $channels = $attributeValue;
-
-        $channels = $channels->filter(function (ChannelInterface $channelElement) use ($channel): bool {
+        return $product->getChannels()->filter(function (ChannelInterface $channelElement) use ($channel): bool {
             return $channelElement->getCode() === $channel->getCode();
         })->getValues();
-
-        return $channels;
     }
 }

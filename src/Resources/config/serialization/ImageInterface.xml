@@ -8,10 +8,12 @@
 
         <attribute name="path">
             <group>sylius_shop_api_product_read</group>
+            <group>sylius_shop_api_taxon_read</group>
         </attribute>
 
         <attribute name="type">
             <group>sylius_shop_api_product_read</group>
+            <group>sylius_shop_api_taxon_read</group>
         </attribute>
 
     </class>

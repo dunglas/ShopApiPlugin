@@ -6,8 +6,37 @@
 
     <class name="Sylius\Component\Core\Model\TaxonInterface">
 
+        <attribute name="children">
+            <group>sylius_shop_api_taxon_read</group>
+        </attribute>
+
         <attribute name="code">
             <group>sylius_shop_api_product_read</group>
+            <group>sylius_shop_api_taxon_read</group>
+        </attribute>
+
+        <attribute name="description">
+            <group>sylius_shop_api_taxon_read</group>
+        </attribute>
+
+        <attribute name="images">
+            <group>sylius_shop_api_taxon_read</group>
+        </attribute>
+
+        <attribute name="name">
+            <group>sylius_shop_api_taxon_read</group>
+        </attribute>
+
+        <attribute name="parent">
+            <group>sylius_shop_api_taxon_details</group>
+        </attribute>
+
+        <attribute name="position">
+            <group>sylius_shop_api_taxon_read</group>
+        </attribute>
+
+        <attribute name="slug">
+            <group>sylius_shop_api_taxon_read</group>
         </attribute>
 
     </class>

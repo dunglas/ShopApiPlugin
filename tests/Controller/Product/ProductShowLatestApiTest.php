@@ -54,7 +54,7 @@ final class ProductShowLatestApiTest extends JsonApiTestCase
 
         $response = $this->client->getResponse();
 
-        $this->assertResponse($response, 'product/product_list_latest_german_response', Response::HTTP_OK);
+        $this->assertResponse($response, 'product/german_product_list_latest_4_response', Response::HTTP_OK);
     }
 
     /**

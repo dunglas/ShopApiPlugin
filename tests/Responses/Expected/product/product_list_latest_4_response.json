@@ -49,6 +49,7 @@
         ],
         "channelPricings": [
           {
+            "channelCode": "WEB_GB",
             "price": 500
           }
         ],
@@ -75,6 +76,7 @@
         ],
         "channelPricings": [
           {
+            "channelCode": "WEB_GB",
             "price": 999
           }
         ],
@@ -101,6 +103,7 @@
         ],
         "channelPricings": [
           {
+            "channelCode": "WEB_GB",
             "price": 1500
           }
         ],
@@ -127,6 +130,7 @@
         ],
         "channelPricings": [
           {
+            "channelCode": "WEB_GB",
             "price": 2599
           }
         ],
@@ -175,6 +179,7 @@
                 "optionValues": [],
                 "channelPricings": [
                   {
+                    "channelCode": "WEB_GB",
                     "price": 1999
                   }
                 ],
@@ -236,6 +241,7 @@
                 "optionValues": [],
                 "channelPricings": [
                   {
+                    "channelCode": "WEB_GB",
                     "price": 1999
                   }
                 ],
@@ -252,6 +258,7 @@
                 "optionValues": [],
                 "channelPricings": [
                   {
+                    "channelCode": "WEB_GB",
                     "price": 2999
                   }
                 ],
@@ -320,6 +327,7 @@
         "optionValues": [],
         "channelPricings": [
           {
+            "channelCode": "WEB_GB",
             "price": 1999
           }
         ],
@@ -405,6 +413,7 @@
         "optionValues": [],
         "channelPricings": [
           {
+            "channelCode": "WEB_GB",
             "price": 1999
           }
         ],
@@ -421,6 +430,7 @@
         "optionValues": [],
         "channelPricings": [
           {
+            "channelCode": "WEB_GB",
             "price": 2999
           }
         ],

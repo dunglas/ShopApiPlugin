@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults public="false" />
+
+        <service id="sylius.shop_api_plugin.data_provider.taxon.collection"
+            class="Sylius\ShopApiPlugin\DataProvider\TaxonCollectionDataProvider"
+        >
+            <argument type="service" id="sylius.repository.taxon" />
+            <tag name="api_platform.collection_data_provider" />
+        </service>
+
+        <service id="sylius.shop_api_plugin.data_provider.taxon.item"
+            class="Sylius\ShopApiPlugin\DataProvider\TaxonItemDataProvider"
+        >
+            <argument type="service" id="sylius.repository.taxon" />
+            <tag name="api_platform.item_data_provider" />
+        </service>
+    </services>
+
+</container>
