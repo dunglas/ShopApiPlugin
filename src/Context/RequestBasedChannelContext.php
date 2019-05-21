@@ -40,7 +40,9 @@ final class RequestBasedChannelContext implements ChannelContextInterface
             throw new ChannelNotFoundException('Not handling a ShopApiPlugin operation.');
         }
 
-        $channelCode = $request->attributes->get('channelCode');
+        if (null === $channelCode = $request->attributes->get('channelCode')) {
+            throw new ChannelNotFoundException('The channelCode parameter is required in path.');
+        }
 
         $channel = $this->channelRepository->findOneByCode($channelCode);
         if (null === $channel) {
