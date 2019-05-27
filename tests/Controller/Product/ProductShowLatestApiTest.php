@@ -17,7 +17,7 @@ final class ProductShowLatestApiTest extends JsonApiTestCase
         $this->loadFixturesFromFiles(['shop.yml']);
 
         $this->client->request('GET', '/shop-api/WEB_GB/product-latest/', [], [], [
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/ld+json',
         ]);
 
         $response = $this->client->getResponse();
@@ -33,7 +33,7 @@ final class ProductShowLatestApiTest extends JsonApiTestCase
         $this->loadFixturesFromFiles(['shop.yml']);
 
         $this->client->request('GET', '/shop-api/WEB_GB/product-latest/', ['limit' => 2], [], [
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/ld+json',
         ]);
 
         $response = $this->client->getResponse();
@@ -49,7 +49,7 @@ final class ProductShowLatestApiTest extends JsonApiTestCase
         $this->loadFixturesFromFiles(['shop.yml']);
 
         $this->client->request('GET', '/shop-api/WEB_GB/product-latest/', ['locale' => 'de_DE'], [], [
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/ld+json',
         ]);
 
         $response = $this->client->getResponse();
@@ -65,11 +65,11 @@ final class ProductShowLatestApiTest extends JsonApiTestCase
         $this->loadFixturesFromFiles(['shop.yml']);
 
         $this->client->request('GET', '/shop-api/SPACE_KLINGON/product-latest/', [], [], [
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/ld+json',
         ]);
 
         $response = $this->client->getResponse();
 
-        $this->assertResponse($response, 'channel_has_not_been_found_response', Response::HTTP_NOT_FOUND);
+        $this->assertResponse($response, 'channel_has_not_been_found_hydra_response', Response::HTTP_NOT_FOUND);
     }
 }

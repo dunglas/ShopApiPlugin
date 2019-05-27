@@ -34,7 +34,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $registerData);
 
         $response = $this->client->getResponse();
@@ -71,7 +71,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_DE/register', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $registerData);
 
         $response = $this->client->getResponse();
@@ -115,7 +115,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $registerData);
 
         $response = $this->client->getResponse();
@@ -141,7 +141,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $registerData);
 
         $response = $this->client->getResponse();
@@ -167,7 +167,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/SPACE_KLINGON/register', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $registerData);
 
         $response = $this->client->getResponse();

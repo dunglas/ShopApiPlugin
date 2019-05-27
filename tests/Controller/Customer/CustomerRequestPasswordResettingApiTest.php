@@ -30,7 +30,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/request-password-reset', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $requestResetData);
 
         $response = $this->client->getResponse();
@@ -58,7 +58,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/SPACE_KLINGON/request-password-reset', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $requestResetData);
 
         $response = $this->client->getResponse();

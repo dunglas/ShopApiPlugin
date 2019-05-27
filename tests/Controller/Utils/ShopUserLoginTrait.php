@@ -24,7 +24,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/login', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $loginData);
 
         $this->assertSame($this->client->getResponse()->getStatusCode(), Response::HTTP_OK);

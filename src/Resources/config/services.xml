@@ -97,7 +97,7 @@
         >
             <argument type="service" id="api_platform.metadata.resource.metadata_factory" />
             <argument type="service" id="sylius.context.channel" />
-            <tag name="kernel.event_listener" event="kernel.request" priority="7" /><!-- run after security.firewall -->
+            <tag name="kernel.event_listener" event="kernel.request" priority="6" /><!-- run after security.firewall and api_platform.listener.request.add_format -->
         </service>
 
         <service id="sylius.shop_api_plugin.modifier.order_modifier"
@@ -137,6 +137,14 @@
             <argument type="service" id="api_platform.metadata.resource.metadata_factory" />
             <argument type="service" id="sylius.repository.channel" />
             <tag name="sylius.context.channel" priority="256" /><!-- higher than sylius.context.channel.fake_channel.context -->
+        </service>
+
+        <service id="sylius.shop_api_plugin.router"
+            class="Sylius\ShopApiPlugin\Routing\Router"
+            decorates="api_platform.router"
+        >
+            <argument type="service" id="sylius.shop_api_plugin.router.inner" />
+            <argument type="service" id="request_stack" />
         </service>
     </services>
 

@@ -26,7 +26,9 @@
         <itemOperations>
             <!-- This is only for IRI generation -->
             <!-- Actually sending a request should result in HTTP 404 because of sylius.shop_api_plugin.data_provider.customer.item -->
-            <itemOperation name="get" />
+            <itemOperation name="get">
+                <attribute name="path">/{channelCode}/customers/{id}</attribute><!-- actually {email} but API Platform uses hardcoded {id} route parameter -->
+            </itemOperation>
 
             <itemOperation name="get_logged_in_customer_profile">
                 <attribute name="method">GET</attribute>

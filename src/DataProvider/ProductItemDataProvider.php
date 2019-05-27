@@ -23,11 +23,13 @@ final class ProductItemDataProvider implements ItemDataProviderInterface, Restri
      */
     public function getItem(string $resourceClass, $id, string $operationName = null, array $context = []): ?object
     {
-        if ('get' !== $operationName) {
-            return null;
+        switch ($operationName) {
+            case 'get_by_code':
+                throw new \LogicException('To be implemented.');
+            case 'get_by_slug':
+                throw new \LogicException('To be implemented.');
+            default:
+                return null;
         }
-
-        // TODO: product details
-        throw new \LogicException('Not implemented.');
     }
 }

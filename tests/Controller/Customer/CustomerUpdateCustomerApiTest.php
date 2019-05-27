@@ -40,7 +40,7 @@ JSON;
 
         $this->client->request('PUT', '/shop-api/WEB_GB/me', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $updateData);
 
         $response = $this->client->getResponse();
@@ -80,7 +80,7 @@ JSON;
 
         $this->client->request('PUT', '/shop-api/WEB_GB/me', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $updateData);
 
         $response = $this->client->getResponse();
@@ -108,7 +108,7 @@ JSON;
 
         $this->client->request('PUT', '/shop-api/WEB_GB/me', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $updateData);
 
         $response = $this->client->getResponse();
@@ -136,7 +136,7 @@ JSON;
 
         $this->client->request('PUT', '/shop-api/SPACE_KLINGON/me', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $updateData);
 
         $response = $this->client->getResponse();

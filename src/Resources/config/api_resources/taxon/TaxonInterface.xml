@@ -17,7 +17,7 @@
         <collectionOperations>
             <collectionOperation name="get">
                 <attribute name="method">GET</attribute>
-                <attribute name="path">/{channelCode}/taxons/</attribute>
+                <attribute name="path">/{channelCode}/taxons</attribute>
                 <attribute name="normalization_context">
                     <attribute name="groups">
                         <attribute>sylius_shop_api_taxon_read</attribute>
@@ -29,11 +29,7 @@
         </collectionOperations>
 
         <itemOperations>
-            <!-- This is only for IRI generation -->
-            <!-- Actually sending a request should result in HTTP 404 because of sylius.shop_api_plugin.data_provider.taxon.item -->
-            <itemOperation name="get" />
-
-            <itemOperation name="get_details">
+            <itemOperation name="get">
                 <attribute name="method">GET</attribute>
                 <attribute name="path">/{channelCode}/taxons/{id}</attribute><!-- actually {code} but API Platform uses hardcoded {id} route parameter -->
                 <attribute name="normalization_context">

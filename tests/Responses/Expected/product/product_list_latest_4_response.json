@@ -1,462 +1,508 @@
-[
-  {
-    "code": "LOGAN_HAT_CODE",
-    "name": "Logan Hat",
-    "slug": "logan-hat",
-    "channels": [
-      {
-        "code": "WEB_GB",
-        "baseCurrency": {
-          "code": "GBP"
+{
+  "@context": "/shop-api/contexts/Product",
+  "@id": "/shop-api/WEB_GB/products",
+  "@type": "hydra:Collection",
+  "hydra:member": [
+    {
+      "@id": "/shop-api/WEB_GB/products/LOGAN_HAT_CODE",
+      "@type": "Product",
+      "code": "LOGAN_HAT_CODE",
+      "name": "Logan Hat",
+      "slug": "logan-hat",
+      "channels": [
+        {
+          "code": "WEB_GB",
+          "baseCurrency": {
+            "code": "GBP"
+          }
         }
-      }
-    ],
-    "description": "Some description Lorem ipsum dolor sit amet.",
-    "shortDescription": null,
-    "metaKeywords": null,
-    "metaDescription": null,
-    "averageRating": 0,
-    "mainTaxon": {
-      "code": "HAT"
-    },
-    "taxons": [
-      {
+      ],
+      "description": "Some description Lorem ipsum dolor sit amet.",
+      "shortDescription": null,
+      "metaKeywords": null,
+      "metaDescription": null,
+      "averageRating": 0,
+      "mainTaxon": {
+        "@id": "/shop-api/WEB_GB/taxons/HAT",
+        "@type": "Taxon",
         "code": "HAT"
       },
-      {
-        "code": "BRAND"
-      }
-    ],
-    "variants": [
-      {
-        "code": "SMALL_RED_LOGAN_HAT_CODE",
-        "name": "Small Red Logan Hat",
-        "optionValues": [
-          {
-            "code": "HAT_SIZE_S",
-            "option": {
-              "name": "Size"
-            },
-            "value": "S"
-          },
-          {
-            "code": "HAT_COLOR_RED",
-            "option": {
-              "name": "Color"
-            },
-            "value": "Red"
-          }
-        ],
-        "channelPricings": [
-          {
-            "channelCode": "WEB_GB",
-            "price": 500
-          }
-        ],
-        "images": []
-      },
-      {
-        "code": "LARGE_RED_LOGAN_HAT_CODE",
-        "name": "Large Red Logan Hat",
-        "optionValues": [
-          {
-            "code": "HAT_SIZE_L",
-            "option": {
-              "name": "Size"
-            },
-            "value": "L"
-          },
-          {
-            "code": "HAT_COLOR_RED",
-            "option": {
-              "name": "Color"
-            },
-            "value": "Red"
-          }
-        ],
-        "channelPricings": [
-          {
-            "channelCode": "WEB_GB",
-            "price": 999
-          }
-        ],
-        "images": []
-      },
-      {
-        "code": "SMALL_BLUE_LOGAN_HAT_CODE",
-        "name": "Small Blue Logan Hat",
-        "optionValues": [
-          {
-            "code": "HAT_SIZE_S",
-            "option": {
-              "name": "Size"
-            },
-            "value": "S"
-          },
-          {
-            "code": "HAT_COLOR_BLUE",
-            "option": {
-              "name": "Color"
-            },
-            "value": "Blue"
-          }
-        ],
-        "channelPricings": [
-          {
-            "channelCode": "WEB_GB",
-            "price": 1500
-          }
-        ],
-        "images": []
-      },
-      {
-        "code": "LARGE_BLUE_LOGAN_HAT_CODE",
-        "name": "Large Blue Logan Hat",
-        "optionValues": [
-          {
-            "code": "HAT_SIZE_L",
-            "option": {
-              "name": "Size"
-            },
-            "value": "L"
-          },
-          {
-            "code": "HAT_COLOR_BLUE",
-            "option": {
-              "name": "Color"
-            },
-            "value": "Blue"
-          }
-        ],
-        "channelPricings": [
-          {
-            "channelCode": "WEB_GB",
-            "price": 2599
-          }
-        ],
-        "images": []
-      }
-    ],
-    "attributes": [],
-    "associations": [
-      {
-        "type": {
-          "code": "CROSS_SELL_ASSOCIATION_TYPE"
+      "taxons": [
+        {
+          "@id": "/shop-api/WEB_GB/taxons/HAT",
+          "@type": "Taxon",
+          "code": "HAT"
         },
-        "associatedProducts": [
-          {
-            "code": "LOGAN_MUG_CODE",
-            "name": "Logan Mug",
-            "slug": "logan-mug",
-            "channels": [
-              {
-                "code": "WEB_GB",
-                "baseCurrency": {
-                  "code": "GBP"
-                }
-              }
-            ],
-            "description": "Some description Lorem ipsum dolor sit amet.",
-            "shortDescription": null,
-            "metaKeywords": null,
-            "metaDescription": null,
-            "averageRating": 0,
-            "mainTaxon": {
-              "code": "MUG"
+        {
+          "@id": "/shop-api/WEB_GB/taxons/BRAND",
+          "@type": "Taxon",
+          "code": "BRAND"
+        }
+      ],
+      "variants": [
+        {
+          "code": "SMALL_RED_LOGAN_HAT_CODE",
+          "name": "Small Red Logan Hat",
+          "optionValues": [
+            {
+              "code": "HAT_SIZE_S",
+              "option": {
+                "name": "Size"
+              },
+              "value": "S"
             },
-            "taxons": [
-              {
+            {
+              "code": "HAT_COLOR_RED",
+              "option": {
+                "name": "Color"
+              },
+              "value": "Red"
+            }
+          ],
+          "channelPricings": [
+            {
+              "channelCode": "WEB_GB",
+              "price": 500
+            }
+          ],
+          "images": []
+        },
+        {
+          "code": "LARGE_RED_LOGAN_HAT_CODE",
+          "name": "Large Red Logan Hat",
+          "optionValues": [
+            {
+              "code": "HAT_SIZE_L",
+              "option": {
+                "name": "Size"
+              },
+              "value": "L"
+            },
+            {
+              "code": "HAT_COLOR_RED",
+              "option": {
+                "name": "Color"
+              },
+              "value": "Red"
+            }
+          ],
+          "channelPricings": [
+            {
+              "channelCode": "WEB_GB",
+              "price": 999
+            }
+          ],
+          "images": []
+        },
+        {
+          "code": "SMALL_BLUE_LOGAN_HAT_CODE",
+          "name": "Small Blue Logan Hat",
+          "optionValues": [
+            {
+              "code": "HAT_SIZE_S",
+              "option": {
+                "name": "Size"
+              },
+              "value": "S"
+            },
+            {
+              "code": "HAT_COLOR_BLUE",
+              "option": {
+                "name": "Color"
+              },
+              "value": "Blue"
+            }
+          ],
+          "channelPricings": [
+            {
+              "channelCode": "WEB_GB",
+              "price": 1500
+            }
+          ],
+          "images": []
+        },
+        {
+          "code": "LARGE_BLUE_LOGAN_HAT_CODE",
+          "name": "Large Blue Logan Hat",
+          "optionValues": [
+            {
+              "code": "HAT_SIZE_L",
+              "option": {
+                "name": "Size"
+              },
+              "value": "L"
+            },
+            {
+              "code": "HAT_COLOR_BLUE",
+              "option": {
+                "name": "Color"
+              },
+              "value": "Blue"
+            }
+          ],
+          "channelPricings": [
+            {
+              "channelCode": "WEB_GB",
+              "price": 2599
+            }
+          ],
+          "images": []
+        }
+      ],
+      "attributes": [],
+      "associations": [
+        {
+          "type": {
+            "code": "CROSS_SELL_ASSOCIATION_TYPE"
+          },
+          "associatedProducts": [
+            {
+              "@id": "/shop-api/WEB_GB/products/LOGAN_MUG_CODE",
+              "@type": "Product",
+              "code": "LOGAN_MUG_CODE",
+              "name": "Logan Mug",
+              "slug": "logan-mug",
+              "channels": [
+                {
+                  "code": "WEB_GB",
+                  "baseCurrency": {
+                    "code": "GBP"
+                  }
+                }
+              ],
+              "description": "Some description Lorem ipsum dolor sit amet.",
+              "shortDescription": null,
+              "metaKeywords": null,
+              "metaDescription": null,
+              "averageRating": 0,
+              "mainTaxon": {
+                "@id": "/shop-api/WEB_GB/taxons/MUG",
+                "@type": "Taxon",
                 "code": "MUG"
               },
-              {
-                "code": "BRAND"
-              }
-            ],
-            "variants": [
-              {
-                "code": "LOGAN_MUG_CODE",
-                "name": "Logan Mug",
-                "optionValues": [],
-                "channelPricings": [
-                  {
-                    "channelCode": "WEB_GB",
-                    "price": 1999
-                  }
-                ],
-                "images": [
-                  {
-                    "type": "thumbnail",
-                    "path": "/uo/mug.jpg"
-                  }
-                ]
-              }
-            ],
-            "attributes": [
-              {
-                "code": "MUG_MATERIAL_CODE",
-                "name": "Mug material",
-                "value": "Wood"
-              }
-            ],
-            "associations": [],
-            "images": [
-              {
-                "type": "thumbnail",
-                "path": "/uo/mug.jpg"
-              }
-            ]
-          },
-          {
-            "code": "LOGAN_T_SHIRT_CODE",
-            "name": "Logan T-Shirt",
-            "slug": "logan-t-shirt",
-            "channels": [
-              {
-                "code": "WEB_GB",
-                "baseCurrency": {
-                  "code": "GBP"
+              "taxons": [
+                {
+                  "@id": "/shop-api/WEB_GB/taxons/MUG",
+                  "@type": "Taxon",
+                  "code": "MUG"
+                },
+                {
+                  "@id": "/shop-api/WEB_GB/taxons/BRAND",
+                  "@type": "Taxon",
+                  "code": "BRAND"
                 }
-              }
-            ],
-            "description": "Some description Lorem ipsum dolor sit amet.",
-            "shortDescription": null,
-            "metaKeywords": null,
-            "metaDescription": null,
-            "averageRating": 0,
-            "mainTaxon": {
-              "code": "T_SHIRTS"
+              ],
+              "variants": [
+                {
+                  "code": "LOGAN_MUG_CODE",
+                  "name": "Logan Mug",
+                  "optionValues": [],
+                  "channelPricings": [
+                    {
+                      "channelCode": "WEB_GB",
+                      "price": 1999
+                    }
+                  ],
+                  "images": [
+                    {
+                      "type": "thumbnail",
+                      "path": "/uo/mug.jpg"
+                    }
+                  ]
+                }
+              ],
+              "attributes": [
+                {
+                  "code": "MUG_MATERIAL_CODE",
+                  "name": "Mug material",
+                  "value": "Wood"
+                }
+              ],
+              "images": [
+                {
+                  "type": "thumbnail",
+                  "path": "/uo/mug.jpg"
+                }
+              ]
             },
-            "taxons": [
-              {
-                "code": "WOMEN_T_SHIRTS"
-              },
-              {
-                "code": "BRAND"
-              }
-            ],
-            "variants": [
-              {
-                "code": "SMALL_LOGAN_T_SHIRT_CODE",
-                "name": "Small Logan T-Shirt",
-                "optionValues": [],
-                "channelPricings": [
-                  {
-                    "channelCode": "WEB_GB",
-                    "price": 1999
+            {
+              "@id": "/shop-api/WEB_GB/products/LOGAN_T_SHIRT_CODE",
+              "@type": "Product",
+              "code": "LOGAN_T_SHIRT_CODE",
+              "name": "Logan T-Shirt",
+              "slug": "logan-t-shirt",
+              "channels": [
+                {
+                  "code": "WEB_GB",
+                  "baseCurrency": {
+                    "code": "GBP"
                   }
-                ],
-                "images": [
-                  {
-                    "type": "thumbnail",
-                    "path": "/uo/small-tshirt.jpg"
-                  }
-                ]
+                }
+              ],
+              "description": "Some description Lorem ipsum dolor sit amet.",
+              "shortDescription": null,
+              "metaKeywords": null,
+              "metaDescription": null,
+              "averageRating": 0,
+              "mainTaxon": {
+                "@id": "/shop-api/WEB_GB/taxons/T_SHIRTS",
+                "@type": "Taxon",
+                "code": "T_SHIRTS"
               },
-              {
-                "code": "LARGE_LOGAN_T_SHIRT_CODE",
-                "name": "Large Logan T-Shirt",
-                "optionValues": [],
-                "channelPricings": [
-                  {
-                    "channelCode": "WEB_GB",
-                    "price": 2999
-                  }
-                ],
-                "images": [
-                  {
-                    "type": "thumbnail",
-                    "path": "/uo/large-tshirt.jpg"
-                  }
-                ]
-              }
-            ],
-            "attributes": [],
-            "associations": [],
-            "images": [
-              {
-                "type": "thumbnail",
-                "path": "/uo/tshirt.jpg"
-              },
-              {
-                "type": "thumbnail",
-                "path": "/uo/small-tshirt.jpg"
-              },
-              {
-                "type": "thumbnail",
-                "path": "/uo/large-tshirt.jpg"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "images": []
-  },
-  {
-    "code": "LOGAN_MUG_CODE",
-    "name": "Logan Mug",
-    "slug": "logan-mug",
-    "channels": [
-      {
-        "code": "WEB_GB",
-        "baseCurrency": {
-          "code": "GBP"
+              "taxons": [
+                {
+                  "@id": "/shop-api/WEB_GB/taxons/WOMEN_T_SHIRTS",
+                  "@type": "Taxon",
+                  "code": "WOMEN_T_SHIRTS"
+                },
+                {
+                  "@id": "/shop-api/WEB_GB/taxons/BRAND",
+                  "@type": "Taxon",
+                  "code": "BRAND"
+                }
+              ],
+              "variants": [
+                {
+                  "code": "SMALL_LOGAN_T_SHIRT_CODE",
+                  "name": "Small Logan T-Shirt",
+                  "optionValues": [],
+                  "channelPricings": [
+                    {
+                      "channelCode": "WEB_GB",
+                      "price": 1999
+                    }
+                  ],
+                  "images": [
+                    {
+                      "type": "thumbnail",
+                      "path": "/uo/small-tshirt.jpg"
+                    }
+                  ]
+                },
+                {
+                  "code": "LARGE_LOGAN_T_SHIRT_CODE",
+                  "name": "Large Logan T-Shirt",
+                  "optionValues": [],
+                  "channelPricings": [
+                    {
+                      "channelCode": "WEB_GB",
+                      "price": 2999
+                    }
+                  ],
+                  "images": [
+                    {
+                      "type": "thumbnail",
+                      "path": "/uo/large-tshirt.jpg"
+                    }
+                  ]
+                }
+              ],
+              "attributes": [],
+              "images": [
+                {
+                  "type": "thumbnail",
+                  "path": "/uo/tshirt.jpg"
+                },
+                {
+                  "type": "thumbnail",
+                  "path": "/uo/small-tshirt.jpg"
+                },
+                {
+                  "type": "thumbnail",
+                  "path": "/uo/large-tshirt.jpg"
+                }
+              ]
+            }
+          ]
         }
-      }
-    ],
-    "description": "Some description Lorem ipsum dolor sit amet.",
-    "shortDescription": null,
-    "metaKeywords": null,
-    "metaDescription": null,
-    "averageRating": 0,
-    "mainTaxon": {
-      "code": "MUG"
+      ],
+      "images": []
     },
-    "taxons": [
-      {
+    {
+      "@id": "/shop-api/WEB_GB/products/LOGAN_MUG_CODE",
+      "@type": "Product",
+      "code": "LOGAN_MUG_CODE",
+      "name": "Logan Mug",
+      "slug": "logan-mug",
+      "channels": [
+        {
+          "code": "WEB_GB",
+          "baseCurrency": {
+            "code": "GBP"
+          }
+        }
+      ],
+      "description": "Some description Lorem ipsum dolor sit amet.",
+      "shortDescription": null,
+      "metaKeywords": null,
+      "metaDescription": null,
+      "averageRating": 0,
+      "mainTaxon": {
+        "@id": "/shop-api/WEB_GB/taxons/MUG",
+        "@type": "Taxon",
         "code": "MUG"
       },
-      {
-        "code": "BRAND"
-      }
-    ],
-    "variants": [
-      {
-        "code": "LOGAN_MUG_CODE",
-        "name": "Logan Mug",
-        "optionValues": [],
-        "channelPricings": [
-          {
-            "channelCode": "WEB_GB",
-            "price": 1999
-          }
-        ],
-        "images": [
-          {
-            "type": "thumbnail",
-            "path": "/uo/mug.jpg"
-          }
-        ]
-      }
-    ],
-    "attributes": [
-      {
-        "code": "MUG_MATERIAL_CODE",
-        "name": "Mug material",
-        "value": "Wood"
-      }
-    ],
-    "associations": [],
-    "images": [
-      {
-        "type": "thumbnail",
-        "path": "/uo/mug.jpg"
-      }
-    ]
-  },
-  {
-    "code": "LOGAN_SHOES_CODE",
-    "name": "Logan Shoes",
-    "slug": "logan-shoes",
-    "channels": [
-      {
-        "code": "WEB_GB",
-        "baseCurrency": {
-          "code": "GBP"
+      "taxons": [
+        {
+          "@id": "/shop-api/WEB_GB/taxons/MUG",
+          "@type": "Taxon",
+          "code": "MUG"
+        },
+        {
+          "@id": "/shop-api/WEB_GB/taxons/BRAND",
+          "@type": "Taxon",
+          "code": "BRAND"
         }
-      }
-    ],
-    "description": "Some description Lorem ipsum dolor sit amet.",
-    "shortDescription": null,
-    "metaKeywords": null,
-    "metaDescription": null,
-    "averageRating": 0,
-    "mainTaxon": null,
-    "taxons": [],
-    "variants": [],
-    "attributes": [],
-    "associations": [],
-    "images": []
-  },
-  {
-    "code": "LOGAN_T_SHIRT_CODE",
-    "name": "Logan T-Shirt",
-    "slug": "logan-t-shirt",
-    "channels": [
-      {
-        "code": "WEB_GB",
-        "baseCurrency": {
-          "code": "GBP"
+      ],
+      "variants": [
+        {
+          "code": "LOGAN_MUG_CODE",
+          "name": "Logan Mug",
+          "optionValues": [],
+          "channelPricings": [
+            {
+              "channelCode": "WEB_GB",
+              "price": 1999
+            }
+          ],
+          "images": [
+            {
+              "type": "thumbnail",
+              "path": "/uo/mug.jpg"
+            }
+          ]
         }
-      }
-    ],
-    "description": "Some description Lorem ipsum dolor sit amet.",
-    "shortDescription": null,
-    "metaKeywords": null,
-    "metaDescription": null,
-    "averageRating": 0,
-    "mainTaxon": {
-      "code": "T_SHIRTS"
+      ],
+      "attributes": [
+        {
+          "code": "MUG_MATERIAL_CODE",
+          "name": "Mug material",
+          "value": "Wood"
+        }
+      ],
+      "associations": [],
+      "images": [
+        {
+          "type": "thumbnail",
+          "path": "/uo/mug.jpg"
+        }
+      ]
     },
-    "taxons": [
-      {
-        "code": "WOMEN_T_SHIRTS"
-      },
-      {
-        "code": "BRAND"
-      }
-    ],
-    "variants": [
-      {
-        "code": "SMALL_LOGAN_T_SHIRT_CODE",
-        "name": "Small Logan T-Shirt",
-        "optionValues": [],
-        "channelPricings": [
-          {
-            "channelCode": "WEB_GB",
-            "price": 1999
+    {
+      "@id": "/shop-api/WEB_GB/products/LOGAN_SHOES_CODE",
+      "@type": "Product",
+      "code": "LOGAN_SHOES_CODE",
+      "name": "Logan Shoes",
+      "slug": "logan-shoes",
+      "channels": [
+        {
+          "code": "WEB_GB",
+          "baseCurrency": {
+            "code": "GBP"
           }
-        ],
-        "images": [
-          {
-            "type": "thumbnail",
-            "path": "/uo/small-tshirt.jpg"
+        }
+      ],
+      "description": "Some description Lorem ipsum dolor sit amet.",
+      "shortDescription": null,
+      "metaKeywords": null,
+      "metaDescription": null,
+      "averageRating": 0,
+      "mainTaxon": null,
+      "taxons": [],
+      "variants": [],
+      "attributes": [],
+      "associations": [],
+      "images": []
+    },
+    {
+      "@id": "/shop-api/WEB_GB/products/LOGAN_T_SHIRT_CODE",
+      "@type": "Product",
+      "code": "LOGAN_T_SHIRT_CODE",
+      "name": "Logan T-Shirt",
+      "slug": "logan-t-shirt",
+      "channels": [
+        {
+          "code": "WEB_GB",
+          "baseCurrency": {
+            "code": "GBP"
           }
-        ]
+        }
+      ],
+      "description": "Some description Lorem ipsum dolor sit amet.",
+      "shortDescription": null,
+      "metaKeywords": null,
+      "metaDescription": null,
+      "averageRating": 0,
+      "mainTaxon": {
+        "@id": "/shop-api/WEB_GB/taxons/T_SHIRTS",
+        "@type": "Taxon",
+        "code": "T_SHIRTS"
       },
-      {
-        "code": "LARGE_LOGAN_T_SHIRT_CODE",
-        "name": "Large Logan T-Shirt",
-        "optionValues": [],
-        "channelPricings": [
-          {
-            "channelCode": "WEB_GB",
-            "price": 2999
-          }
-        ],
-        "images": [
-          {
-            "type": "thumbnail",
-            "path": "/uo/large-tshirt.jpg"
-          }
-        ]
-      }
-    ],
-    "attributes": [],
-    "associations": [],
-    "images": [
-      {
-        "type": "thumbnail",
-        "path": "/uo/tshirt.jpg"
-      },
-      {
-        "type": "thumbnail",
-        "path": "/uo/small-tshirt.jpg"
-      },
-      {
-        "type": "thumbnail",
-        "path": "/uo/large-tshirt.jpg"
-      }
-    ]
-  }
-]
+      "taxons": [
+        {
+          "@id": "/shop-api/WEB_GB/taxons/WOMEN_T_SHIRTS",
+          "@type": "Taxon",
+          "code": "WOMEN_T_SHIRTS"
+        },
+        {
+          "@id": "/shop-api/WEB_GB/taxons/BRAND",
+          "@type": "Taxon",
+          "code": "BRAND"
+        }
+      ],
+      "variants": [
+        {
+          "code": "SMALL_LOGAN_T_SHIRT_CODE",
+          "name": "Small Logan T-Shirt",
+          "optionValues": [],
+          "channelPricings": [
+            {
+              "channelCode": "WEB_GB",
+              "price": 1999
+            }
+          ],
+          "images": [
+            {
+              "type": "thumbnail",
+              "path": "/uo/small-tshirt.jpg"
+            }
+          ]
+        },
+        {
+          "code": "LARGE_LOGAN_T_SHIRT_CODE",
+          "name": "Large Logan T-Shirt",
+          "optionValues": [],
+          "channelPricings": [
+            {
+              "channelCode": "WEB_GB",
+              "price": 2999
+            }
+          ],
+          "images": [
+            {
+              "type": "thumbnail",
+              "path": "/uo/large-tshirt.jpg"
+            }
+          ]
+        }
+      ],
+      "attributes": [],
+      "associations": [],
+      "images": [
+        {
+          "type": "thumbnail",
+          "path": "/uo/tshirt.jpg"
+        },
+        {
+          "type": "thumbnail",
+          "path": "/uo/small-tshirt.jpg"
+        },
+        {
+          "type": "thumbnail",
+          "path": "/uo/large-tshirt.jpg"
+        }
+      ]
+    }
+  ],
+  "hydra:totalItems": 4
+}

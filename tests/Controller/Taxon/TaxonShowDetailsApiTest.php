@@ -17,7 +17,7 @@ final class TaxonShowDetailsApiTest extends JsonApiTestCase
         $this->loadFixturesFromFiles(['shop.yml']);
 
         $this->client->request('GET', '/shop-api/WEB_GB/taxons/T_SHIRTS', [], [], [
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/ld+json',
         ]);
         $response = $this->client->getResponse();
 
@@ -32,7 +32,7 @@ final class TaxonShowDetailsApiTest extends JsonApiTestCase
         $this->loadFixturesFromFiles(['shop.yml']);
 
         $this->client->request('GET', '/shop-api/WEB_GB/taxons/de%3Flol%3Dxd%23boom?locale=en_GB', [], [], [
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/ld+json',
         ]);
         $response = $this->client->getResponse();
 
@@ -47,7 +47,7 @@ final class TaxonShowDetailsApiTest extends JsonApiTestCase
         $this->loadFixturesFromFiles(['shop.yml']);
 
         $this->client->request('GET', '/shop-api/WEB_GB/taxons/T_SHIRTS?locale=de_DE', [], [], [
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/ld+json',
         ]);
         $response = $this->client->getResponse();
 
@@ -62,10 +62,10 @@ final class TaxonShowDetailsApiTest extends JsonApiTestCase
         $this->loadFixturesFromFiles(['shop.yml']);
 
         $this->client->request('GET', '/shop-api/SPACE_KLINGON/taxons/T_SHIRTS?locale=en_GB', [], [], [
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/ld+json',
         ]);
         $response = $this->client->getResponse();
 
-        $this->assertResponse($response, 'channel_has_not_been_found_response', Response::HTTP_NOT_FOUND);
+        $this->assertResponse($response, 'channel_has_not_been_found_hydra_response', Response::HTTP_NOT_FOUND);
     }
 }

@@ -33,7 +33,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $registerData);
 
         $resendData =
@@ -45,7 +45,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $resendData);
 
         $response = $this->client->getResponse();
@@ -72,7 +72,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $resendData);
 
         $response = $this->client->getResponse();
@@ -95,7 +95,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $resendData);
 
         $response = $this->client->getResponse();
@@ -118,7 +118,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/resend-verification-link', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $resendData);
 
         $response = $this->client->getResponse();
@@ -141,7 +141,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/SPACE_KLINGON/resend-verification-link', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $resendData);
 
         $response = $this->client->getResponse();

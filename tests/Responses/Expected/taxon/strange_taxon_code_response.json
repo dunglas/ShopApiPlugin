@@ -1,4 +1,7 @@
 {
+  "@context": "/shop-api/contexts/Taxon",
+  "@id": "/shop-api/WEB_GB/taxons/de%253Flol%253Dxd%2523boom",
+  "@type": "Taxon",
   "code": "de?lol=xd#boom",
   "name": "Yet another taxon",
   "slug": "yet_another_taxons",

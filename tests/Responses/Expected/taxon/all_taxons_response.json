@@ -1,81 +1,103 @@
-[
-  {
-    "code": "CATEGORY",
-    "name": "Categories",
-    "slug": "categories",
-    "description": "Some description Lorem ipsum dolor sit amet.",
-    "position": 0,
-    "children": [
-      {
-        "code": "MUG",
-        "name": "Mugs",
-        "slug": "categories/mugs",
-        "description": "Some description Lorem ipsum dolor sit amet.",
-        "position": 0,
-        "children": [],
-        "images": []
-      },
-      {
-        "code": "HAT",
-        "name": "Hats",
-        "slug": "categories/hats",
-        "description": "Some description Lorem ipsum dolor sit amet.",
-        "position": 1,
-        "children": [],
-        "images": []
-      },
-      {
-        "code": "T_SHIRTS",
-        "name": "T-Shirts",
-        "slug": "categories/t-shirts",
-        "description": "Some description Lorem ipsum dolor sit amet.",
-        "position": 2,
-        "children": [
-          {
-            "code": "MEN_T_SHIRTS",
-            "name": "Men T-Shirts",
-            "slug": "categories/t-shirts/men-t-shirts",
-            "description": "Some description Lorem ipsum dolor sit amet.",
-            "position": 0,
-            "children": [],
-            "images": []
-          },
-          {
-            "code": "WOMEN_T_SHIRTS",
-            "name": "Women T-Shirts",
-            "slug": "categories/t-shirts/women-t-shirts",
-            "description": "Some description Lorem ipsum dolor sit amet.",
-            "position": 1,
-            "children": [],
-            "images": []
-          }
-        ],
-        "images": [
-          {
-            "type": "thumbnail",
-            "path": "/uo/t-shirt.jpg"
-          }
-        ]
-      }
-    ],
-    "images": []
-  },
-  {
-    "code": "BRAND",
-    "name": "Brands",
-    "slug": "brands",
-    "description": "Some description Lorem ipsum dolor sit amet.",
-    "position": 1,
-    "children": [],
-    "images": []
-  },
-  {
-    "code": "de?lol=xd#boom",
-    "name": "Yet another taxon",
-    "slug": "yet_another_taxons",
-    "description": "Some description Lorem ipsum dolor sit amet.",
-    "position": 2,
-    "children": [],
-    "images": []
-  }
-]
+{
+  "@context": "/shop-api/contexts/Taxon",
+  "@id": "/shop-api/WEB_GB/taxons",
+  "@type": "hydra:Collection",
+  "hydra:member": [
+    {
+      "@id": "/shop-api/WEB_GB/taxons/CATEGORY",
+      "@type": "Taxon",
+      "code": "CATEGORY",
+      "name": "Categories",
+      "slug": "categories",
+      "description": "Some description Lorem ipsum dolor sit amet.",
+      "position": 0,
+      "children": [
+        {
+          "@id": "/shop-api/WEB_GB/taxons/MUG",
+          "@type": "Taxon",
+          "code": "MUG",
+          "name": "Mugs",
+          "slug": "categories/mugs",
+          "description": "Some description Lorem ipsum dolor sit amet.",
+          "position": 0,
+          "children": [],
+          "images": []
+        },
+        {
+          "@id": "/shop-api/WEB_GB/taxons/HAT",
+          "@type": "Taxon",
+          "code": "HAT",
+          "name": "Hats",
+          "slug": "categories/hats",
+          "description": "Some description Lorem ipsum dolor sit amet.",
+          "position": 1,
+          "children": [],
+          "images": []
+        },
+        {
+          "@id": "/shop-api/WEB_GB/taxons/T_SHIRTS",
+          "@type": "Taxon",
+          "code": "T_SHIRTS",
+          "name": "T-Shirts",
+          "slug": "categories/t-shirts",
+          "description": "Some description Lorem ipsum dolor sit amet.",
+          "position": 2,
+          "children": [
+            {
+              "@id": "/shop-api/WEB_GB/taxons/MEN_T_SHIRTS",
+              "@type": "Taxon",
+              "code": "MEN_T_SHIRTS",
+              "name": "Men T-Shirts",
+              "slug": "categories/t-shirts/men-t-shirts",
+              "description": "Some description Lorem ipsum dolor sit amet.",
+              "position": 0,
+              "children": [],
+              "images": []
+            },
+            {
+              "@id": "/shop-api/WEB_GB/taxons/WOMEN_T_SHIRTS",
+              "@type": "Taxon",
+              "code": "WOMEN_T_SHIRTS",
+              "name": "Women T-Shirts",
+              "slug": "categories/t-shirts/women-t-shirts",
+              "description": "Some description Lorem ipsum dolor sit amet.",
+              "position": 1,
+              "children": [],
+              "images": []
+            }
+          ],
+          "images": [
+            {
+              "type": "thumbnail",
+              "path": "/uo/t-shirt.jpg"
+            }
+          ]
+        }
+      ],
+      "images": []
+    },
+    {
+      "@id": "/shop-api/WEB_GB/taxons/BRAND",
+      "@type": "Taxon",
+      "code": "BRAND",
+      "name": "Brands",
+      "slug": "brands",
+      "description": "Some description Lorem ipsum dolor sit amet.",
+      "position": 1,
+      "children": [],
+      "images": []
+    },
+    {
+      "@id": "/shop-api/WEB_GB/taxons/de%253Flol%253Dxd%2523boom",
+      "@type": "Taxon",
+      "code": "de?lol=xd#boom",
+      "name": "Yet another taxon",
+      "slug": "yet_another_taxons",
+      "description": "Some description Lorem ipsum dolor sit amet.",
+      "position": 2,
+      "children": [],
+      "images": []
+    }
+  ],
+  "hydra:totalItems": 3
+}
