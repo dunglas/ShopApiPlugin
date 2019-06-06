@@ -1,0 +1,7 @@
+{
+  "@context": "/shop-api/contexts/Error",
+  "@type": "hydra:Error",
+  "hydra:title": "@string@",
+  "hydra:description": "Channel with code SPACE_KLINGON has not been found.",
+  "trace": "@array@.optional()"
+}

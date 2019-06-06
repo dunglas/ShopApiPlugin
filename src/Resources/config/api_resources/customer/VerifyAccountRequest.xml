@@ -9,9 +9,13 @@
         <collectionOperations>
             <collectionOperation name="post">
                 <attribute name="method">POST</attribute>
-                <attribute name="path">/{channelCode}/verify-account</attribute>
+                <attribute name="path">/{channelCode}/verify-account/{token}</attribute>
                 <attribute name="output">false</attribute>
-                <attribute name="sylius_shop_api">true</attribute>
+                <attribute name="sylius_shop_api">
+                    <attribute name="parameters">
+                        <attribute name="token">$token</attribute>
+                    </attribute>
+                </attribute>
             </collectionOperation>
         </collectionOperations>
 

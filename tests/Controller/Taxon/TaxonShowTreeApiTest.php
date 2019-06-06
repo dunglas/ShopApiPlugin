@@ -16,8 +16,8 @@ final class TaxonShowTreeApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFiles(['shop.yml']);
 
-        $this->client->request('GET', '/shop-api/WEB_GB/taxons/', [], [], [
-            'ACCEPT' => 'application/json',
+        $this->client->request('GET', '/shop-api/WEB_GB/taxons', [], [], [
+            'HTTP_ACCEPT' => 'application/ld+json',
         ]);
 
         $response = $this->client->getResponse();
@@ -32,8 +32,8 @@ final class TaxonShowTreeApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFiles(['shop.yml']);
 
-        $this->client->request('GET', '/shop-api/WEB_GB/taxons/?locale=de_DE', [], [], [
-            'ACCEPT' => 'application/json',
+        $this->client->request('GET', '/shop-api/WEB_GB/taxons?locale=de_DE', [], [], [
+            'HTTP_ACCEPT' => 'application/ld+json',
         ]);
 
         $response = $this->client->getResponse();
@@ -48,12 +48,12 @@ final class TaxonShowTreeApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFiles(['shop.yml']);
 
-        $this->client->request('GET', '/shop-api/SPACE_KLINGON/taxons/', [], [], [
-            'ACCEPT' => 'application/json',
+        $this->client->request('GET', '/shop-api/SPACE_KLINGON/taxons', [], [], [
+            'HTTP_ACCEPT' => 'application/ld+json',
         ]);
 
         $response = $this->client->getResponse();
 
-        $this->assertResponse($response, 'channel_has_not_been_found_response', Response::HTTP_NOT_FOUND);
+        $this->assertResponse($response, 'channel_has_not_been_found_hydra_response', Response::HTTP_NOT_FOUND);
     }
 }

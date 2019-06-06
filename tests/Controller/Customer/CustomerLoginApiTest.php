@@ -30,7 +30,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/login', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $loginData);
 
         $response = $this->client->getResponse();
@@ -56,7 +56,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $registerData);
 
         $loginData =
@@ -69,7 +69,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/login', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $loginData);
 
         $response = $this->client->getResponse();

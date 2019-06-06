@@ -31,7 +31,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/request-password-reset', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $requestResetData);
 
         /** @var UserRepositoryInterface $userRepository */
@@ -49,7 +49,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/password-reset/' . $user->getPasswordResetToken(), [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $resetPasswordData);
 
         $response = $this->client->getResponse();
@@ -72,7 +72,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/request-password-reset', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $requestResetData);
 
         /** @var UserRepositoryInterface $userRepository */
@@ -89,7 +89,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/SPACE_KLINGON/password-reset/' . $user->getPasswordResetToken(), [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $resetPasswordData);
 
         $response = $this->client->getResponse();

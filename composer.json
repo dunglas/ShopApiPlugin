@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
-        "api-platform/core": "dev-fix/resource-class-resolver-inheritance",
+        "api-platform/core": "dev-fix/serializer-readable-writable-link",
         "sylius/sylius": "^1.3",
         "symfony/messenger": "^4.2"
     },

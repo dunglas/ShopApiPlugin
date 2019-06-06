@@ -17,6 +17,12 @@
         <attribute name="pagination_client_items_per_page">true</attribute>
 
         <collectionOperations>
+            <!-- This is only for IRI generation -->
+            <!-- Actually sending a request should result in HTTP 404 because of sylius.shop_api_plugin.data_provider.product.collection -->
+            <collectionOperation name="get">
+                <attribute name="path">/{channelCode}/products</attribute>
+            </collectionOperation>
+
             <collectionOperation name="get_latest">
                 <attribute name="method">GET</attribute>
                 <attribute name="path">/{channelCode}/product-latest/</attribute>
@@ -25,8 +31,38 @@
                         <attribute>sylius_shop_api_product_read</attribute>
                         <attribute>sylius_shop_api_product_list</attribute>
                     </attribute>
+                    <attribute name="enable_max_depth">true</attribute>
                 </attribute>
                 <attribute name="pagination_items_per_page">4</attribute>
+                <attribute name="sylius_shop_api">true</attribute>
+            </collectionOperation>
+
+            <collectionOperation name="get_by_taxon_code">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/{channelCode}/taxon-products/by-code/{taxonCode}</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">
+                        <attribute>sylius_shop_api_product_read</attribute>
+                        <attribute>sylius_shop_api_product_list</attribute>
+                    </attribute>
+                    <attribute name="enable_max_depth">true</attribute>
+                </attribute>
+                <attribute name="sylius_shop_api">true</attribute>
+            </collectionOperation>
+
+            <collectionOperation name="get_by_taxon_slug">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/{channelCode}/taxon-products/by-slug/{taxonSlug}</attribute>
+                <attribute name="requirements">
+                    <attribute name="taxonSlug">.+</attribute>
+                </attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">
+                        <attribute>sylius_shop_api_product_read</attribute>
+                        <attribute>sylius_shop_api_product_list</attribute>
+                    </attribute>
+                    <attribute name="enable_max_depth">true</attribute>
+                </attribute>
                 <attribute name="sylius_shop_api">true</attribute>
             </collectionOperation>
         </collectionOperations>
@@ -34,10 +70,12 @@
         <itemOperations>
             <!-- This is only for IRI generation -->
             <!-- Actually sending a request should result in HTTP 404 because of sylius.shop_api_plugin.data_provider.product.item -->
-            <itemOperation name="get" />
+            <itemOperation name="get">
+                <attribute name="path">/{channelCode}/products/{id}</attribute><!-- actually {code} but API Platform uses hardcoded {id} route parameter -->
+            </itemOperation>
         </itemOperations>
 
-        <property name="id" identifier="true" />
+        <property name="code" identifier="true" />
 
     </resource>
 

@@ -31,10 +31,6 @@ final class TaxonItemDataProvider implements ItemDataProviderInterface, Restrict
      */
     public function getItem(string $resourceClass, $id, string $operationName = null, array $context = []): ?object
     {
-        if ('get_details' !== $operationName) {
-            return null;
-        }
-
         if (!\is_string($id)) {
             throw new \LogicException(sprintf('Taxon code expected, got "%s".', $id));
         }

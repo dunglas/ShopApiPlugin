@@ -1,4 +1,7 @@
 {
+  "@context": "/shop-api/contexts/Taxon",
+  "@id": "/shop-api/WEB_GB/taxons/T_SHIRTS",
+  "@type": "Taxon",
   "code": "T_SHIRTS",
   "name": "T-Shirts",
   "slug": "t-shirts",
@@ -6,6 +9,8 @@
   "position": 2,
   "children": [
     {
+      "@id": "/shop-api/WEB_GB/taxons/MEN_T_SHIRTS",
+      "@type": "Taxon",
       "code": "MEN_T_SHIRTS",
       "name": "Männer T-Shirts",
       "slug": "männer-t-shirts",
@@ -13,9 +18,11 @@
       "position": 0,
       "children": [],
       "images": [],
-      "parent": "/shop-api/taxons/T_SHIRTS"
+      "parent": "/shop-api/WEB_GB/taxons/T_SHIRTS"
     },
     {
+      "@id": "/shop-api/WEB_GB/taxons/WOMEN_T_SHIRTS",
+      "@type": "Taxon",
       "code": "WOMEN_T_SHIRTS",
       "name": "Frauen T-Shirts",
       "slug": "frauen-t-shirts",
@@ -23,7 +30,7 @@
       "position": 1,
       "children": [],
       "images": [],
-      "parent": "/shop-api/taxons/T_SHIRTS"
+      "parent": "/shop-api/WEB_GB/taxons/T_SHIRTS"
     }
   ],
   "images": [
@@ -33,6 +40,8 @@
     }
   ],
   "parent": {
+    "@id": "/shop-api/WEB_GB/taxons/CATEGORY",
+    "@type": "Taxon",
     "code": "CATEGORY",
     "name": "Categories",
     "slug": "categories",
@@ -40,6 +49,8 @@
     "position": 0,
     "children": [
       {
+        "@id": "/shop-api/WEB_GB/taxons/MUG",
+        "@type": "Taxon",
         "code": "MUG",
         "name": "Tassen",
         "slug": "tassen",
@@ -47,9 +58,11 @@
         "position": 0,
         "children": [],
         "images": [],
-        "parent": "/shop-api/taxons/CATEGORY"
+        "parent": "/shop-api/WEB_GB/taxons/CATEGORY"
       },
       {
+        "@id": "/shop-api/WEB_GB/taxons/HAT",
+        "@type": "Taxon",
         "code": "HAT",
         "name": "Hüte",
         "slug": "hute",
@@ -57,9 +70,9 @@
         "position": 1,
         "children": [],
         "images": [],
-        "parent": "/shop-api/taxons/CATEGORY"
+        "parent": "/shop-api/WEB_GB/taxons/CATEGORY"
       },
-      "/shop-api/taxons/T_SHIRTS"
+      "/shop-api/WEB_GB/taxons/T_SHIRTS"
     ],
     "images": [],
     "parent": null

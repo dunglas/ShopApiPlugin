@@ -1,81 +1,107 @@
-[
-  {
-    "code": "CATEGORY",
-    "name": "Categories",
-    "slug": "categories",
-    "description": "Some description Lorem ipsum dolor sit amet.",
-    "position": 0,
-    "children": [
-      {
-        "code": "MUG",
-        "name": "Tassen",
-        "slug": "tassen",
-        "description": "Einige Beschreibung Lorem ipsum dolor sit amet.",
-        "position": 0,
-        "children": [],
-        "images": []
-      },
-      {
-        "code": "HAT",
-        "name": "H\u00fcte",
-        "slug": "hute",
-        "description": null,
-        "position": 1,
-        "children": [],
-        "images": []
-      },
-      {
-        "code": "T_SHIRTS",
-        "name": "T-Shirts",
-        "slug": "t-shirts",
-        "description": "Einige Beschreibung Lorem ipsum dolor sit amet.",
-        "position": 2,
-        "children": [
-          {
-            "code": "MEN_T_SHIRTS",
-            "name": "M\u00e4nner T-Shirts",
-            "slug": "m\u00e4nner-t-shirts",
-            "description": "Einige Beschreibung Lorem ipsum dolor sit amet.",
-            "position": 0,
-            "children": [],
-            "images": []
-          },
-          {
-            "code": "WOMEN_T_SHIRTS",
-            "name": "Frauen T-Shirts",
-            "slug": "frauen-t-shirts",
-            "description": "@string@",
-            "position": 1,
-            "children": [],
-            "images": []
-          }
-        ],
-        "images": [
-          {
-            "type": "thumbnail",
-            "path": "/uo/t-shirt.jpg"
-          }
-        ]
-      }
-    ],
-    "images": []
-  },
-  {
-    "code": "BRAND",
-    "name": "Marken",
-    "slug": "marken",
-    "description": "Einige Beschreibung Lorem ipsum dolor sit amet.",
-    "position": 1,
-    "children": [],
-    "images": []
-  },
-  {
-    "code": "de?lol=xd#boom",
-    "name": "Yet another taxon",
-    "slug": "yet_another_taxons",
-    "description": "Some description Lorem ipsum dolor sit amet.",
-    "position": 2,
-    "children": [],
-    "images": []
+{
+  "@context": "/shop-api/contexts/Taxon",
+  "@id": "/shop-api/WEB_GB/taxons",
+  "@type": "hydra:Collection",
+  "hydra:member": [
+    {
+      "@id": "/shop-api/WEB_GB/taxons/CATEGORY",
+      "@type": "Taxon",
+      "code": "CATEGORY",
+      "name": "Categories",
+      "slug": "categories",
+      "description": "Some description Lorem ipsum dolor sit amet.",
+      "position": 0,
+      "children": [
+        {
+          "@id": "/shop-api/WEB_GB/taxons/MUG",
+          "@type": "Taxon",
+          "code": "MUG",
+          "name": "Tassen",
+          "slug": "tassen",
+          "description": "Einige Beschreibung Lorem ipsum dolor sit amet.",
+          "position": 0,
+          "children": [],
+          "images": []
+        },
+        {
+          "@id": "/shop-api/WEB_GB/taxons/HAT",
+          "@type": "Taxon",
+          "code": "HAT",
+          "name": "Hüte",
+          "slug": "hute",
+          "description": null,
+          "position": 1,
+          "children": [],
+          "images": []
+        },
+        {
+          "@id": "/shop-api/WEB_GB/taxons/T_SHIRTS",
+          "@type": "Taxon",
+          "code": "T_SHIRTS",
+          "name": "T-Shirts",
+          "slug": "t-shirts",
+          "description": "Einige Beschreibung Lorem ipsum dolor sit amet.",
+          "position": 2,
+          "children": [
+            {
+              "@id": "/shop-api/WEB_GB/taxons/MEN_T_SHIRTS",
+              "@type": "Taxon",
+              "code": "MEN_T_SHIRTS",
+              "name": "Männer T-Shirts",
+              "slug": "männer-t-shirts",
+              "description": "Einige Beschreibung Lorem ipsum dolor sit amet.",
+              "position": 0,
+              "children": [],
+              "images": []
+            },
+            {
+              "@id": "/shop-api/WEB_GB/taxons/WOMEN_T_SHIRTS",
+              "@type": "Taxon",
+              "code": "WOMEN_T_SHIRTS",
+              "name": "Frauen T-Shirts",
+              "slug": "frauen-t-shirts",
+              "description": "@string@",
+              "position": 1,
+              "children": [],
+              "images": []
+            }
+          ],
+          "images": [
+            {
+              "type": "thumbnail",
+              "path": "/uo/t-shirt.jpg"
+            }
+          ]
+        }
+      ],
+      "images": []
+    },
+    {
+      "@id": "/shop-api/WEB_GB/taxons/BRAND",
+      "@type": "Taxon",
+      "code": "BRAND",
+      "name": "Marken",
+      "slug": "marken",
+      "description": "Einige Beschreibung Lorem ipsum dolor sit amet.",
+      "position": 1,
+      "children": [],
+      "images": []
+    },
+    {
+      "@id": "/shop-api/WEB_GB/taxons/de%253Flol%253Dxd%2523boom",
+      "@type": "Taxon",
+      "code": "de?lol=xd#boom",
+      "name": "Yet another taxon",
+      "slug": "yet_another_taxons",
+      "description": "Some description Lorem ipsum dolor sit amet.",
+      "position": 2,
+      "children": [],
+      "images": []
+    }
+  ],
+  "hydra:totalItems": 3,
+  "hydra:view": {
+    "@id": "/shop-api/WEB_GB/taxons?locale=de_DE",
+    "@type": "hydra:PartialCollectionView"
   }
-]
+}

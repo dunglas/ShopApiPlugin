@@ -1,84 +1,97 @@
 {
-    "page": 1,
-    "limit": 10,
-    "pages": 1,
-    "total": 1,
-    "_links": {
-        "self": "\/shop-api\/WEB_GB\/taxon-products\/by-code\/WOMEN_T_SHIRTS?page=1&limit=10",
-        "first": "\/shop-api\/WEB_GB\/taxon-products\/by-code\/WOMEN_T_SHIRTS?page=1&limit=10",
-        "last": "\/shop-api\/WEB_GB\/taxon-products\/by-code\/WOMEN_T_SHIRTS?page=1&limit=10",
-        "next": "\/shop-api\/WEB_GB\/taxon-products\/by-code\/WOMEN_T_SHIRTS?page=1&limit=10"
-    },
-    "items": [
+  "@context": "/shop-api/contexts/Product",
+  "@id": "/shop-api/WEB_GB/products",
+  "@type": "hydra:Collection",
+  "hydra:member": [
+    {
+      "@id": "/shop-api/WEB_GB/products/LOGAN_T_SHIRT_CODE",
+      "@type": "Product",
+      "code": "LOGAN_T_SHIRT_CODE",
+      "name": "Logan T-Shirt",
+      "slug": "logan-t-shirt",
+      "channels": [
         {
-            "code": "LOGAN_T_SHIRT_CODE",
-            "name": "Logan T-Shirt",
-            "slug": "logan-t-shirt",
-            "channelCode": "WEB_GB",
-            "description": "Some description Lorem ipsum dolor sit amet.",
-            "averageRating": 0,
-            "taxons": {
-                "main": "T_SHIRTS",
-                "others": [
-                    "WOMEN_T_SHIRTS",
-                    "BRAND"
-                ]
-            },
-            "variants": {
-                "SMALL_LOGAN_T_SHIRT_CODE": {
-                    "code": "SMALL_LOGAN_T_SHIRT_CODE",
-                    "name": "Small Logan T-Shirt",
-                    "axis": [],
-                    "nameAxis": {},
-                    "price": {
-                        "current": 1999,
-                        "currency": "GBP"
-                    },
-                    "images": [
-                        {
-                            "code": "thumbnail",
-                            "path": "\/uo\/small-tshirt.jpg"
-                        }
-                    ]
-                },
-                "LARGE_LOGAN_T_SHIRT_CODE": {
-                    "code": "LARGE_LOGAN_T_SHIRT_CODE",
-                    "name": "Large Logan T-Shirt",
-                    "axis": [],
-                    "nameAxis": {},
-                    "price": {
-                        "current": 2999,
-                        "currency": "GBP"
-                    },
-                    "images": [
-                        {
-                            "code": "thumbnail",
-                            "path": "\/uo\/large-tshirt.jpg"
-                        }
-                    ]
-                }
-            },
-            "attributes": [],
-            "associations": [],
-            "images": [
-                {
-                    "code": "thumbnail",
-                    "path": "\/uo\/tshirt.jpg"
-                },
-                {
-                    "code": "thumbnail",
-                    "path": "\/uo\/small-tshirt.jpg"
-                },
-                {
-                    "code": "thumbnail",
-                    "path": "\/uo\/large-tshirt.jpg"
-                }
-            ],
-            "_links": {
-                "self": {
-                    "href": "\/shop-api\/WEB_GB\/products\/by-slug\/logan-t-shirt"
-                }
-            }
+          "code": "WEB_GB",
+          "baseCurrency": {
+            "code": "GBP"
+          }
         }
-    ]
+      ],
+      "description": "Some description Lorem ipsum dolor sit amet.",
+      "shortDescription": null,
+      "metaKeywords": null,
+      "metaDescription": null,
+      "averageRating": 0,
+      "mainTaxon": {
+        "@id": "/shop-api/WEB_GB/taxons/T_SHIRTS",
+        "@type": "Taxon",
+        "code": "T_SHIRTS"
+      },
+      "taxons": [
+        {
+          "@id": "/shop-api/WEB_GB/taxons/WOMEN_T_SHIRTS",
+          "@type": "Taxon",
+          "code": "WOMEN_T_SHIRTS"
+        },
+        {
+          "@id": "/shop-api/WEB_GB/taxons/BRAND",
+          "@type": "Taxon",
+          "code": "BRAND"
+        }
+      ],
+      "variants": [
+        {
+          "code": "SMALL_LOGAN_T_SHIRT_CODE",
+          "name": "Small Logan T-Shirt",
+          "optionValues": [],
+          "channelPricings": [
+            {
+              "channelCode": "WEB_GB",
+              "price": 1999
+            }
+          ],
+          "images": [
+            {
+              "type": "thumbnail",
+              "path": "/uo/small-tshirt.jpg"
+            }
+          ]
+        },
+        {
+          "code": "LARGE_LOGAN_T_SHIRT_CODE",
+          "name": "Large Logan T-Shirt",
+          "optionValues": [],
+          "channelPricings": [
+            {
+              "channelCode": "WEB_GB",
+              "price": 2999
+            }
+          ],
+          "images": [
+            {
+              "type": "thumbnail",
+              "path": "/uo/large-tshirt.jpg"
+            }
+          ]
+        }
+      ],
+      "attributes": [],
+      "associations": [],
+      "images": [
+        {
+          "type": "thumbnail",
+          "path": "/uo/tshirt.jpg"
+        },
+        {
+          "type": "thumbnail",
+          "path": "/uo/small-tshirt.jpg"
+        },
+        {
+          "type": "thumbnail",
+          "path": "/uo/large-tshirt.jpg"
+        }
+      ]
+    }
+  ],
+  "hydra:totalItems": 1
 }

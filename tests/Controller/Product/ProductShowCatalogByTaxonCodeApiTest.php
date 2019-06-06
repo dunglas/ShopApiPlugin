@@ -7,7 +7,7 @@ namespace Tests\Sylius\ShopApiPlugin\Controller\Product;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\Sylius\ShopApiPlugin\Controller\JsonApiTestCase;
 
-final class ProductShowCatalogByCodeApiTest extends JsonApiTestCase
+final class ProductShowCatalogByTaxonCodeApiTest extends JsonApiTestCase
 {
     /**
      * @test
@@ -16,7 +16,9 @@ final class ProductShowCatalogByCodeApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFiles(['shop.yml']);
 
-        $this->client->request('GET', '/shop-api/WEB_GB/taxon-products/by-code/BRAND', [], [], self::CONTENT_TYPE_HEADER);
+        $this->client->request('GET', '/shop-api/WEB_GB/taxon-products/by-code/BRAND', [], [], [
+            'HTTP_ACCEPT' => 'application/ld+json',
+        ]);
         $response = $this->client->getResponse();
 
         $this->assertResponse($response, 'product/product_list_page_by_code_response', Response::HTTP_OK);
@@ -29,7 +31,9 @@ final class ProductShowCatalogByCodeApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFiles(['shop.yml']);
 
-        $this->client->request('GET', '/shop-api/WEB_GB/taxon-products/by-code/WOMEN_T_SHIRTS', [], [], self::CONTENT_TYPE_HEADER);
+        $this->client->request('GET', '/shop-api/WEB_GB/taxon-products/by-code/WOMEN_T_SHIRTS', [], [], [
+            'HTTP_ACCEPT' => 'application/ld+json',
+        ]);
         $response = $this->client->getResponse();
 
         $this->assertResponse($response, 'product/product_t_shirt_list_page_by_code_response', Response::HTTP_OK);
@@ -42,7 +46,9 @@ final class ProductShowCatalogByCodeApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFiles(['shop.yml']);
 
-        $this->client->request('GET', '/shop-api/WEB_GB/taxon-products/by-code/BRAND?locale=de_DE', [], [], self::CONTENT_TYPE_HEADER);
+        $this->client->request('GET', '/shop-api/WEB_GB/taxon-products/by-code/BRAND?locale=de_DE', [], [], [
+            'HTTP_ACCEPT' => 'application/ld+json',
+        ]);
         $response = $this->client->getResponse();
 
         $this->assertResponse($response, 'product/german_product_list_page_by_code_response', Response::HTTP_OK);
@@ -55,7 +61,9 @@ final class ProductShowCatalogByCodeApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFiles(['shop.yml']);
 
-        $this->client->request('GET', '/shop-api/WEB_GB/taxon-products/by-code/BRAND?limit=1&page=2', [], [], self::CONTENT_TYPE_HEADER);
+        $this->client->request('GET', '/shop-api/WEB_GB/taxon-products/by-code/BRAND?limit=1&page=2', [], [], [
+            'HTTP_ACCEPT' => 'application/ld+json',
+        ]);
         $response = $this->client->getResponse();
 
         $this->assertResponse($response, 'product/limited_product_list_page_by_code_response', Response::HTTP_OK);
@@ -68,9 +76,11 @@ final class ProductShowCatalogByCodeApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFiles(['shop.yml']);
 
-        $this->client->request('GET', '/shop-api/SPACE_KLINGON/taxon-products/by-code/BRAND', [], [], self::CONTENT_TYPE_HEADER);
+        $this->client->request('GET', '/shop-api/SPACE_KLINGON/taxon-products/by-code/BRAND', [], [], [
+            'HTTP_ACCEPT' => 'application/ld+json',
+        ]);
         $response = $this->client->getResponse();
 
-        $this->assertResponse($response, 'channel_has_not_been_found_response', Response::HTTP_NOT_FOUND);
+        $this->assertResponse($response, 'channel_has_not_been_found_hydra_response', Response::HTTP_NOT_FOUND);
     }
 }

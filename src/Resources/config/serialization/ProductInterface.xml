@@ -6,7 +6,9 @@
 
     <class name="Sylius\Component\Core\Model\ProductInterface">
 
-        <attribute name="associations">
+        <attribute name="associations"
+            max-depth="1"
+        >
             <group>sylius_shop_api_product_list</group>
         </attribute>
 

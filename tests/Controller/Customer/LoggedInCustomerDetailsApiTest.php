@@ -21,7 +21,7 @@ final class LoggedInCustomerDetailsApiTest extends JsonApiTestCase
         $this->logInUser('oliver@queen.com', '123password');
 
         $this->client->request('GET', '/shop-api/WEB_GB/me', [], [], [
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ]);
 
         $response = $this->client->getResponse();
@@ -36,7 +36,7 @@ final class LoggedInCustomerDetailsApiTest extends JsonApiTestCase
         $this->loadFixturesFromFiles(['channel.yml', 'customer.yml']);
 
         $this->client->request('GET', '/shop-api/WEB_GB/me', [], [], [
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ]);
 
         $response = $this->client->getResponse();
@@ -52,7 +52,7 @@ final class LoggedInCustomerDetailsApiTest extends JsonApiTestCase
         $this->logInUser('oliver@queen.com', '123password');
 
         $this->client->request('GET', '/shop-api/SPACE_KLINGON/me', [], [], [
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ]);
 
         $response = $this->client->getResponse();

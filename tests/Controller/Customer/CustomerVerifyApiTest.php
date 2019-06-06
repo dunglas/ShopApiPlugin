@@ -33,7 +33,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $registerData);
 
         /** @var UserRepositoryInterface $userRepository */
@@ -43,13 +43,12 @@ JSON;
         $verifyData =
 <<<JSON
         {
-            "token": "{$user->getEmailVerificationToken()}"
         }
 JSON;
 
-        $this->client->request('POST', '/shop-api/WEB_GB/verify-account', [], [], [
+        $this->client->request('POST', '/shop-api/WEB_GB/verify-account/' . $user->getEmailVerificationToken(), [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $verifyData);
 
         $response = $this->client->getResponse();
@@ -75,7 +74,7 @@ JSON;
 
         $this->client->request('POST', '/shop-api/WEB_GB/register', [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $registerData);
 
         /** @var UserRepositoryInterface $userRepository */
@@ -85,13 +84,12 @@ JSON;
         $verifyData =
 <<<JSON
         {
-            "token": "{$user->getEmailVerificationToken()}"
         }
 JSON;
 
-        $this->client->request('POST', '/shop-api/SPACE_KLINGON/verify-account', [], [], [
+        $this->client->request('POST', '/shop-api/SPACE_KLINGON/verify-account/' . $user->getEmailVerificationToken(), [], [], [
             'CONTENT_TYPE' => 'application/json',
-            'ACCEPT' => 'application/json',
+            'HTTP_ACCEPT' => 'application/json',
         ], $verifyData);
 
         $response = $this->client->getResponse();
