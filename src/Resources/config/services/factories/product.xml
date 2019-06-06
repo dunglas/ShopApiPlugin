@@ -19,19 +19,6 @@
             <argument>%locale%</argument>
         </service>
 
-        <service id="sylius.shop_api_plugin.factory.detailed_product_view_factory"
-                 class="Sylius\ShopApiPlugin\Factory\Product\DetailedProductViewFactory">
-            <argument type="service" id="sylius.shop_api_plugin.factory.list_product_view_factory"/>
-            <argument type="service" id="sylius.shop_api_plugin.generator.product_breadcrumb_generator"/>
-        </service>
-
-        <service id="sylius.shop_api_plugin.factory.list_product_view_factory"
-                 class="Sylius\ShopApiPlugin\Factory\Product\ListProductViewFactory">
-            <argument type="service" id="sylius.shop_api_plugin.factory.image_view_factory"/>
-            <argument type="service" id="sylius.shop_api_plugin.factory.product_view_factory"/>
-            <argument type="service" id="sylius.shop_api_plugin.factory.product_variant_view_factory"/>
-        </service>
-
         <service id="sylius.shop_api_plugin.factory.product_attribute_value_view_factory"
                  class="Sylius\ShopApiPlugin\Factory\Product\ProductAttributeValueViewFactory">
             <argument type="string">%sylius.shop_api.view.product_attribute_value.class%</argument>

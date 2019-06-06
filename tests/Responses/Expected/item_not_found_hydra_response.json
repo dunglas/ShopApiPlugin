@@ -1,0 +1,7 @@
+{
+  "@context": "/shop-api/contexts/Error",
+  "@type": "hydra:Error",
+  "hydra:title": "@string@",
+  "hydra:description": "Not Found",
+  "trace": "@array@.optional()"
+}

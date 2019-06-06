@@ -73,6 +73,35 @@
             <itemOperation name="get">
                 <attribute name="path">/{channelCode}/products/{id}</attribute><!-- actually {code} but API Platform uses hardcoded {id} route parameter -->
             </itemOperation>
+
+            <itemOperation name="get_by_code">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/{channelCode}/products/by-code/{id}</attribute><!-- actually {code} but API Platform uses hardcoded {id} route parameter -->
+                <attribute name="normalization_context">
+                    <attribute name="groups">
+                        <attribute>sylius_shop_api_product_read</attribute>
+                        <attribute>sylius_shop_api_product_details</attribute>
+                    </attribute>
+                    <attribute name="enable_max_depth">true</attribute>
+                </attribute>
+                <attribute name="sylius_shop_api">true</attribute>
+            </itemOperation>
+
+            <itemOperation name="get_by_slug">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/{channelCode}/products/by-slug/{id}</attribute><!-- actually {slug} but API Platform uses hardcoded {id} route parameter -->
+                <attribute name="requirements">
+                    <attribute name="id">.+</attribute>
+                </attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">
+                        <attribute>sylius_shop_api_product_read</attribute>
+                        <attribute>sylius_shop_api_product_details</attribute>
+                    </attribute>
+                    <attribute name="enable_max_depth">true</attribute>
+                </attribute>
+                <attribute name="sylius_shop_api">true</attribute>
+            </itemOperation>
         </itemOperations>
 
         <property name="code" identifier="true" />

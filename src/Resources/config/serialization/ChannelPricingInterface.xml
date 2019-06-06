@@ -7,10 +7,12 @@
     <class name="Sylius\Component\Core\Model\ChannelPricingInterface">
 
         <attribute name="channelCode">
+            <group>sylius_shop_api_product_details</group>
             <group>sylius_shop_api_product_list</group>
         </attribute>
 
         <attribute name="price">
+            <group>sylius_shop_api_product_details</group>
             <group>sylius_shop_api_product_list</group>
         </attribute>
 
