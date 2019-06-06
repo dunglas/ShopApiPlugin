@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Sylius\ShopApiPlugin\Serializer\Callback\Product;
 
-use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\ShopApiPlugin\Serializer\ContextKeys;

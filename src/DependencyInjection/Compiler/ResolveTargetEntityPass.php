@@ -34,7 +34,7 @@ final class ResolveTargetEntityPass implements CompilerPassInterface
             $definition->addMethodCall('addResolveTargetEntity', [
                 $interface,
                 $container->getParameter($classParameter),
-                []
+                [],
             ]);
         }
     }

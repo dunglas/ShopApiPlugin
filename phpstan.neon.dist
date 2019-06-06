@@ -1,0 +1,15 @@
+includes:
+    - vendor/phpstan/phpstan-webmozart-assert/extension.neon
+
+parameters:
+    level: 2
+    paths:
+        - src
+    excludes_analyse:
+        # Makes PHPStan crash
+        - src/DependencyInjection/Configuration.php
+
+    ignoreErrors:
+        - '#Access to an undefined property Symfony\\Component\\Validator\\Constraint::\$message\.#'
+        - '#Method ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Extension\\QueryResult(Item|Collection)ExtensionInterface::getResult\(\) invoked with 4 parameters, 1 required\.#'
+        - '#Method ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Extension\\QueryResult(Item|Collection)ExtensionInterface::supportsResult\(\) invoked with 3 parameters, 1-2 required\.#'
