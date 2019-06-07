@@ -9,6 +9,7 @@
         <attribute name="associations"
             max-depth="1"
         >
+            <group>sylius_shop_api_product_details</group>
             <group>sylius_shop_api_product_list</group>
         </attribute>
 
@@ -67,6 +68,7 @@
         </attribute>
 
         <attribute name="variants">
+            <group>sylius_shop_api_product_details</group>
             <group>sylius_shop_api_product_list</group>
         </attribute>
 

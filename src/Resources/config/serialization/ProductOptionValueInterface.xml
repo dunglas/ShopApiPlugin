@@ -7,14 +7,17 @@
     <class name="Sylius\Component\Product\Model\ProductOptionValueInterface">
 
         <attribute name="code">
+            <group>sylius_shop_api_product_details</group>
             <group>sylius_shop_api_product_list</group>
         </attribute>
 
         <attribute name="option">
+            <group>sylius_shop_api_product_details</group>
             <group>sylius_shop_api_product_list</group>
         </attribute>
 
         <attribute name="value">
+            <group>sylius_shop_api_product_details</group>
             <group>sylius_shop_api_product_list</group>
         </attribute>
 

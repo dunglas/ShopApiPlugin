@@ -1,52 +1,71 @@
 {
-    "code": "LOGAN_MUG_CODE",
-    "name": "Logan Becher",
-    "slug": "logan-becher",
-    "channelCode": "WEB_GB",
-    "breadcrumb": "tassen\/logan-becher",
-    "averageRating": 0,
-    "taxons": {
-        "main": "MUG",
-        "others": [
-            "MUG",
-            "BRAND"
-        ]
-    },
-    "variants": {
-        "LOGAN_MUG_CODE": {
-            "code": "LOGAN_MUG_CODE",
-            "name": "Logan Becher",
-            "axis": [],
-            "nameAxis": {},
-            "price": {
-                "current": 1999,
-                "currency": "GBP"
-            },
-            "images": [
-                {
-                    "code": "thumbnail",
-                    "path": "\/uo\/mug.jpg"
-                }
-            ]
-        }
-    },
-    "attributes": [
-        {
-            "code": "MUG_MATERIAL_CODE",
-            "name": "Becher Material",
-            "value": "Holz"
-        }
-    ],
-    "associations": [],
-    "images": [
-        {
-            "code": "thumbnail",
-            "path": "\/uo\/mug.jpg"
-        }
-    ],
-    "_links": {
-        "self": {
-            "href": "\/shop-api\/WEB_GB\/products\/by-slug\/logan-becher"
-        }
+  "@context": "/shop-api/contexts/Product",
+  "@id": "/shop-api/WEB_GB/products/LOGAN_MUG_CODE",
+  "@type": "Product",
+  "code": "LOGAN_MUG_CODE",
+  "name": "Logan Becher",
+  "slug": "logan-becher",
+  "channels": [
+    {
+      "code": "WEB_GB",
+      "baseCurrency": {
+        "code": "GBP"
+      }
     }
+  ],
+  "description": null,
+  "shortDescription": null,
+  "metaKeywords": null,
+  "metaDescription": null,
+  "averageRating": 0,
+  "mainTaxon": {
+    "@id": "/shop-api/WEB_GB/taxons/MUG",
+    "@type": "Taxon",
+    "code": "MUG"
+  },
+  "taxons": [
+    {
+      "@id": "/shop-api/WEB_GB/taxons/MUG",
+      "@type": "Taxon",
+      "code": "MUG"
+    },
+    {
+      "@id": "/shop-api/WEB_GB/taxons/BRAND",
+      "@type": "Taxon",
+      "code": "BRAND"
+    }
+  ],
+  "variants": [
+    {
+      "code": "LOGAN_MUG_CODE",
+      "name": "Logan Becher",
+      "optionValues": [],
+      "channelPricings": [
+        {
+          "channelCode": "WEB_GB",
+          "price": 1999
+        }
+      ],
+      "images": [
+        {
+          "type": "thumbnail",
+          "path": "/uo/mug.jpg"
+        }
+      ]
+    }
+  ],
+  "attributes": [
+    {
+      "code": "MUG_MATERIAL_CODE",
+      "name": "Becher Material",
+      "value": "Holz"
+    }
+  ],
+  "associations": [],
+  "images": [
+    {
+      "type": "thumbnail",
+      "path": "/uo/mug.jpg"
+    }
+  ]
 }

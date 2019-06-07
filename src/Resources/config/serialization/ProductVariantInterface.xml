@@ -8,22 +8,27 @@
 
         <!-- Filtered using a callback passed in sylius.shop_api_plugin.serializer_context_builder.product -->
         <attribute name="channelPricings">
+            <group>sylius_shop_api_product_details</group>
             <group>sylius_shop_api_product_list</group>
         </attribute>
 
         <attribute name="code">
+            <group>sylius_shop_api_product_details</group>
             <group>sylius_shop_api_product_list</group>
         </attribute>
 
         <attribute name="images">
+            <group>sylius_shop_api_product_details</group>
             <group>sylius_shop_api_product_list</group>
         </attribute>
 
         <attribute name="name">
+            <group>sylius_shop_api_product_details</group>
             <group>sylius_shop_api_product_list</group>
         </attribute>
 
         <attribute name="optionValues">
+            <group>sylius_shop_api_product_details</group>
             <group>sylius_shop_api_product_list</group>
         </attribute>
 
