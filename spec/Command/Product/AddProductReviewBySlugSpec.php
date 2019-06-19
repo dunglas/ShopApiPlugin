@@ -10,7 +10,7 @@ final class AddProductReviewBySlugSpec extends ObjectBehavior
 {
     function let(): void
     {
-        $this->beConstructedWith('pale-ale', 'WEB_GB', 'Awesome beer', 5, 'I love this beer', 'pale.ale@brewery.com');
+        $this->beConstructedWith('pale-ale', 'Awesome beer', 5, 'I love this beer', 'pale.ale@brewery.com', 'WEB_GB');
     }
 
     public function it_has_product_slug(): void

@@ -8,42 +8,26 @@ use Sylius\ShopApiPlugin\Command\CommandInterface;
 
 class AddProductReviewByCode implements CommandInterface
 {
-    /** @var string */
     protected $productCode;
-
-    /** @var string */
+    protected $title;
+    protected $rating;
+    protected $comment;
+    protected $email;
     protected $channelCode;
 
-    /** @var string */
-    protected $title;
-
-    /** @var int */
-    protected $rating;
-
-    /** @var string */
-    protected $comment;
-
-    /** @var string */
-    protected $email;
-
-    public function __construct(string $productCode, string $channelCode, string $title, int $rating, string $comment, string $email)
+    public function __construct(string $productCode, string $title, int $rating, string $comment, string $email, string $channelCode)
     {
         $this->productCode = $productCode;
-        $this->channelCode = $channelCode;
         $this->title = $title;
         $this->rating = $rating;
         $this->comment = $comment;
         $this->email = $email;
+        $this->channelCode = $channelCode;
     }
 
     public function productCode(): string
     {
         return $this->productCode;
-    }
-
-    public function channelCode(): string
-    {
-        return $this->channelCode;
     }
 
     public function title(): string
@@ -64,5 +48,10 @@ class AddProductReviewByCode implements CommandInterface
     public function email(): string
     {
         return $this->email;
+    }
+
+    public function channelCode(): string
+    {
+        return $this->channelCode;
     }
 }

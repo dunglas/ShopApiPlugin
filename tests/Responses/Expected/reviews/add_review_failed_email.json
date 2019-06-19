@@ -1,9 +1,12 @@
 {
-    "code": 400,
-    "message": "Validation failed",
-    "errors": {
-        "email": [
-            "This value is not a valid email address."
-        ]
+  "@context": "/shop-api/contexts/ConstraintViolationList",
+  "@type": "ConstraintViolationList",
+  "hydra:title": "@string@",
+  "hydra:description": "email: This email is invalid.",
+  "violations": [
+    {
+      "propertyPath": "email",
+      "message": "This email is invalid."
     }
+  ]
 }

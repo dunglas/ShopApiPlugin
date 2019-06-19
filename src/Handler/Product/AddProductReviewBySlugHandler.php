@@ -44,28 +44,28 @@ final class AddProductReviewBySlugHandler
         $this->reviewFactory = $reviewFactory;
     }
 
-    public function __invoke(AddProductReviewBySlug $addReview): void
+    public function __invoke(AddProductReviewBySlug $addProductReviewBySlug): void
     {
         /** @var ChannelInterface $channel */
-        $channel = $this->channelRepository->findOneByCode($addReview->channelCode());
+        $channel = $this->channelRepository->findOneByCode($addProductReviewBySlug->channelCode());
 
         Assert::notNull($channel, 'Channel not found.');
 
         $product = $this->productRepository->findOneByChannelAndSlug(
             $channel,
             $channel->getDefaultLocale()->getCode(),
-            $addReview->productSlug()
+            $addProductReviewBySlug->productSlug()
         );
 
         Assert::notNull($product, 'Product not found.');
 
-        $productReviewer = $this->productReviewerProvider->provide($addReview->email());
+        $productReviewer = $this->productReviewerProvider->provide($addProductReviewBySlug->email());
 
         $productReview = $this->reviewFactory->createForSubjectWithReviewer($product, $productReviewer);
 
-        $productReview->setComment($addReview->comment());
-        $productReview->setRating($addReview->rating());
-        $productReview->setTitle($addReview->title());
+        $productReview->setComment($addProductReviewBySlug->comment());
+        $productReview->setRating($addProductReviewBySlug->rating());
+        $productReview->setTitle($addProductReviewBySlug->title());
 
         $this->productReviewRepository->add($productReview);
     }
