@@ -10,7 +10,7 @@ final class AddProductReviewByCodeSpec extends ObjectBehavior
 {
     function let(): void
     {
-        $this->beConstructedWith('PALE_ALE_CODE', 'WEB_GB', 'Awesome beer', 5, 'I love this beer', 'pale.ale@brewery.com');
+        $this->beConstructedWith('PALE_ALE_CODE', 'Awesome beer', 5, 'I love this beer', 'pale.ale@brewery.com', 'WEB_GB');
     }
 
     public function it_has_product_slug(): void

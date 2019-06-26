@@ -28,7 +28,9 @@
             </constraint>
         </property>
         <property name="email">
-            <constraint name="Email" />
+            <constraint name="Email">
+                <option name="message">sylius.shop_api.email.invalid</option>
+            </constraint>
         </property>
     </class>
 </constraint-mapping>

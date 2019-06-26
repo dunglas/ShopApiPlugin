@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+
+<resources xmlns="https://api-platform.com/schema/metadata"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd">
+
+    <resource class="Sylius\ShopApiPlugin\Request\Product\AddProductReviewBySlugRequest">
+
+        <collectionOperations>
+            <collectionOperation name="post">
+                <attribute name="method">POST</attribute>
+                <attribute name="path">/{channelCode}/products/by-slug/{productSlug}/reviews</attribute>
+                <attribute name="requirements">
+                    <attribute name="productSlug">.+</attribute>
+                </attribute>
+                <attribute name="output">false</attribute>
+                <attribute name="status">201</attribute>
+                <attribute name="sylius_shop_api">
+                    <attribute name="parameters">
+                        <attribute name="channelCode">$channelCode</attribute>
+                        <attribute name="productSlug">$productSlug</attribute>
+                    </attribute>
+                </attribute>
+            </collectionOperation>
+        </collectionOperations>
+
+        <itemOperations>
+        </itemOperations>
+
+    </resource>
+
+</resources>

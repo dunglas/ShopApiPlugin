@@ -91,7 +91,7 @@
                 <attribute name="method">GET</attribute>
                 <attribute name="path">/{channelCode}/products/by-slug/{id}</attribute><!-- actually {slug} but API Platform uses hardcoded {id} route parameter -->
                 <attribute name="requirements">
-                    <attribute name="id">.+</attribute>
+                    <attribute name="id"><![CDATA[.+(?<!\/reviews)]]></attribute>
                 </attribute>
                 <attribute name="normalization_context">
                     <attribute name="groups">

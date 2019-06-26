@@ -7,37 +7,24 @@ namespace Sylius\ShopApiPlugin\Request\Product;
 use Sylius\ShopApiPlugin\Command\CommandInterface;
 use Sylius\ShopApiPlugin\Command\Product\AddProductReviewByCode;
 use Sylius\ShopApiPlugin\Request\CommandRequestInterface;
-use Symfony\Component\HttpFoundation\Request;
 
 class AddProductReviewByCodeRequest implements CommandRequestInterface
 {
-    /** @var string */
-    protected $code;
-
-    /** @var string */
+    protected $productCode;
+    protected $title;
+    protected $rating;
+    protected $comment;
+    protected $email;
     protected $channelCode;
 
-    /** @var string */
-    protected $title;
-
-    /** @var int */
-    protected $rating;
-
-    /** @var string */
-    protected $comment;
-
-    /** @var string */
-    protected $email;
-
-    public function __construct(Request $request)
+    public function __construct(string $productCode = '', string $title = '', int $rating = -1, string $comment = '', string $email = '', string $channelCode = '')
     {
-        $this->code = $request->attributes->get('code');
-        $this->channelCode = $request->attributes->get('channelCode');
-
-        $this->title = $request->request->get('title');
-        $this->rating = $request->request->get('rating');
-        $this->comment = $request->request->get('comment');
-        $this->email = $request->request->get('email');
+        $this->productCode = $productCode;
+        $this->title = $title;
+        $this->rating = $rating;
+        $this->comment = $comment;
+        $this->email = $email;
+        $this->channelCode = $channelCode;
     }
 
     /**
@@ -47,6 +34,36 @@ class AddProductReviewByCodeRequest implements CommandRequestInterface
      */
     public function getCommand(): CommandInterface
     {
-        return new AddProductReviewByCode($this->code, $this->channelCode, $this->title, $this->rating, $this->comment, $this->email);
+        return new AddProductReviewByCode($this->productCode, $this->title, $this->rating, $this->comment, $this->email, $this->channelCode);
+    }
+
+    public function getProductCode(): string
+    {
+        return $this->productCode;
+    }
+
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    public function getRating(): int
+    {
+        return $this->rating;
+    }
+
+    public function getComment(): string
+    {
+        return $this->comment;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function getChannelCode(): string
+    {
+        return $this->channelCode;
     }
 }

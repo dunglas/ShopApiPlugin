@@ -16,6 +16,7 @@ final class ResolveTargetEntityPass implements CompilerPassInterface
         \Sylius\Component\Core\Model\ChannelInterface::class => 'sylius.model.channel.class',
         \Sylius\Component\Core\Model\CustomerInterface::class => 'sylius.model.customer.class',
         \Sylius\Component\Core\Model\ProductInterface::class => 'sylius.model.product.class',
+        \Sylius\Component\Core\Model\ProductReviewerInterface::class => 'sylius.model.product_reviewer.class',
         \Sylius\Component\Core\Model\TaxonInterface::class => 'sylius.model.taxon.class',
     ];
 

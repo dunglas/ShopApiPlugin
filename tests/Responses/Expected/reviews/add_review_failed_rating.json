@@ -1,9 +1,12 @@
 {
-    "code": 400,
-    "message": "Validation failed",
-    "errors": {
-        "rating": [
-            "This value should be 5 or less."
-        ]
+  "@context": "/shop-api/contexts/ConstraintViolationList",
+  "@type": "ConstraintViolationList",
+  "hydra:title": "@string@",
+  "hydra:description": "rating: This value should be 5 or less.",
+  "violations": [
+    {
+      "propertyPath": "rating",
+      "message": "This value should be 5 or less."
     }
+  ]
 }

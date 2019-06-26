@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+
+<resources xmlns="https://api-platform.com/schema/metadata"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd">
+
+    <resource class="Sylius\Component\Review\Model\ReviewInterface"
+        shortName="Review"
+    >
+
+        <attribute name="pagination_client_items_per_page">true</attribute>
+
+        <collectionOperations>
+            <!-- This is only for IRI generation -->
+            <!-- Actually sending a request should result in HTTP 404 because of sylius.shop_api_plugin.data_provider.review.collection -->
+            <collectionOperation name="get">
+                <attribute name="path">/{channelCode}/reviews</attribute>
+            </collectionOperation>
+
+            <collectionOperation name="get_by_product_code">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/{channelCode}/products/by-code/{productCode}/reviews</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">
+                        <attribute>sylius_shop_api_product_review_read</attribute>
+                    </attribute>
+                </attribute>
+                <attribute name="sylius_shop_api">true</attribute>
+            </collectionOperation>
+
+            <collectionOperation name="get_by_product_slug">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/{channelCode}/products/by-slug/{productSlug}/reviews</attribute>
+                <attribute name="requirements">
+                    <attribute name="productSlug">.+</attribute>
+                </attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">
+                        <attribute>sylius_shop_api_product_review_read</attribute>
+                    </attribute>
+                </attribute>
+                <attribute name="sylius_shop_api">true</attribute>
+            </collectionOperation>
+        </collectionOperations>
+
+        <itemOperations>
+            <!-- This is only for IRI generation -->
+            <!-- Actually sending a request should result in HTTP 404 because of sylius.shop_api_plugin.data_provider.review.item -->
+            <itemOperation name="get">
+                <attribute name="path">/{channelCode}/reviews/{id}</attribute>
+            </itemOperation>
+        </itemOperations>
+
+        <property name="id" identifier="true" />
+
+    </resource>
+
+</resources>
