@@ -10,6 +10,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGenerator;
 use ApiPlatform\Core\DataProvider\ContextAwareCollectionDataProviderInterface;
 use ApiPlatform\Core\DataProvider\Pagination;
 use ApiPlatform\Core\DataProvider\RestrictedDataProviderInterface;
+use ApiPlatform\Core\Exception\ItemNotFoundException;
 use Doctrine\ORM\QueryBuilder;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -17,7 +18,6 @@ use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Sylius\ShopApiPlugin\Serializer\ContextKeys;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Webmozart\Assert\Assert;
 
 final class ProductCollectionDataProvider implements ContextAwareCollectionDataProviderInterface, RestrictedDataProviderInterface
@@ -65,9 +65,7 @@ final class ProductCollectionDataProvider implements ContextAwareCollectionDataP
 
                 break;
             default:
-                // hack: this is not the ideal type of exception to throw here, but it works
-                // it might be better if API Platform supports returning null here?
-                throw new NotFoundHttpException(sprintf('Collection operation "%s" is not implemented.', $operationName));
+                throw new ItemNotFoundException(sprintf('Collection operation "%s" is not implemented.', $operationName));
         }
 
         Assert::isInstanceOf($queryBuilder, QueryBuilder::class);

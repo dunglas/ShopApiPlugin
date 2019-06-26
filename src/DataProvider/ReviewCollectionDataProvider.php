@@ -8,12 +8,12 @@ use ApiPlatform\Core\DataProvider\ArrayPaginator;
 use ApiPlatform\Core\DataProvider\ContextAwareCollectionDataProviderInterface;
 use ApiPlatform\Core\DataProvider\Pagination;
 use ApiPlatform\Core\DataProvider\RestrictedDataProviderInterface;
+use ApiPlatform\Core\Exception\ItemNotFoundException;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Core\Repository\ProductReviewRepositoryInterface;
 use Sylius\Component\Review\Model\ReviewInterface;
 use Sylius\ShopApiPlugin\Serializer\ContextKeys;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Webmozart\Assert\Assert;
 
 final class ReviewCollectionDataProvider implements ContextAwareCollectionDataProviderInterface, RestrictedDataProviderInterface
@@ -54,9 +54,7 @@ final class ReviewCollectionDataProvider implements ContextAwareCollectionDataPr
 
                 break;
             default:
-                // hack: this is not the ideal type of exception to throw here, but it works
-                // it might be better if API Platform supports returning null here?
-                throw new NotFoundHttpException(sprintf('Collection operation "%s" is not implemented.', $operationName));
+                throw new ItemNotFoundException(sprintf('Collection operation "%s" is not implemented.', $operationName));
         }
 
         Assert::isArray($items);
@@ -78,7 +76,10 @@ final class ReviewCollectionDataProvider implements ContextAwareCollectionDataPr
         Assert::string($productCode);
 
         $product = $this->productRepository->findOneByCode($productCode);
-        Assert::true($product->hasChannel($channel));
+
+        if (!$product->hasChannel($channel)) {
+            throw new ItemNotFoundException(sprintf('Product with code %s has not been found for channel %s.', $productCode, $channel->getCode()));
+        }
 
         return $this->productReviewRepository->findBy([
             'reviewSubject' => $product->getId(),

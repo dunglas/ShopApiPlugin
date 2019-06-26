@@ -6,6 +6,7 @@ namespace Sylius\ShopApiPlugin\DataProvider;
 
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
 use ApiPlatform\Core\DataProvider\RestrictedDataProviderInterface;
+use ApiPlatform\Core\Exception\ItemNotFoundException;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
@@ -36,30 +37,39 @@ final class ProductItemDataProvider implements ItemDataProviderInterface, Restri
     {
         switch ($operationName) {
             case 'get_by_code':
-                return $this->getProductByCode($id);
+                return $this->getProductByCode($id, $context);
             case 'get_by_slug':
                 return $this->getProductBySlug($id, $context);
             default:
-                return null;
+                throw new ItemNotFoundException(sprintf('Item operation "%s" is not implemented.', $operationName));
         }
     }
 
-    private function getProductByCode(string $code): ?ProductInterface
-    {
-        return $this->productRepository->findOneByCode($code);
-    }
-
-    private function getProductBySlug(string $slug, array $context): ?ProductInterface
+    private function getProductByCode(string $productCode, array $context): ?ProductInterface
     {
         Assert::keyExists($context, ContextKeys::CHANNEL);
-        Assert::keyExists($context, ContextKeys::LOCALE_CODE);
-
         $channel = $context[ContextKeys::CHANNEL];
-        $localeCode = $context[ContextKeys::LOCALE_CODE];
-
         Assert::isInstanceOf($channel, ChannelInterface::class);
+
+        $product = $this->productRepository->findOneByCode($productCode);
+
+        if (!$product->hasChannel($channel)) {
+            throw new ItemNotFoundException(sprintf('Product with code %s has not been found for channel %s.', $productCode, $channel->getCode()));
+        }
+
+        return $product;
+    }
+
+    private function getProductBySlug(string $productSlug, array $context): ?ProductInterface
+    {
+        Assert::keyExists($context, ContextKeys::CHANNEL);
+        $channel = $context[ContextKeys::CHANNEL];
+        Assert::isInstanceOf($channel, ChannelInterface::class);
+
+        Assert::keyExists($context, ContextKeys::LOCALE_CODE);
+        $localeCode = $context[ContextKeys::LOCALE_CODE];
         Assert::string($localeCode);
 
-        return $this->productRepository->findOneByChannelAndSlug($channel, $localeCode, $slug);
+        return $this->productRepository->findOneByChannelAndSlug($channel, $localeCode, $productSlug);
     }
 }
