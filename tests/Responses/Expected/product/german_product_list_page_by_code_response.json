@@ -62,7 +62,25 @@
         {
           "code": "MUG_MATERIAL_CODE",
           "name": "Becher Material",
-          "value": "Holz"
+          "type": "select",
+          "value": [
+            "1"
+          ],
+          "attribute": {
+            "configuration": {
+              "required": true,
+              "choices": {
+                "1": {
+                  "en_GB": "Wood",
+                  "de_DE": "Holz"
+                },
+                "2": {
+                  "en_GB": "Porcelain",
+                  "de_DE": "Porzellan"
+                }
+              }
+            }
+          }
         }
       ],
       "associations": [],
@@ -285,7 +303,25 @@
                 {
                   "code": "MUG_MATERIAL_CODE",
                   "name": "Becher Material",
-                  "value": "Holz"
+                  "type": "select",
+                  "value": [
+                    "1"
+                  ],
+                  "attribute": {
+                    "configuration": {
+                      "required": true,
+                      "choices": {
+                        "1": {
+                          "en_GB": "Wood",
+                          "de_DE": "Holz"
+                        },
+                        "2": {
+                          "en_GB": "Porcelain",
+                          "de_DE": "Porzellan"
+                        }
+                      }
+                    }
+                  }
                 }
               ],
               "images": [

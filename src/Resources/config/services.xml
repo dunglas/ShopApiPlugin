@@ -9,6 +9,7 @@
         <import resource="services/factories.xml"/>
         <import resource="services/handlers.xml"/>
         <import resource="services/http.xml"/>
+        <import resource="services/mapper.xml" />
         <import resource="services/validators.xml"/>
         <import resource="services/queries.xml"/>
         <import resource="services/shipping.xml" />
@@ -22,7 +23,13 @@
     <parameters>
         <parameter key="sylius_shop_api_plugin.command_bus.middleware" type="collection">
             <parameter type="collection">
-                <parameter key="id">logging</parameter>
+                <parameter key="id">add_bus_name_stamp_middleware</parameter>
+            </parameter>
+            <parameter type="collection">
+                <parameter key="id">dispatch_after_current_bus</parameter>
+            </parameter>
+            <parameter type="collection">
+                <parameter key="id">failed_message_processing_middleware</parameter>
             </parameter>
             <parameter type="collection">
                 <parameter key="id">doctrine_transaction</parameter>
@@ -37,7 +44,13 @@
 
         <parameter key="sylius_shop_api_plugin.email_bus.middleware" type="collection">
             <parameter type="collection">
-                <parameter key="id">logging</parameter>
+                <parameter key="id">add_bus_name_stamp_middleware</parameter>
+            </parameter>
+            <parameter type="collection">
+                <parameter key="id">dispatch_after_current_bus</parameter>
+            </parameter>
+            <parameter type="collection">
+                <parameter key="id">failed_message_processing_middleware</parameter>
             </parameter>
             <parameter type="collection">
                 <parameter key="id">send_message</parameter>

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Sylius\ShopApiPlugin\DataProvider;
 
+use ApiPlatform\Core\DataProvider\ArrayPaginator;
 use ApiPlatform\Core\DataProvider\ContextAwareCollectionDataProviderInterface;
 use ApiPlatform\Core\DataProvider\Pagination;
 use ApiPlatform\Core\DataProvider\RestrictedDataProviderInterface;
@@ -20,14 +21,12 @@ final class ReviewCollectionDataProvider implements ContextAwareCollectionDataPr
     private $productReviewRepository;
     private $productRepository;
     private $pagination;
-    private $arrayPaginatorClass;
 
     public function __construct(ProductReviewRepositoryInterface $productReviewRepository, ProductRepositoryInterface $productRepository, Pagination $pagination)
     {
         $this->productReviewRepository = $productReviewRepository;
         $this->productRepository = $productRepository;
         $this->pagination = $pagination;
-        $this->arrayPaginatorClass = class_exists(\ApiPlatform\Core\DataProvider\ArrayPaginator::class) ? \ApiPlatform\Core\DataProvider\ArrayPaginator::class : ArrayPaginator::class;
     }
 
     /**
@@ -65,7 +64,7 @@ final class ReviewCollectionDataProvider implements ContextAwareCollectionDataPr
         $offset = $this->pagination->getOffset($resourceClass, $operationName, $context);
         $limit = $this->pagination->getLimit($resourceClass, $operationName, $context);
 
-        return new $this->arrayPaginatorClass($items, $offset, $limit);
+        return new ArrayPaginator($items, $offset, $limit);
     }
 
     private function getItemsByProductCode(array $context): array

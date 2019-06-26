@@ -14,6 +14,3 @@ parameters:
         - '#Method Symfony\\Contracts\\EventDispatcher\\EventDispatcherInterface::dispatch\(\) invoked with 2 parameters, 1 required\.#'
         - '#Method ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Extension\\QueryResult(Item|Collection)ExtensionInterface::getResult\(\) invoked with 4 parameters, 1 required\.#'
         - '#Method ApiPlatform\\Core\\Bridge\\Doctrine\\Orm\\Extension\\QueryResult(Item|Collection)ExtensionInterface::supportsResult\(\) invoked with 3 parameters, 1-2 required\.#'
-        -
-            message: '#Class ApiPlatform\\Core\\DataProvider\\ArrayPaginator not found\.#'
-            path: %currentWorkingDirectory%/src/DataProvider/ReviewCollectionDataProvider.php
