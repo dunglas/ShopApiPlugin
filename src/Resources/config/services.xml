@@ -24,6 +24,9 @@
         <parameter key="sylius_shop_api_plugin.command_bus.middleware" type="collection">
             <parameter type="collection">
                 <parameter key="id">add_bus_name_stamp_middleware</parameter>
+                <parameter key="arguments" type="collection">
+                    <parameter>sylius_shop_api_plugin.command_bus</parameter>
+                </parameter>
             </parameter>
             <parameter type="collection">
                 <parameter key="id">dispatch_after_current_bus</parameter>
@@ -45,6 +48,9 @@
         <parameter key="sylius_shop_api_plugin.email_bus.middleware" type="collection">
             <parameter type="collection">
                 <parameter key="id">add_bus_name_stamp_middleware</parameter>
+                <parameter key="arguments" type="collection">
+                    <parameter>sylius_shop_api_plugin.email_bus</parameter>
+                </parameter>
             </parameter>
             <parameter type="collection">
                 <parameter key="id">dispatch_after_current_bus</parameter>
